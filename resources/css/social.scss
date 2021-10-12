@@ -1,0 +1,41 @@
+.btn-social {
+    color: white;
+
+    &:hover {
+        color: white;
+        opacity: .8;
+    }
+
+    &.btn-apple {
+        background-color: #EFF7FF;
+        color: black
+    }
+
+    &.btn-google {
+        background-color: #DD4B39;
+    }
+
+    &.btn-facebook {
+        background-color: #3B5998;
+    }
+
+    &.btn-instagram {
+        background-color: #3F729B;
+    }
+
+    &.btn-twitter {
+        background-color: #55ACEE;
+    }
+
+    &.btn-github {
+        background-color: #444444;
+    }
+
+    &.btn-microsoft {
+        background-color: #2672EC;
+    }
+
+    &.btn-line {
+        background-color: #00B900;
+    }
+}
