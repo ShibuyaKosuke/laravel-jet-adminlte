@@ -22,6 +22,6 @@ class ExampleController extends Controller
      */
     public function index(): View
     {
-        return view('adminlte::examples.index');
+        return view('jet-adminlte::examples.index');
     }
 }
