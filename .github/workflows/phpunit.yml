@@ -28,5 +28,5 @@ jobs:
       - name: code sniffer
         run: ./vendor/bin/phpcs --standard=phpcs.xml ./
 
-#      - name: Execute tests
-#        run: ./vendor/bin/testbench package:test
+      - name: Execute tests
+        run: ./vendor/bin/testbench package:test
