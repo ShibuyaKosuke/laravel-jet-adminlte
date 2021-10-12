@@ -30,6 +30,9 @@
 
     <arg value="ps"/>
 
+    <exclude-pattern>/config/</exclude-pattern>
+    <exclude-pattern>/resources/</exclude-pattern>
+    <exclude-pattern>/src/routes/</exclude-pattern>
     <exclude-pattern>/vendor/</exclude-pattern>
     <exclude-pattern>/tests/</exclude-pattern>
 </ruleset>

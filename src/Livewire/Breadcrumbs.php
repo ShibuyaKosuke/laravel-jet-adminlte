@@ -3,10 +3,14 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Livewire;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class Breadcrumbs extends Component
 {
+    /**
+     * @var Collection
+     */
     private $breadcrumbs;
 
     /**
