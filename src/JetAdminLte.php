@@ -122,7 +122,9 @@ class JetAdminLte
     public function breadcrumbs()
     {
         /** @var Route $currentRoute */
-        $currentRoute = $this->routes->current();
+        if (!$currentRoute = $this->routes->current()) {
+            return collect();
+        }
         $currentRouteName = $currentRoute->getName();
         if (is_null($currentRouteName)) {
             throw new JetAdminLteException('Current route is not named!');

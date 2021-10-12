@@ -2,10 +2,12 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
 use Livewire\Livewire;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\InstallCommand;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\MakeAdminlte;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\ViewComposers\BreadcrumbComposer;
 use ShibuyaKosuke\LaravelJetAdminlte\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Livewire\Breadcrumbs;
 
@@ -28,6 +30,9 @@ class ServiceProvider extends ServiceProviderBase
         // Components
         $this->loadViewComponents();
 
+        // ViewComposer
+        $this->loadViewComposers();
+
         // publish config files
         $this->registerPublishes();
 
@@ -40,7 +45,17 @@ class ServiceProvider extends ServiceProviderBase
      */
     protected function loadViewComponents(): void
     {
-        Livewire::component('x-jet-adminlte::breadcrumbs', Breadcrumbs::class);
+        //
+    }
+
+    /**
+     * @return void
+     */
+    protected function loadViewComposers(): void
+    {
+        View::composers([
+            BreadcrumbComposer::class => '*',
+        ]);
     }
 
     /**
