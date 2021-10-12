@@ -33,7 +33,8 @@
     },
     "autoload": {
         "psr-4": {
-            "ShibuyaKosuke\\LaravelJetAdminlte\\": "src/"
+            "ShibuyaKosuke\\LaravelJetAdminlte\\": "src/",
+            "ShibuyaKosuke\\LaravelJetAdminlte\\Test\\": "tests/"
         }
     },
     "extra": {
