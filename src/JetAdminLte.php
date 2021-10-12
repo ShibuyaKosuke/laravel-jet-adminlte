@@ -4,6 +4,7 @@ namespace ShibuyaKosuke\LaravelJetAdminlte;
 
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
@@ -28,6 +29,11 @@ class JetAdminLte
     private Router $routes;
 
     /**
+     * @var Request
+     */
+    private Request $request;
+
+    /**
      * @param Application $app
      */
     public function __construct(Application $app)
@@ -43,6 +49,9 @@ class JetAdminLte
 
         /** @var Router route */
         $this->routes = $app->get('router');
+
+        /** @var Request $request */
+        $this->request = $this->app->get('request');
     }
 
     /**
@@ -119,16 +128,22 @@ class JetAdminLte
      * @return Collection
      * @throws JetAdminLteException
      */
-    public function breadcrumbs()
+    public function breadcrumbs(): Collection
     {
+        if ($this->request->getRealMethod() !== 'GET') {
+            return collect();
+        }
+
         /** @var Route $currentRoute */
         if (!$currentRoute = $this->routes->current()) {
             return collect();
         }
+
         $currentRouteName = $currentRoute->getName();
         if (is_null($currentRouteName)) {
             throw new JetAdminLteException('Current route is not named!');
         }
+
         return collect([
             'home',
             'example'
