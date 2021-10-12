@@ -1,7 +1,14 @@
 {
     "name": "shibuyakosuke/laravel-jet-adminlte",
     "description": "Easy AdminLTE integration with Laravel-jetstream",
-    "keywords": ["laravel", "jetstream", "adminlte", "admin", "administrator", "livewire"],
+    "keywords": [
+        "laravel",
+        "jetstream",
+        "adminlte",
+        "admin",
+        "administrator",
+        "livewire"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -38,5 +45,10 @@
                 "JetAdminLte": "ShibuyaKosuke\\LaravelJetAdminlte\\Facades\\JetAdminLte"
             }
         }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ]
     }
 }
