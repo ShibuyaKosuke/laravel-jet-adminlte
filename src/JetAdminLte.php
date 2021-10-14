@@ -141,7 +141,7 @@ class JetAdminLte
 
         $currentRouteName = $currentRoute->getName();
         if (is_null($currentRouteName)) {
-            throw new JetAdminLteException('Current route is not named!');
+            return collect();
         }
 
         return collect([

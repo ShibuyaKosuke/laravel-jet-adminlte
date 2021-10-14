@@ -1,5 +1,7 @@
 <div class="form-group">
-    <label for=""></label>
-    <input type="text" id="" name="" class="form-control">
-    <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+    <label for="{{ $id ?? $name }}">{{ $label }}</label>
+    <input type="{{ $type ?? 'text' }}" id="{{ $id ?? $name }}" name="{{ $name }}" class="{{ $class ?? 'form-control' }}">
+    @error('password')
+    <span id="{{ $id ?? $name }}-error" class="error invalid-feedback">{{ $message }}</span>
+    @enderror
 </div>
