@@ -8,6 +8,8 @@ return [
     'remember_me' => 'パスワードを記憶する',
     'register' => '登録する',
     'register_a_new_membership' => 'アカウントを登録する',
+    'i_agree_to_the' => '<a href=":href">:terms</a> に同意します',
+    'terms' => '利用規約',
     'i_forgot_my_password' => 'パスワードを忘れた',
     'i_already_have_a_membership' => 'すでにアカウントを持っている',
     'sign_in' => 'ログイン',
@@ -23,4 +25,6 @@ return [
     'verify_check_your_email' => '続行する前に、認証用リンクについてメールを確認してください。',
     'verify_if_not_recieved' => 'メールが届かない場合',
     'verify_request_another' => 'ここをクリックしてもう一度送信する',
+    'sign_in_using' => ':provider でログイン',
+    'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
 ];

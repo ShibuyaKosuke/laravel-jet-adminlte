@@ -12,14 +12,13 @@ return [
     'examples' => true,
 
     /*
-     * Copyright on footer (unescaped)
-     */
-    'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
-
-    /*
      * Version number on footer (escaped)
      */
     'version' => '3.1.0',
+
+    'feature' => [
+        'terms_and_privacy' => true,
+    ],
 
     /*
      * Layout settings

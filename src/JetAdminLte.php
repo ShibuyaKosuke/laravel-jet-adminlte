@@ -9,7 +9,6 @@ use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
-use ShibuyaKosuke\LaravelJetAdminlte\Exceptions\JetAdminLteException;
 
 class JetAdminLte
 {
@@ -85,14 +84,6 @@ class JetAdminLte
     /**
      * @return string
      */
-    public function copyright(): string
-    {
-        return $this->config('copyright');
-    }
-
-    /**
-     * @return string
-     */
     public function version(): string
     {
         return $this->config('version');
@@ -115,18 +106,25 @@ class JetAdminLte
     }
 
     /**
-     * @param string $service
+     * @param string|null $service
+     * @return array
+     */
+    public function socialServices(string $service = null)
+    {
+        return $this->config('social-service' . ($service ? ".{$service}" : ''));
+    }
+
+    /**
      * @return boolean
      */
-    public function socialServices(string $service): bool
+    public function hasTermsAndPrivacyPolicyFeature(): bool
     {
-        return $this->config('social-service.' . $service);
+        return $this->config('feature.terms_and_privacy');
     }
 
     /**
      * Get data for current breadcrumbs
      * @return Collection
-     * @throws JetAdminLteException
      */
     public function breadcrumbs(): Collection
     {
