@@ -63,6 +63,7 @@ class JetAdminLte
     }
 
     /**
+     * Get Dark-mode
      * @return string|null
      */
     public function mode(): ?string
@@ -74,6 +75,7 @@ class JetAdminLte
     }
 
     /**
+     * Get language setting
      * @return string
      */
     public function lang(): string
@@ -82,6 +84,7 @@ class JetAdminLte
     }
 
     /**
+     * Get version
      * @return string
      */
     public function version(): string
@@ -90,6 +93,17 @@ class JetAdminLte
     }
 
     /**
+     * Get title
+     * @return string
+     */
+    public function title(): string
+    {
+        $routeName = $this->routes->currentRouteName();
+        return trans("pages.{$routeName}");
+    }
+
+    /**
+     * Get background color for navbar
      * @return string
      */
     public function backgroundColorNavbar(): string
@@ -98,6 +112,7 @@ class JetAdminLte
     }
 
     /**
+     * Get background color for sidebar
      * @return string
      */
     public function backgroundColorSidebar(): string
@@ -106,6 +121,7 @@ class JetAdminLte
     }
 
     /**
+     * Get Social services
      * @param string|null $service
      * @return array
      */
@@ -133,11 +149,11 @@ class JetAdminLte
         }
 
         /** @var Route $currentRoute */
-        if (!$currentRoute = $this->routes->current()) {
+        if (!$this->routes->current()) {
             return collect();
         }
 
-        $currentRouteName = $currentRoute->getName();
+        $currentRouteName = $this->routes->currentRouteName();
         if (is_null($currentRouteName)) {
             return collect();
         }
