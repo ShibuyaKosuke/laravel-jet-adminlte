@@ -23,7 +23,7 @@ return [
     'verify_message' => 'あなたのアカウントは認証が必要です。',
     'verify_email_sent' => 'あなたのメールアドレスに認証用のリンクを送信しました。',
     'verify_check_your_email' => '続行する前に、認証用リンクについてメールを確認してください。',
-    'verify_if_not_recieved' => 'メールが届かない場合',
+    'verify_if_not_received' => 'メールが届かない場合',
     'verify_request_another' => 'ここをクリックしてもう一度送信する',
     'sign_in_using' => ':provider でログイン',
     'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
