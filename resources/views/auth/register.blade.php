@@ -1,4 +1,8 @@
 <x-guest-layout>
+    <x-slot name="title">
+        {{ __('jet-adminlte::adminlte.register_a_new_membership') }}
+    </x-slot>
+
     <x-jet-adminlte::widget.login-box>
         <x-jet-adminlte::widget.card class="card-outline card-primary">
             <x-slot name="header">

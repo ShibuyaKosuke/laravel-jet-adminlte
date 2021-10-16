@@ -20,7 +20,7 @@ class TermsOfServiceController extends Controller
     {
         $termsFile = JetAdminLte::localizedMarkdownPath('terms.md');
 
-        return view('terms', [
+        return view('jet-adminlte::terms', [
             'terms' => Str::markdown(file_get_contents($termsFile)),
         ]);
     }

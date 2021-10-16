@@ -118,9 +118,9 @@ return [
 
     'social-service' => [
         'apple' => false,
-        'facebook' => true,
+        'facebook' => false,
         'github' => false,
-        'google' => true,
+        'google' => false,
         'instagram' => false,
         'line' => false,
         'microsoft' => false,

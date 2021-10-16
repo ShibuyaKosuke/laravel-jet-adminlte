@@ -1,4 +1,8 @@
 <x-guest-layout>
+    <x-slot name="title">
+        {{ __('jet-adminlte::adminlte.sign_in') }}
+    </x-slot>
+
     <x-jet-adminlte::widget.login-box>
         <x-jet-adminlte::widget.card class="card-outline card-primary">
             <x-slot name="header">
@@ -53,7 +57,8 @@
                     </div>
 
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">{{ __('jet-adminlte::adminlte.sign_in') }}</button>
+                        <button type="submit"
+                                class="btn btn-primary btn-block">{{ __('jet-adminlte::adminlte.sign_in') }}</button>
                     </div>
                 </div>
 
@@ -65,7 +70,8 @@
                 <a href="{{ route('password.email') }}">{{ __('jet-adminlte::adminlte.i_forgot_my_password') }}</a>
             </p>
             <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">{{ __('jet-adminlte::adminlte.register_a_new_membership') }}</a>
+                <a href="{{ route('register') }}"
+                   class="text-center">{{ __('jet-adminlte::adminlte.register_a_new_membership') }}</a>
             </p>
 
         </x-jet-adminlte::widget.card>

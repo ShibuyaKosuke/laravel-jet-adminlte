@@ -20,7 +20,7 @@ class PrivacyPolicyController extends Controller
     {
         $policyFile = JetAdminLte::localizedMarkdownPath('policy.md');
 
-        return view('policy', [
+        return view('jet-adminlte::policy', [
             'policy' => Str::markdown(file_get_contents($policyFile)),
         ]);
     }
