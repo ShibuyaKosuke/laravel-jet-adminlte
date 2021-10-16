@@ -40,11 +40,11 @@ class InstallCommand extends Command
      */
     public function handle(): void
     {
-        $this->requireComposerPackages('livewire/livewire:^2.6');
+        $this->requireComposerPackages(['livewire/livewire:^2.6']);
 
         self::updateNodePackages(function ($packages) {
             return [
-                    'alpinejs' => '^3.0.6',
+                    'alpinejs' => '^3.4.2',
                     "axios" => "^0.21",
                     "laravel-mix" => "^6.0.6",
                     "lodash" => "^4.17.19",
@@ -80,6 +80,11 @@ class InstallCommand extends Command
                     "jquery" => "^3.6",
                     "jquery-knob" => "^1.2.11",
                     "livewire" => "^0.6.1",
+                    "npm" => "^8.0.0",
+                    "popper.js" => "^1.16.1",
+                    "resolve-url-loader" => "^4.0.0",
+                    "sass" => "^1.43.2",
+                    "sass-loader" => "^12.1.0",
                     "select2" => "^4.1.0-rc.0",
                     "sparklines" => "^1.3.0",
                     "sweetalert2" => "^11.1.7",
