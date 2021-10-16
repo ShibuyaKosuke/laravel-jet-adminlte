@@ -1,10 +1,25 @@
 <?php
 
 // Oauth Social Login
+use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SocialAccountController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\ExampleController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\PrivacyPolicyController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceController;
+
 Route::prefix('login')->group(function () {
-    Route::get('{provider}', [\ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SocialAccountController::class, 'redirectToProvider'])->name('oauth');
-    Route::get('{provider}/callback', [\ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
+    // OAuth
+    Route::get('{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('oauth');
+    Route::get('{provider}/callback', [SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
 });
 
-Route::get('jet-adminlte/examples', [\ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\ExampleController::class, 'index'])->name('adminlte.examples');
+if (JetAdminLte::hasTermsAndPrivacyPolicyFeature()) {
+    Route::get('/terms-of-service', [TermsOfServiceController::class, 'show'])->name('terms.show');
+    Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
+}
 
+Route::get('jet-adminlte/examples', [ExampleController::class, 'index'])->name('adminlte.examples');
+
+Route::middleware(['auth'])->group(function () {
+
+});
