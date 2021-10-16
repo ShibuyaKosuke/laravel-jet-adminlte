@@ -18,7 +18,7 @@ class AuthenticatedSessionController extends Controller
      *
      * @return View
      */
-    public function create()
+    public function create(): View
     {
         return view('jet-adminlte::auth.login');
     }

@@ -20,7 +20,7 @@ class NewPasswordController extends Controller
      * @param Request $request
      * @return View
      */
-    public function create(Request $request)
+    public function create(Request $request): View
     {
         return view('jet-adminlte::auth.reset-password', ['request' => $request]);
     }
