@@ -1,5 +1,7 @@
-<nav
-    class="main-header navbar navbar-expand {{ JetAdminLte::backgroundColorNavbar() }} @if(JetAdminLte::smallText('navbar')) text-sm @endif">
+<nav class="main-header navbar navbar-expand {{ JetAdminLte::backgroundColorNavbar() }}
+@if(JetAdminLte::headerDropdownLegacyOffset()) dropdown-legacy @endif
+@if(JetAdminLte::headerNoBorder()) border-bottom-0 @endif
+@if(JetAdminLte::smallText('navbar')) text-sm @endif">
 
     <x-jet-adminlte::navbar-nav/>
 

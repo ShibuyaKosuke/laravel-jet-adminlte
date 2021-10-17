@@ -150,6 +150,30 @@ class JetAdminLte
     /**
      * @return array|string
      */
+    public function headerFixed()
+    {
+        return $this->config('layout.header.fixed');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function headerDropdownLegacyOffset()
+    {
+        return $this->config('layout.header.dropdown-legacy-offset');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function headerNoBorder()
+    {
+        return $this->config('layout.header.no-border');
+    }
+
+    /**
+     * @return array|string
+     */
     public function sidebarCollapsed()
     {
         return $this->config('layout.sidebar.collapsed');
@@ -166,6 +190,30 @@ class JetAdminLte
     /**
      * @return array|string
      */
+    public function sidebarMini()
+    {
+        return $this->config('layout.sidebar.sidebar-mini');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function sidebarMiniMd()
+    {
+        return $this->config('layout.sidebar.sidebar-mini-md');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function sidebarMiniXs()
+    {
+        return $this->config('layout.sidebar.sidebar-mini-xs');
+    }
+
+    /**
+     * @return array|string
+     */
     public function navFlatStyle()
     {
         return $this->config('layout.sidebar.nav-flat-style');
@@ -177,6 +225,38 @@ class JetAdminLte
     public function navLegacyStyle()
     {
         return $this->config('layout.sidebar.nav-legacy-style');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function navCompact()
+    {
+        return $this->config('layout.sidebar.nav-compact');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function navChildIndent()
+    {
+        return $this->config('layout.sidebar.nav-child-indent');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function navChildHideOnCollapse()
+    {
+        return $this->config('layout.sidebar.nav-child-hide-on-collapse');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function disableHoverOrFocusAutoExpand()
+    {
+        return $this->config('layout.sidebar.disable-hover-focus-expand');
     }
 
     /**
