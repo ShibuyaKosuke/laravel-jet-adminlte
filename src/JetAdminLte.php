@@ -139,6 +139,47 @@ class JetAdminLte
     }
 
     /**
+     * @param string $tag
+     * @return array|string
+     */
+    public function smallText(string $tag)
+    {
+        return $this->config('layout.small-text.' . $tag);
+    }
+
+    /**
+     * @return array|string
+     */
+    public function sidebarCollapsed()
+    {
+        return $this->config('layout.sidebar.collapsed');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function sidebarFixed()
+    {
+        return $this->config('layout.sidebar.fixed');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function navFlatStyle()
+    {
+        return $this->config('layout.sidebar.nav-flat-style');
+    }
+
+    /**
+     * @return array|string
+     */
+    public function navLegacyStyle()
+    {
+        return $this->config('layout.sidebar.nav-legacy-style');
+    }
+
+    /**
      * Get data for current breadcrumbs
      * @return Collection
      */

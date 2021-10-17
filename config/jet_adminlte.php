@@ -5,12 +5,6 @@
  */
 
 return [
-
-    /*
-     * AdminLTE examples show
-     */
-    'examples' => true,
-
     /*
      * Version number on footer (escaped)
      */

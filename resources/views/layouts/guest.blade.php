@@ -17,5 +17,9 @@
 <div class="wrapper">
     {{ $slot }}
 </div>
+
+@stack('modals')
+
+@livewireScripts
 </body>
 </html>
