@@ -12,7 +12,7 @@
 
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="hold-transition layout-top-nav">
+<body class="hold-transition layout-top-nav layout-footer-fixed">
 <div class="wrapper">
 
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">

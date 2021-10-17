@@ -12,7 +12,6 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\PasswordResetLinkCont
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\RegisteredUserController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SocialAccountController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\VerifyEmailController;
-use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\ExampleController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\PrivacyPolicyController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceController;
 
@@ -27,7 +26,6 @@ Route::middleware(['web'])->group(function () {
         Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
         Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
         Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
-        Route::get('jet-adminlte/examples', [ExampleController::class, 'index'])->name('adminlte.examples');
 
         if (JetAdminLte::hasTermsAndPrivacyPolicyFeature()) {
             Route::get('/terms-of-service', [TermsOfServiceController::class, 'show'])->name('terms.show');

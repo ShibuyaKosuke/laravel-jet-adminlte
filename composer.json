@@ -1,6 +1,6 @@
 {
     "name": "shibuyakosuke/laravel-jet-adminlte",
-    "description": "Easy AdminLTE integration with Laravel-jetstream",
+    "description": "Easy AdminLTE integration with Laravel8+.",
     "keywords": [
         "laravel",
         "jetstream",
@@ -20,9 +20,8 @@
     "require": {
         "php": ">=8.0",
         "laravel/framework": ">=8.0",
-        "almasaeed2010/adminlte": "3.1.*",
         "livewire/livewire": "^2.0",
-        "laravel/breeze": "^1.4"
+        "laravel/fortify": "^1.4"
     },
     "require-dev": {
         "phpstan/phpstan": "^0.12.85",
