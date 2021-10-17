@@ -50,6 +50,15 @@
     "scripts": {
         "post-autoload-dump": [
             "@php ./vendor/bin/testbench package:discover --ansi"
+        ],
+        "cs": [
+            "./vendor/bin/phpcs --standard=phpcs.xml ./"
+        ],
+        "cbf": [
+            "./vendor/bin/phpcbf --standard=phpcs.xml ./"
+        ],
+        "test": [
+            "./vendor/bin/phpunit"
         ]
     }
 }
