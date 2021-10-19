@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
+use Illuminate\View\Component;
+use Livewire\Livewire;
+use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 
 class ServiceProviderTest extends TestCase
 {
@@ -57,6 +60,7 @@ class ServiceProviderTest extends TestCase
     public function testBootRegisterRoutes(): void
     {
         $routes = Route::getRoutes();
+
         $this->assertTrue($routes->hasNamedRoute('password.confirm'));
         $this->assertTrue($routes->hasNamedRoute('verification.send'));
         $this->assertTrue($routes->hasNamedRoute('verification.notice'));
@@ -64,13 +68,17 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
         $this->assertTrue($routes->hasNamedRoute('login'));
-        $this->assertTrue($routes->hasNamedRoute('oauth'));
-        $this->assertTrue($routes->hasNamedRoute('oauth.callback'));
         $this->assertTrue($routes->hasNamedRoute('logout'));
         $this->assertTrue($routes->hasNamedRoute('register'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
         $this->assertTrue($routes->hasNamedRoute('password.reset'));
         $this->assertTrue($routes->hasNamedRoute('verification.notice'));
         $this->assertTrue($routes->hasNamedRoute('verification.verify'));
+
+        $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('terms.show'));
+        $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('policy.show'));
+
+        $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth'));
+        $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
     }
 }

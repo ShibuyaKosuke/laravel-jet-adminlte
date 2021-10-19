@@ -139,6 +139,14 @@ class JetAdminLte
     }
 
     /**
+     * @return boolean
+     */
+    public function hasSocialLoginFeature(): bool
+    {
+        return $this->config('feature.oauth-login');
+    }
+
+    /**
      * @param string $tag
      * @return array|string
      */

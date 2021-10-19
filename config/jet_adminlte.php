@@ -13,6 +13,7 @@ return [
     'feature' => [
         'terms_and_privacy' => false,
         'breadcrumbs' => true,
+        'oauth-login' => false,
     ],
 
     /*

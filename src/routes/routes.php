@@ -32,11 +32,13 @@ Route::middleware(['web'])->group(function () {
             Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
         }
 
-        Route::prefix('login')->group(function () {
-            // OAuth
-            Route::get('{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('oauth');
-            Route::get('{provider}/callback', [SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
-        });
+        if (JetAdminLte::hasSocialLoginFeature()) {
+            Route::prefix('login')->group(function () {
+                // OAuth
+                Route::get('{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('oauth');
+                Route::get('{provider}/callback', [SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
+            });
+        }
     });
 
     // Auth
