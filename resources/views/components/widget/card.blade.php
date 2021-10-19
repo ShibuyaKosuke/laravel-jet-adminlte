@@ -13,6 +13,11 @@
                         <i class="fas fa-times"></i>
                     </button>
                 @endif
+                @isset($expandable)
+                    <button type="button" class="btn btn-tool" data-card-widget="maximize">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                @endif
             </div>
         </div>
     @endisset
