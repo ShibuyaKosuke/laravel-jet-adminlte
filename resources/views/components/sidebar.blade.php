@@ -2,7 +2,11 @@
             @if(JetAdminLte::disableHoverOrFocusAutoExpand()) sidebar-no-expand @endif
     ">
     <a href="{{ route('dashboard') }}" class="brand-link @if(JetAdminLte::smallText('brand')) text-sm @endif">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <x-jet-adminlte::widget.logo-image/>
+
+        <span class="brand-text font-weight-light">
+            AdminLTE 3
+        </span>
     </a>
     <div class="sidebar @if(JetAdminLte::smallText('sidebar-nav')) text-sm @endif">
         <nav class="mt-2">

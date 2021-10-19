@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
-
-    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="hold-transition login-page">
 <div class="wrapper">
@@ -21,5 +19,7 @@
 @stack('modals')
 
 @livewireScripts
+
+<script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

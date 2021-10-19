@@ -1,4 +1,11 @@
-<div class="callout callout-info">
-    <h5><i class="fas fa-info"></i> Note:</h5>
+<div class="callout {{ $class }}">
+    @isset($title)
+        <h5>
+            @isset($icon)
+                <i class="icon fas fa-{{ $icon }}"></i>
+            @endisset
+            {{ $title }}
+        </h5>
+    @endisset
     {{ $slot }}
 </div>

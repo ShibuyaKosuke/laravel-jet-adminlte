@@ -10,42 +10,36 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
-
-    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="hold-transition sidebar-mini
-@if(JetAdminLte::smallText('body')) text-sm @endif
-@if(JetAdminLte::sidebarCollapsed()) sidebar-collapse @endif
-@if(JetAdminLte::sidebarFixed()) layout-fixed @endif
-@if(JetAdminLte::sidebarMini()) sidebar-mini @endif
-@if(JetAdminLte::sidebarMiniMd()) sidebar-mini-md @endif
-@if(JetAdminLte::sidebarMiniXs()) sidebar-mini-xs @endif
-@if(JetAdminLte::headerFixed()) layout-navbar-fixed @endif">
 
-<div class="wrapper">
+<x-jet-adminlte::body>
 
-    <x-jet-adminlte::navbar/>
+    <div class="wrapper">
+        <x-jet-adminlte::navbar/>
 
-    <x-jet-adminlte::sidebar/>
+        <x-jet-adminlte::sidebar/>
 
-    <div class="content-wrapper">
+        <div class="content-wrapper">
 
-        <x-jet-adminlte::content-header title="{{ $title }}"/>
+            <x-jet-adminlte::content-header title="{{ $title }}"/>
 
-        <section class="content">
-            <div class="container-fluid">
-                {{ $slot }}
-            </div>
-        </section>
+            <section class="content">
+                <div class="container-fluid">
+                    {{ $slot }}
+                </div>
+            </section>
+        </div>
+
+        <x-jet-adminlte::footer/>
+
+        <x-jet-adminlte::sidebar-left/>
     </div>
 
-    <x-jet-adminlte::footer/>
+    @stack('modals')
 
-    <x-jet-adminlte::sidebar-left/>
-</div>
+    @livewireScripts
 
-@stack('modals')
+    <script src="{{ mix('js/app.js') }}"></script>
 
-@livewireScripts
-</body>
+</x-jet-adminlte::body>
 </html>

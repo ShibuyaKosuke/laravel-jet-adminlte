@@ -1,37 +1,41 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+    <x-slot name="title">
+        {{ __('jet-adminlte::adminlte.sign_in') }}
+    </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
+    <x-jet-adminlte::widget.login-box>
+        <x-jet-adminlte::widget.card class="card-outline card-primary">
+            <x-slot name="header">
+                <a href="{{ route('welcome') }}" class="h1"><b>Admin</b>LTE</a>
+            </x-slot>
 
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+            <div class="mb-4 text-sm text-gray-600">
+                {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
             </div>
-        @endif
 
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
-
-                <div>
-                    <x-jet-button type="submit">
-                        {{ __('Resend Verification Email') }}
-                    </x-jet-button>
+            @if (session('status') == 'verification-link-sent')
+                <div class="mb-4 font-medium text-sm text-green-600">
+                    {{ __('A new verification link has been sent to the email address you provided during registration.') }}
                 </div>
-            </form>
+            @endif
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
+            <div class="row">
+                <div class="col-8">
+                    <x-jet-adminlte::forms.form action="{{ route('verification.send') }}" method="post">
+                        <button type="submit" class="btn btn-sm btn-primary">
+                            {{ __('Resend Verification Email') }}
+                        </button>
+                    </x-jet-adminlte::forms.form>
+                </div>
+                <div class="col-4 text-right">
+                    <x-jet-adminlte::forms.form action="{{ route('logout') }}" method="post">
+                    <button type="submit" class="btn btn-sm btn-danger">
+                        {{ __('Log Out') }}
+                    </button>
+                    </x-jet-adminlte::forms.form>
+                </div>
+            </div>
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
-            </form>
-        </div>
-    </x-jet-authentication-card>
+        </x-jet-adminlte::widget.card>
+    </x-jet-adminlte::widget.login-box>
 </x-guest-layout>

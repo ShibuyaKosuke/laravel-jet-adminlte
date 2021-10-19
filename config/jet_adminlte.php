@@ -11,16 +11,14 @@ return [
     'version' => '3.1.0',
 
     'feature' => [
-        'terms_and_privacy' => true,
+        'terms_and_privacy' => false,
+        'breadcrumbs' => true,
     ],
 
     /*
      * Layout settings
      */
     'layout' => [
-
-        'style' => null, // layout-boxed,
-
         /*
          * Enable Dark mode
          */

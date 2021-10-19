@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="{{ JetAdminLte::lang() }}" class="{{ JetAdminLte::mode() }}">
 <head>
     <meta charset="utf-8">
@@ -9,8 +10,6 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     @livewireStyles
-
-    <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 <body class="hold-transition layout-top-nav layout-footer-fixed">
 <div class="wrapper">
@@ -18,8 +17,8 @@
     <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
         <div class="container">
             <a href="" class="navbar-brand">
-                <img src="" alt="Logo"
-                     class="brand-image img-circle elevation-3" style="opacity: .8">
+                <x-jet-adminlte::widget.logo-image/>
+
                 <span class="brand-text font-weight-light">Laravel-Jet-AdminLTE 3</span>
             </a>
 
@@ -70,5 +69,9 @@
         </div>
     </div>
 </div>
+
+@livewireScripts
+
+<script src="{{ mix('js/app.js') }}" defer></script>
 </body>
 </html>

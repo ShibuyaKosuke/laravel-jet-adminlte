@@ -57,8 +57,9 @@
                     </div>
 
                     <div class="col-4">
-                        <button type="submit"
-                                class="btn btn-primary btn-block">{{ __('jet-adminlte::adminlte.sign_in') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            {{ __('jet-adminlte::adminlte.sign_in') }}
+                        </button>
                     </div>
                 </div>
 
@@ -67,11 +68,14 @@
             <x-jet-adminlte::widget.social-auth-login/>
 
             <p class="mb-1">
-                <a href="{{ route('password.email') }}">{{ __('jet-adminlte::adminlte.i_forgot_my_password') }}</a>
+                <a href="{{ route('password.email') }}">
+                    {{ __('jet-adminlte::adminlte.i_forgot_my_password') }}
+                </a>
             </p>
             <p class="mb-0">
-                <a href="{{ route('register') }}"
-                   class="text-center">{{ __('jet-adminlte::adminlte.register_a_new_membership') }}</a>
+                <a href="{{ route('register') }}" class="text-center">
+                    {{ __('jet-adminlte::adminlte.register_a_new_membership') }}
+                </a>
             </p>
 
         </x-jet-adminlte::widget.card>

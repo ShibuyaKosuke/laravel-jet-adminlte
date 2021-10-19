@@ -1,17 +1,29 @@
 <div class="card {{ $class ?? 'card-default' }}">
-    @if(isset($header))
-        <div class="card-header text-center">
+    @isset($header)
+        <div class="card-header">
             {{ $header }}
+            <div class="card-tools">
+                @isset($collapsible)
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                @endif
+                @isset($removable)
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                @endif
+            </div>
         </div>
-    @endif
+    @endisset
 
     <div class="card-body">
         {{ $slot }}
     </div>
 
-    @if(isset($footer))
+    @isset($footer)
         <div class="card-footer">
             {{ $footer }}
         </div>
-    @endif
+    @endisset
 </div>
