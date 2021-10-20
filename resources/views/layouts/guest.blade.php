@@ -11,7 +11,7 @@
 
     @livewireStyles
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition {{ $page ?? 'login-page' }}">
 <div class="wrapper">
     {{ $slot }}
 </div>

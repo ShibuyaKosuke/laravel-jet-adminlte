@@ -11,9 +11,9 @@ return [
     'version' => '3.1.0',
 
     'feature' => [
-        'terms_and_privacy' => false,
+        'terms_and_privacy' => true,
         'breadcrumbs' => true,
-        'oauth-login' => false,
+        'oauth-login' => true,
     ],
 
     /*
@@ -122,10 +122,10 @@ return [
     ],
 
     'social-service' => [
-        'apple' => false,
-        'facebook' => false,
+        'apple' => true,
+        'facebook' => true,
         'github' => false,
-        'google' => false,
+        'google' => true,
         'instagram' => false,
         'line' => false,
         'microsoft' => false,
