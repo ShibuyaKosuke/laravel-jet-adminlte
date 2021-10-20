@@ -60,7 +60,7 @@
             "./vendor/bin/phpunit"
         ],
         "paratest": [
-            "./vendor/bin/testbench package:test"
+            "./vendor/bin/testbench package:test --parallel"
         ]
     }
 }
