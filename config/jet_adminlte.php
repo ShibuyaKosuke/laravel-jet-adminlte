@@ -26,6 +26,18 @@ return [
         'dark-mode' => true,
 
         /*
+         * Fixed Sidebar: use the class .layout-fixed to get a fixed sidebar.
+         * Fixed Navbar: use the class .layout-navbar-fixed to get a fixed navbar.
+         * Fixed Footer: use the class .layout-footer-fixed to get a fixed footer.
+         * Collapsed Sidebar: use the class .sidebar-collapse to have a collapsed sidebar upon loading.
+         * Boxed Layout: use the class .layout-boxed to get a boxed layout that stretches only to 1250px.
+         * Top Navigation: use the class .layout-top-nav to remove the sidebar and have your links at the top navbar.
+         */
+        'style' => [
+            'layout-fixed'
+        ],
+
+        /*
          * Background Color
          */
         'background-color' => [
@@ -37,7 +49,7 @@ return [
          * Header
          */
         'header' => [
-            'fixed' => true,
+            'fixed' => false,
             'dropdown-legacy-offset' => false,
             'no-border' => false
         ],
@@ -48,7 +60,7 @@ return [
         'sidebar' => [
             'collapsed' => false,
             'fixed' => false,
-            'sidebar-mini' => false,
+            'sidebar-mini' => true,
             'sidebar-mini-md' => false,
             'sidebar-mini-xs' => false,
             'nav-flat-style' => false,

@@ -1,4 +1,5 @@
-<body class="hold-transition sidebar-mini
+<body class="hold-transition
+@if(JetAdminLte::layoutStyle()) {{ JetAdminLte::layoutStyle() }} @endif
 @if(JetAdminLte::smallText('body')) text-sm @endif
 @if(JetAdminLte::sidebarCollapsed()) sidebar-collapse @endif
 @if(JetAdminLte::sidebarFixed()) layout-fixed @endif

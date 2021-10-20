@@ -103,6 +103,14 @@ class JetAdminLte
     }
 
     /**
+     * @return string
+     */
+    public function layoutStyle(): string
+    {
+        return implode(' ', $this->config('layout.style'));
+    }
+
+    /**
      * Get background color for navbar
      * @return string
      */
