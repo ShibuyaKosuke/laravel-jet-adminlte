@@ -38,7 +38,7 @@ class ServiceProviderTest extends TestCase
     public function testBootLoadConfig(): void
     {
         $this->assertTrue(Config::has('jet_adminlte.feature.terms_and_privacy'));
-        $this->assertFalse(Config::get('jet_adminlte.feature.terms_and_privacy'));
+        $this->assertTrue(Config::get('jet_adminlte.feature.terms_and_privacy'));
         $this->assertTrue(Config::has('jet_adminlte.layout.dark-mode'));
     }
 
