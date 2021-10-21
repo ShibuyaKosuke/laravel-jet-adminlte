@@ -1,3 +1,1 @@
-<aside class="control-sidebar control-sidebar-dark">
-
-</aside>
+<aside class="control-sidebar control-sidebar-dark"></aside>
