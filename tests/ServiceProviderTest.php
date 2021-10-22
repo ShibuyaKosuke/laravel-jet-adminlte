@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use Illuminate\View\Component;
-use Livewire\Livewire;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 
 class ServiceProviderTest extends TestCase
@@ -74,6 +72,15 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('password.reset'));
         $this->assertTrue($routes->hasNamedRoute('verification.notice'));
         $this->assertTrue($routes->hasNamedRoute('verification.verify'));
+
+        $this->assertTrue($routes->hasNamedRoute('account.index'));
+        $this->assertTrue($routes->hasNamedRoute('account.edit'));
+        $this->assertTrue($routes->hasNamedRoute('account.update'));
+        $this->assertTrue($routes->hasNamedRoute('account.destroy'));
+
+        $this->assertTrue($routes->hasNamedRoute('password.index'));
+        $this->assertTrue($routes->hasNamedRoute('password.edit'));
+        $this->assertTrue($routes->hasNamedRoute('password.update'));
 
         $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('terms.show'));
         $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('policy.show'));

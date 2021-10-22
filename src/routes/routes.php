@@ -3,6 +3,7 @@
 // Oauth Social Login
 use Illuminate\Support\Facades\Route;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\AccountController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\AuthenticatedSessionController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\ConfirmablePasswordController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -14,7 +15,7 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SocialAccountControll
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\VerifyEmailController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\PrivacyPolicyController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceController;
-use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\AccountController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\PasswordController;
 
 Route::middleware(['web'])->group(function () {
     // Guest
@@ -45,6 +46,7 @@ Route::middleware(['web'])->group(function () {
     // Auth
     Route::middleware(['auth'])->group(function () {
         Route::resource('/account', AccountController::class)->only(['index', 'edit', 'update', 'destroy']);
+        Route::resource('/password', PasswordController::class)->only(['index', 'edit', 'update']);
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
         Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');
