@@ -20,11 +20,12 @@
         <x-jet-adminlte::sidebar/>
 
         <div class="content-wrapper">
-
             <x-jet-adminlte::content-header title="{{ $title }}"/>
 
             <section class="content">
                 <div class="container-fluid">
+                    <x-jet-adminlte::widget.success-message/>
+
                     {{ $slot }}
                 </div>
             </section>

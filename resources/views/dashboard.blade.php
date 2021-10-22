@@ -28,10 +28,7 @@
     <div class="row">
         <div class="col-12">
 
-            <x-jet-adminlte::widget.card
-                class="card-outline card-primary"
-                collapsible
-            >
+            <x-jet-adminlte::widget.card class="card-outline card-primary">
                 <x-slot name="header">
                     <h3 class="card-title">
                         <i class="fa fa-chart-line"></i>

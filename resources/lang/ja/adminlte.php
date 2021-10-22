@@ -27,4 +27,12 @@ return [
     'verify_request_another' => 'ここをクリックしてもう一度送信する',
     'sign_in_using' => ':provider でログイン',
     'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
+    'account' => 'アカウント',
+    'account_edit' => 'アカウント編集',
+    'password_change' => 'パスワードの変更',
+    'submit' => '送信する',
+
+    'success_create_message' => '正常に作成しました。',
+    'success_update_message' => '正常に更新しました。',
+    'success_delete_message' => '正常に削除しました。'
 ];

@@ -122,5 +122,26 @@
                 </div>
             </div>
         </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="far fa-user"></i>
+                {{ Auth::user()->name }}
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right text-white text-center">
+                <a href="{{ route('account.index') }}" class="dropdown-item">
+                    {{ __('jet-adminlte::adminlte.account') }}
+                </a>
+                <a href="#" class="dropdown-item">
+                    {{ __('jet-adminlte::adminlte.password_change') }}
+                </a>
+                <div class="dropdown-divider"></div>
+                <form class="dropdown-item p-0" action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit" class="btn btn-block btn-default border-0 rounded-0">
+                        {{ __('jet-adminlte::adminlte.log_out') }}
+                    </button>
+                </form>
+            </div>
+        </li>
     </ul>
 </nav>

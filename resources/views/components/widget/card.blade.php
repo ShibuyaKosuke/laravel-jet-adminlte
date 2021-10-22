@@ -3,6 +3,9 @@
         <div class="card-header">
             {{ $header }}
             <div class="card-tools">
+                @isset($tools)
+                    {{ $tools }}
+                @endif
                 @isset($collapsible)
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
