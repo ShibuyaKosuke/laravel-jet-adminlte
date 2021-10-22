@@ -78,7 +78,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('account.update'));
         $this->assertTrue($routes->hasNamedRoute('account.destroy'));
 
-        $this->assertTrue($routes->hasNamedRoute('password.index'));
         $this->assertTrue($routes->hasNamedRoute('password.edit'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
 
