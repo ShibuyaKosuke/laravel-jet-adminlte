@@ -46,7 +46,10 @@ Route::middleware(['web'])->group(function () {
     // Auth
     Route::middleware(['auth'])->group(function () {
         Route::resource('/account', AccountController::class)->only(['index', 'edit', 'update', 'destroy']);
-        Route::resource('/password', PasswordController::class)->only(['index', 'edit', 'update']);
+
+        Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
+        Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
+
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verification.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
         Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');

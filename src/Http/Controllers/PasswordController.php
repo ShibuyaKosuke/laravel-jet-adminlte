@@ -15,16 +15,6 @@ class PasswordController extends Controller
      * @param Request $request
      * @return View
      */
-    public function index(Request $request): View
-    {
-        $user = $request->user();
-        return view('jet-adminlte::password.index', compact('user'));
-    }
-
-    /**
-     * @param Request $request
-     * @return View
-     */
     public function edit(Request $request): View
     {
         $user = $request->user();

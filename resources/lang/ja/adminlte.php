@@ -32,6 +32,9 @@ return [
     'password_change' => 'パスワードの変更',
     'submit' => '送信する',
 
+    'current_password' => '現在のパスワード',
+    'new_password' => '新しいパスワード',
+
     'success_create_message' => '正常に作成しました。',
     'success_update_message' => '正常に更新しました。',
     'success_delete_message' => '正常に削除しました。'

@@ -131,7 +131,7 @@
                 <a href="{{ route('account.index') }}" class="dropdown-item">
                     {{ __('jet-adminlte::adminlte.account') }}
                 </a>
-                <a href="#" class="dropdown-item">
+                <a href="{{ route('password.edit') }}" class="dropdown-item">
                     {{ __('jet-adminlte::adminlte.password_change') }}
                 </a>
                 <div class="dropdown-divider"></div>
