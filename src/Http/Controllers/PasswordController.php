@@ -31,7 +31,7 @@ class PasswordController extends Controller
         $user->fill([
             'password' => Hash::make($request->new_password)
         ])->save();
-        return redirect()->route('password.index')
+        return redirect()->route('dashboard')
             ->with('success_message', trans('jet-adminlte::adminlte.success_update_message'));
     }
 }
