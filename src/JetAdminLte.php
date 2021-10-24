@@ -62,12 +62,21 @@ class JetAdminLte
     }
 
     /**
-     * @param string $key
-     * @return array|string
+     * Find the path to a localized Markdown resource.
+     *
+     * @param string $name
+     * @return string|null
      */
-    protected function config(string $key)
+    public static function localizedMarkdownPath($name)
     {
-        return Arr::get($this->config, $key);
+        $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
+
+        return Arr::first([
+            resource_path('markdown/' . $localName),
+            resource_path('markdown/' . $name),
+        ], function ($path) {
+            return file_exists($path);
+        });
     }
 
     /**
@@ -80,6 +89,15 @@ class JetAdminLte
             return 'dark-mode';
         }
         return null;
+    }
+
+    /**
+     * @param string $key
+     * @return array|string
+     */
+    protected function config(string $key)
+    {
+        return Arr::get($this->config, $key);
     }
 
     /**
@@ -323,23 +341,5 @@ class JetAdminLte
     public function sidebarMenu(): array
     {
         return Arr::get($this->menu, 'sidebar');
-    }
-
-    /**
-     * Find the path to a localized Markdown resource.
-     *
-     * @param string $name
-     * @return string|null
-     */
-    public static function localizedMarkdownPath($name)
-    {
-        $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
-
-        return Arr::first([
-            resource_path('markdown/' . $localName),
-            resource_path('markdown/' . $name),
-        ], function ($path) {
-            return file_exists($path);
-        });
     }
 }

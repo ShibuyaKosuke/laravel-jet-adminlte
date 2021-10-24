@@ -35,8 +35,6 @@
                     </h3>
                 </x-slot>
 
-                Body
-
                 <x-slot name="footer">
                     footer
                 </x-slot>
