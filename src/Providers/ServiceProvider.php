@@ -63,6 +63,7 @@ class ServiceProvider extends ServiceProviderBase
     {
         $this->publishes([
             __DIR__ . '/../../config/jet_adminlte.php' => config_path('jet_adminlte.php'),
+            __DIR__ . '/../../config/jet_adminlte_menu.php' => config_path('jet_adminlte_menu.php'),
         ], 'jet-adminlte:config');
 
         $this->publishes([
@@ -109,6 +110,11 @@ class ServiceProvider extends ServiceProviderBase
         $this->mergeConfigFrom(
             __DIR__ . '/../../config/jet_adminlte.php',
             'jet_adminlte'
+        );
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../../config/jet_adminlte_menu.php',
+            'jet_adminlte_menu'
         );
 
         $this->app->singleton('shibuyakosuke-laravel-jet-adminlte', function ($app) {

@@ -27,14 +27,10 @@ class SocialAccountsService
         /** @var User $user */
         $user = User::query()
             ->where('email', $providerUser->getEmail())
-            ->first();
-
-        if (!$user) {
-            $user = User::create([
+            ->firstOrCreate([
                 'email' => $providerUser->getEmail(),
                 'name' => $providerUser->getName(),
             ]);
-        }
 
         $user->accounts()->create([
             'provider_id' => $providerUser->getId(),

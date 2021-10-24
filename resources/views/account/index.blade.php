@@ -8,7 +8,7 @@
             <x-jet-adminlte::widget.card class="card-outline card-primary">
                 <x-slot name="header">
                     <h3 class="card-title">
-                        <i class="fa fa-user-edit"></i>
+                        <i class="fa fa-user"></i>
                         {{ __('jet-adminlte::adminlte.account') }}
                     </h3>
                 </x-slot>

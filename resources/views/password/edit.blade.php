@@ -10,7 +10,7 @@
                 <x-jet-adminlte::widget.card class="card-outline card-primary">
                     <x-slot name="header">
                         <h3 class="card-title">
-                            <i class="fa fa-user-edit"></i>
+                            <i class="fa fa-lock"></i>
                             {{ __('jet-adminlte::adminlte.password_change') }}
                         </h3>
                     </x-slot>

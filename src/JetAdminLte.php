@@ -23,6 +23,11 @@ class JetAdminLte
     private array $config;
 
     /**
+     * @var array
+     */
+    private array $menu;
+
+    /**
      * @var Router
      */
     private Router $routes;
@@ -45,6 +50,9 @@ class JetAdminLte
 
         /** @var array config */
         $this->config = $config['jet_adminlte'];
+
+        /** @var array menu */
+        $this->menu = $config['jet_adminlte_menu'];
 
         /** @var Router route */
         $this->routes = $app->get('router');
@@ -299,6 +307,22 @@ class JetAdminLte
             'home',
             'example'
         ]);
+    }
+
+    /**
+     * @return array
+     */
+    public function mainMenu(): array
+    {
+        return Arr::get($this->menu, 'main-menu');
+    }
+
+    /**
+     * @return array
+     */
+    public function sidebarMenu(): array
+    {
+        return Arr::get($this->menu, 'sidebar');
     }
 
     /**

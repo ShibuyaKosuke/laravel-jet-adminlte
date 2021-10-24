@@ -1,11 +1,16 @@
-<nav class="main-header navbar navbar-expand {{ JetAdminLte::backgroundColorNavbar() }}
-@if(JetAdminLte::headerDropdownLegacyOffset()) dropdown-legacy @endif
-@if(JetAdminLte::headerNoBorder()) border-bottom-0 @endif
-@if(JetAdminLte::smallText('navbar')) text-sm @endif">
+<nav class="{{ Arr::toCssClasses([
+    'main-header',
+    'navbar',
+    'navbar-expand',
+    JetAdminLte::backgroundColorNavbar(),
+    'dropdown-legacy' => JetAdminLte::headerDropdownLegacyOffset(),
+    'border-bottom-0' => JetAdminLte::headerNoBorder(),
+    'text-sm' => JetAdminLte::smallText('navbar')
+]) }}">
 
     <x-jet-adminlte::navbar-nav/>
 
-    <ul class="navbar-nav ml-auto">
+    <ul class=" navbar-nav ml-auto">
         <x-jet-adminlte::widget.navbar-search/>
 
         <li class="nav-item dropdown">
