@@ -22,8 +22,6 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\WelcomeController;
 Route::middleware(['web'])->group(function () {
     // Guest
     Route::middleware(['guest'])->group(function () {
-        Route::get('/welcome', WelcomeController::class)->name('welcome');
-
         Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
         Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 
@@ -52,8 +50,6 @@ Route::middleware(['web'])->group(function () {
 
     // Auth
     Route::middleware(['auth'])->group(function () {
-        Route::get('/dashboard', DashboardController::class)->name('dashboard');
-
         Route::resource('/account', AccountController::class)->only(['index', 'edit', 'update', 'destroy']);
 
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
