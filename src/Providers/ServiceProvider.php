@@ -2,6 +2,7 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Providers;
 
+use Illuminate\Config\Repository;
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\InstallCommand;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\MakeAdminlte;
@@ -31,6 +32,9 @@ class ServiceProvider extends ServiceProviderBase
 
         // Command
         $this->registerCommand();
+
+        // Breadcrumbs
+        $this->setBreadcrumbs();
     }
 
     /**
@@ -105,6 +109,22 @@ class ServiceProvider extends ServiceProviderBase
         $this->app->singleton('shibuyakosuke-laravel-jet-adminlte', function ($app) {
             return new JetAdminLte($app);
         });
+    }
+
+    /**
+     * @return void
+     * @see https://github.com/diglactic/laravel-breadcrumbs
+     */
+    private function setBreadcrumbs(): void
+    {
+        /** @var Repository $config */
+        $config = $this->app['config'];
+
+        // For AdminLTE 3
+        $config->set('breadcrumbs.view', 'breadcrumbs::bootstrap4');
+
+        // Disabled exception
+        $config->set('breadcrumbs.missing-route-bound-breadcrumb-exception', false);
     }
 
     /**
