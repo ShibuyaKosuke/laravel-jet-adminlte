@@ -59,19 +59,13 @@ class ServiceProviderTest extends TestCase
     {
         $routes = Route::getRoutes();
 
-        $this->assertTrue($routes->hasNamedRoute('password.confirm'));
         $this->assertTrue($routes->hasNamedRoute('verification.send'));
-        $this->assertTrue($routes->hasNamedRoute('verification.notice'));
-        $this->assertTrue($routes->hasNamedRoute('verification.verify'));
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
         $this->assertTrue($routes->hasNamedRoute('login'));
         $this->assertTrue($routes->hasNamedRoute('logout'));
         $this->assertTrue($routes->hasNamedRoute('register'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
-        $this->assertTrue($routes->hasNamedRoute('password.reset'));
-        $this->assertTrue($routes->hasNamedRoute('verification.notice'));
-        $this->assertTrue($routes->hasNamedRoute('verification.verify'));
 
         $this->assertTrue($routes->hasNamedRoute('account.index'));
         $this->assertTrue($routes->hasNamedRoute('account.edit'));

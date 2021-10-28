@@ -14,7 +14,7 @@
                 </x-slot>
 
                 <x-slot name="tools">
-                    <a href="{{ route('account.edit', ['account' => $user]) }}" class="btn btn-tool">
+                    <a href="{{ route('account.edit') }}" class="btn btn-tool">
                         <i class="fas fa-pen"></i>
                     </a>
                 </x-slot>

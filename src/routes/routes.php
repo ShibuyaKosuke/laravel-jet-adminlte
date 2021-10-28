@@ -48,7 +48,10 @@ Route::middleware(['web'])->group(function () {
 
     // Auth
     Route::middleware(['auth'])->group(function () {
-        Route::resource('/account', AccountController::class)->only(['index', 'edit', 'update', 'destroy']);
+        Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+        Route::get('/account/edit', [AccountController::class, 'edit'])->name('account.edit');
+        Route::put('/account', [AccountController::class, 'update'])->name('account.update');
+        Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');

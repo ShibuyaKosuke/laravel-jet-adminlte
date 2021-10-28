@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-sm-12 col-md-10 offset-md-1 col-lg-6 offset-lg-3">
-            <x-jet-adminlte::forms.form method="put" action="{{ route('account.update', ['account' => $user]) }}">
+            <x-jet-adminlte::forms.form method="put" action="{{ route('account.update') }}">
 
                 <x-jet-adminlte::widget.card class="card-outline card-primary">
                     <x-slot name="header">
