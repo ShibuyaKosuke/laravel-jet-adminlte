@@ -4,6 +4,7 @@ namespace ShibuyaKosuke\LaravelJetAdminlte\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Symfony\Component\Process\Process;
 
@@ -14,7 +15,8 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'jet-adminlte:install {--composer=}';
+    protected $signature = 'jet-adminlte:install
+        {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
     /**
      * The console command description.
@@ -105,7 +107,9 @@ class InstallCommand extends Command
                     "sweetalert2" => "^11.1.7",
                     "toastr" => "^2.1.4"
                 ] + $packages;
-        });
+        }, false);
+
+        self::publishStubs();
     }
 
     /**
@@ -233,5 +237,13 @@ class InstallCommand extends Command
     protected function replaceInFile(string $search, string $replace, string $path): void
     {
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
+    }
+
+    /**
+     * @return void
+     */
+    protected static function publishStubs(): void
+    {
+        File::copyDirectory(__DIR__ . '/../../stubs/App', app_path());
     }
 }
