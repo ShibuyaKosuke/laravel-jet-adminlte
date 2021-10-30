@@ -17,13 +17,13 @@
 
                     <x-jet-adminlte::forms.input
                         name="name"
-                        label="{{ __('columns.user.name') }}"
+                        label="{{ __('jet-adminlte::columns.users.name') }}"
                         value="{{ $user->name }}"
                     />
 
                     <x-jet-adminlte::forms.input
                         name="email"
-                        label="{{ __('columns.user.email') }}"
+                        label="{{ __('jet-adminlte::columns.users.email') }}"
                         value="{{ $user->email }}"
                     />
 

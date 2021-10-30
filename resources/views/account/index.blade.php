@@ -20,13 +20,13 @@
                 </x-slot>
 
                 <dl class="row">
-                    <dt class="col-sm-4">{{ __('columns.users.name') }}</dt>
+                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.name') }}</dt>
                     <dd class="col-sm-8">{{ $user->name }}</dd>
-                    <dt class="col-sm-4">{{ __('columns.users.email') }}</dt>
+                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.email') }}</dt>
                     <dd class="col-sm-8">{{ $user->email }}</dd>
-                    <dt class="col-sm-4">{{ __('columns.users.created_at') }}</dt>
+                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.created_at') }}</dt>
                     <dd class="col-sm-8">{{ $user->created_at }}</dd>
-                    <dt class="col-sm-4">{{ __('columns.users.updated_at') }}</dt>
+                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.updated_at') }}</dt>
                     <dd class="col-sm-8">{{ $user->updated_at }}</dd>
                 </dl>
             </x-jet-adminlte::widget.card>
