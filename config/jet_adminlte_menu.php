@@ -4,28 +4,25 @@ return [
     'main-menu' => [
         [
             'route' => 'dashboard',
-            'label' => 'Dashboard',
             'icon' => 'fas fa-tachometer-alt',
             'authorize' => true
         ]
     ],
     'sidebar' => [
+        ['SEPARATOR' => 'Main menu'],
         [
             'route' => 'dashboard',
-            'label' => 'Dashboard',
             'icon' => 'fas fa-tachometer-alt',
             'authorize' => true
         ],
-        ['SEPARATOR'],
+        ['SEPARATOR' => 'Account menu'],
         [
             'route' => 'account.index',
-            'label' => 'Account',
             'icon' => 'fas fa-user',
             'authorize' => true
         ],
         [
             'route' => 'password.edit',
-            'label' => 'Password',
             'icon' => 'fas fa-lock',
             'authorize' => true
         ]

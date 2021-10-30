@@ -101,6 +101,17 @@ class JetAdminLte
     }
 
     /**
+     * Get title
+     * @param string|null $routeName
+     * @return string
+     */
+    public function title(string $routeName = null): string
+    {
+        $routeName = $routeName ?: $this->routes->currentRouteName();
+        return trans("pages.{$routeName}");
+    }
+
+    /**
      * Get language setting
      * @return string
      */
@@ -116,16 +127,6 @@ class JetAdminLte
     public function version(): string
     {
         return $this->config('version');
-    }
-
-    /**
-     * Get title
-     * @return string
-     */
-    public function title(): string
-    {
-        $routeName = $this->routes->currentRouteName();
-        return trans("pages.{$routeName}");
     }
 
     /**

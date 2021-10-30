@@ -43,7 +43,8 @@
                 "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\ServiceProvider"
             ],
             "aliases": {
-                "JetAdminLte": "ShibuyaKosuke\\LaravelJetAdminlte\\Facades\\JetAdminLte"
+                "JetAdminLte": "ShibuyaKosuke\\LaravelJetAdminlte\\Facades\\JetAdminLte",
+                "Breadcrumbs": "Diglactic\\Breadcrumbs\\Breadcrumbs"
             }
         }
     },

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ __('Dashboard') }}
+        {{ JetAdminLte::title() }}
     </x-slot>
 
     <div class="row">

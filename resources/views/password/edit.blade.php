@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ __('jet-adminlte::adminlte.password_change') }}
+        {{ JetAdminLte::title() }}
     </x-slot>
 
     <div class="row">

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        {{ __('jet-adminlte::adminlte.account_edit') }}
+        {{ JetAdminLte::title() }}
     </x-slot>
 
     <div class="row">

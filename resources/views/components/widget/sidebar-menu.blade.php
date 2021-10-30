@@ -15,8 +15,8 @@
         data-accordion="false">
 
         @foreach(JetAdminLte::sidebarMenu() as $menu)
-            @if(in_array('SEPARATOR', $menu, true))
-                <li class="nav-header">EXAMPLES</li>
+            @if(array_key_exists('SEPARATOR', $menu))
+                <li class="nav-header">{{ $menu['SEPARATOR'] }}</li>
             @else
                 <li class="nav-item">
                     <a href="@isset($menu['route']){{ route($menu['route']) }}@endif"
@@ -24,7 +24,7 @@
                     >
                         <i class="nav-icon fas fa-{{ $menu['icon'] ?? null }}"></i>
                         <p>
-                            {{ $menu['label'] ?? null }}
+                            {{ JetAdminLte::title($menu['route']) }}
                             @if(false)<i class="right fas fa-angle-left"></i>@endif
                         </p>
                     </a>
