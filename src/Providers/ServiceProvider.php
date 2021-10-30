@@ -121,7 +121,7 @@ class ServiceProvider extends ServiceProviderBase
         $config = $this->app['config'];
 
         // For AdminLTE 3
-        $config->set('breadcrumbs.view', 'breadcrumbs::bootstrap4');
+        $config->set('breadcrumbs.view', 'jet-adminlte::breadcrumbs');
 
         // Disabled exception
         $config->set('breadcrumbs.missing-route-bound-breadcrumb-exception', false);
