@@ -35,4 +35,5 @@
     <exclude-pattern>/src/routes/</exclude-pattern>
     <exclude-pattern>/vendor/</exclude-pattern>
     <exclude-pattern>/tests/</exclude-pattern>
+    <exclude-pattern>/_skeleton/</exclude-pattern>
 </ruleset>
