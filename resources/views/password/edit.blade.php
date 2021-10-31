@@ -1,8 +1,4 @@
 <x-app-layout>
-    <x-slot name="title">
-        {{ JetAdminLte::title() }}
-    </x-slot>
-
     <div class="row">
         <div class="col-sm-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
             <x-jet-adminlte::forms.form method="put" action="{{ route('password.update', ['account' => $user]) }}">

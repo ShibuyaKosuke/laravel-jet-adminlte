@@ -1,8 +1,4 @@
 <x-app-layout>
-    <x-slot name="title">
-        {{ JetAdminLte::title() }}
-    </x-slot>
-
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3">
             <x-jet-adminlte::widget.info-box

@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'welcome' => 'TOP',
     'dashboard' => 'ダッシュボード',
     'account' => [
         'index' => 'アカウント',
@@ -8,5 +9,8 @@ return [
     ],
     'password' => [
         'edit' => 'パスワード変更'
-    ]
+    ],
+    'login' => 'ログイン',
+    'logout' => 'ログアウト',
+    'register' => 'ユーザー登録'
 ];

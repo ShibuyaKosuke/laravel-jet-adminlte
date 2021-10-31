@@ -9,13 +9,13 @@ return [
         ]
     ],
     'sidebar' => [
-        ['SEPARATOR' => 'Main menu'],
+        ['SEPARATOR' => 'MAIN MENU'],
         [
             'route' => 'dashboard',
             'icon' => 'fas fa-tachometer-alt',
             'authorize' => true
         ],
-        ['SEPARATOR' => 'Account menu'],
+        ['SEPARATOR' => 'ACCOUNT MENU'],
         [
             'route' => 'account.index',
             'icon' => 'fas fa-user',

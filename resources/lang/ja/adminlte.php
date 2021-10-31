@@ -37,5 +37,7 @@ return [
 
     'success_create_message' => '正常に作成しました。',
     'success_update_message' => '正常に更新しました。',
-    'success_delete_message' => '正常に削除しました。'
+    'success_delete_message' => '正常に削除しました。',
+
+    'oauth_login' => '外部サイト連携設定'
 ];

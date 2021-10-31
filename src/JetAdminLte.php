@@ -156,21 +156,27 @@ class JetAdminLte
     }
 
     /**
-     * Get Social services
-     * @param string|null $service
-     * @return array
-     */
-    public function socialServices(string $service = null)
-    {
-        return $this->config('social-service' . ($service ? ".{$service}" : ''));
-    }
-
-    /**
      * @return boolean
      */
     public function hasTermsAndPrivacyPolicyFeature(): bool
     {
         return $this->config('feature.terms_and_privacy');
+    }
+
+    /**
+     * Get Social services
+     * @param boolean $bool
+     * @return array
+     */
+    public function socialServices(bool $bool = true): array
+    {
+        $services = $this->config('social-service');
+        if ($bool === false) {
+            return $services;
+        }
+        return array_filter($services, function ($service) {
+            return $service;
+        });
     }
 
     /**
