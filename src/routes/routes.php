@@ -9,9 +9,12 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\ConfirmablePasswordCo
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationNotificationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationPromptController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\NewPasswordController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\NotificationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\PasswordResetLinkController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\RegisteredUserController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SecurityController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SocialAccountController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\TwoFactorAuthenticationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\VerifyEmailController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\PrivacyPolicyController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceController;
@@ -53,8 +56,13 @@ Route::middleware(['web'])->group(function () {
         Route::put('/account', [AccountController::class, 'update'])->name('account.update');
         Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 
+        Route::get('/mail-notification', [NotificationController::class, 'index'])->name('mail-notification');
+
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
+
+        Route::get('two-factor-auth', [TwoFactorAuthenticationController::class, 'index'])->name('two-factor-auth');
+        Route::get('security', [SecurityController::class, 'index'])->name('security');
 
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verify-email.verify');

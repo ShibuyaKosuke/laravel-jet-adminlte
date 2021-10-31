@@ -12,5 +12,8 @@ return [
     ],
     'login' => 'ログイン',
     'logout' => 'ログアウト',
-    'register' => 'ユーザー登録'
+    'register' => 'ユーザー登録',
+    'two-factor-auth' => '二段階認証',
+    'security' => 'セキュリティ',
+    'mail-notification' => 'メール通知設定'
 ];

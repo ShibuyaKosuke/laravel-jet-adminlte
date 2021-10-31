@@ -80,5 +80,8 @@ class ServiceProviderTest extends TestCase
 
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth'));
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
+
+        $this->assertTrue($routes->hasNamedRoute('two-factor-auth'));
+        $this->assertTrue($routes->hasNamedRoute('security'));
     }
 }

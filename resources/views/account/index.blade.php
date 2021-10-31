@@ -17,40 +17,38 @@
                 </x-slot>
 
                 <dl class="row">
-                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.name') }}</dt>
-                    <dd class="col-sm-8">{{ $user->name }}</dd>
-                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.email') }}</dt>
-                    <dd class="col-sm-8">{{ $user->email }}</dd>
-                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.created_at') }}</dt>
-                    <dd class="col-sm-8">{{ $user->created_at }}</dd>
-                    <dt class="col-sm-4">{{ __('jet-adminlte::columns.users.updated_at') }}</dt>
-                    <dd class="col-sm-8">{{ $user->updated_at }}</dd>
+                    <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.name') }}</dt>
+                    <dd class="col-sm-9">{{ $user->name }}</dd>
+                    <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.email') }}</dt>
+                    <dd class="col-sm-9">{{ $user->email }}</dd>
+                    <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.created_at') }}</dt>
+                    <dd class="col-sm-9">{{ $user->created_at }}</dd>
+                    <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.updated_at') }}</dt>
+                    <dd class="col-sm-9">{{ $user->updated_at }}</dd>
                 </dl>
             </x-jet-adminlte::widget.card>
 
             @if(JetAdminLte::hasSocialLoginFeature())
                 <x-jet-adminlte::widget.card class="card-outline card-default">
                     <x-slot name="header">
-                        <h3 class="card-title">
-                            {{ __('jet-adminlte::adminlte.oauth_login') }}
-                        </h3>
+                        <h3 class="card-title">{{ __('jet-adminlte::adminlte.oauth_login') }}</h3>
                     </x-slot>
 
-                    <div class="row">
-                        <div class="col-5">
-                            @foreach (JetAdminLte::socialServices() as $social => $value)
-                                <div class="row align-items-center mb-3">
-                                    <div class="col-6">
-                                        <i class="fab fa-fw fa-{{ $social }} mr-2"></i>
-                                        {{ ucfirst($social) }}
-                                    </div>
-                                    <div class="col-6">
-                                        <a class="btn btn-primary btn-block">連携する</a>
-                                    </div>
-                                </div>
-                            @endforeach
+                    <x-jet-adminlte::widget.alert class="alert-warning">
+                        メールアドレスとパスワードのご登録がお済でないと次回ログインを行えなくなるため外部サイト連携設定を解除出来ないようにしております。外部サイト連携設定の解除をご希望の場合、パスワードのご登録をお願いします。
+                    </x-jet-adminlte::widget.alert>
+
+                    @foreach (JetAdminLte::socialServices() as $social => $value)
+                        <div class="row align-items-center mb-3">
+                            <div class="col-3">
+                                <i class="fab fa-fw fa-{{ $social }} mr-2"></i>
+                                {{ ucfirst($social) }}
+                            </div>
+                            <div class="col-3">
+                                <a class="btn btn-primary btn-block">連携する</a>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
                 </x-jet-adminlte::widget.card>
             @endif

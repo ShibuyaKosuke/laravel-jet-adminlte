@@ -19,6 +19,7 @@
 
                     <x-jet-adminlte::forms.input
                         name="email"
+                        type="email"
                         label="{{ __('jet-adminlte::columns.users.email') }}"
                         value="{{ $user->email }}"
                     />
