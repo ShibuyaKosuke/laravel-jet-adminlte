@@ -2,13 +2,15 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
+use Illuminate\Contracts\View\View;
+
 class SecurityController
 {
     /**
-     * @return void
+     * @return View
      */
-    public function index()
+    public function index(): View
     {
-        abort(404);
+        return view('jet-adminlte::security.index');
     }
 }
