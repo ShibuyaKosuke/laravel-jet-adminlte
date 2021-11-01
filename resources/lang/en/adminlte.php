@@ -29,4 +29,20 @@ return [
     'terms' => 'terms',
     'sign_in_using' => 'Sign in using :provider',
     'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
+
+    'account' => 'Account',
+    'account_edit' => 'Account edit',
+    'password_change' => 'Change password',
+    'submit' => 'Submit',
+
+    'current_password' => 'Current password',
+    'new_password' => 'New password',
+
+    'success_create_message' => 'Created successfully.',
+    'success_update_message' => 'Updated successfully.',
+    'success_delete_message' => 'Deleted successfully.',
+
+    'oauth_login' => 'External site linkage setting',
+
+    'oauth_caution' => 'If you do not register your e-mail address and password, you will not be able to log in next time, and you will not be able to cancel the settings for linking external sites. If you want to cancel the setting of external site linkage, please register the password.'
 ];

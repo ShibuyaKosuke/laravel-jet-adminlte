@@ -35,7 +35,7 @@
                     </x-slot>
 
                     <x-jet-adminlte::widget.alert class="alert-warning">
-                        メールアドレスとパスワードのご登録がお済でないと次回ログインを行えなくなるため外部サイト連携設定を解除出来ないようにしております。外部サイト連携設定の解除をご希望の場合、パスワードのご登録をお願いします。
+                        {{ __('jet-adminlte::adminlte.oauth_caution') }}
                     </x-jet-adminlte::widget.alert>
 
                     @foreach (JetAdminLte::socialServices() as $social => $value)
