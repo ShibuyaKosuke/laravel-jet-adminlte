@@ -1,6 +1,5 @@
 <?php
 
-// Oauth Social Login
 use Illuminate\Support\Facades\Route;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\AccountController;
@@ -34,14 +33,15 @@ Route::middleware(['web'])->group(function () {
         Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('reset-password.reset');
         Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('reset-password.update');
 
+        // OAuth
         if (JetAdminLte::hasSocialLoginFeature()) {
             Route::prefix('login')->group(function () {
-                // OAuth
                 Route::get('{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('oauth');
                 Route::get('{provider}/callback', [SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
             });
         }
 
+        // TermAndPrivacy
         if (JetAdminLte::hasTermsAndPrivacyPolicyFeature()) {
             Route::get('/terms-of-service', [TermsOfServiceController::class, 'show'])->name('terms.show');
             Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
@@ -60,10 +60,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 
-        Route::get('two-factor-auth', [TwoFactorAuthenticationController::class, 'index'])->name('two-factor-auth');
-        Route::post('two-factor-auth', [TwoFactorAuthenticationController::class, 'store'])->name('two-factor-auth.store');
-
-        Route::get('security', [SecurityController::class, 'index'])->name('security');
+        Route::get('/security', [SecurityController::class, 'index'])->name('security');
 
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verify-email.verify');
@@ -71,5 +68,9 @@ Route::middleware(['web'])->group(function () {
         Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+        //Two factor
+        Route::get('/two-factor-auth', [TwoFactorAuthenticationController::class, 'index'])->name('two-factor-auth');
+        Route::post('/two-factor-auth', [TwoFactorAuthenticationController::class, 'store'])->name('two-factor-auth.store');
     });
 });

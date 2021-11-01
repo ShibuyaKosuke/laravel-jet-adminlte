@@ -2,7 +2,9 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Exceptions;
 
-class JetAdminLteException extends \Exception
+use Exception;
+
+class JetAdminLteException extends Exception
 {
 
 }

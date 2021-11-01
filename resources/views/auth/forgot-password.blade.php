@@ -2,7 +2,9 @@
     <x-jet-adminlte::widget.login-box>
         <x-jet-adminlte::widget.card class="card-outline card-primary">
             <x-slot name="header">
-                <a href="{{ route('dashboard') }}" class="h1"><b>Admin</b>LTE</a>
+                <a href="{{ route('dashboard') }}" class="h1">
+                    {{ config('app.name') }}
+                </a>
             </x-slot>
 
             <p class="login-box-msg">{{ __('jet-adminlte::adminlte.password_reset_message') }}</p>

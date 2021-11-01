@@ -188,6 +188,14 @@ class JetAdminLte
     }
 
     /**
+     * @return boolean
+     */
+    public function hasTwoFactorFeature(): bool
+    {
+        return $this->config('feature.two-factor');
+    }
+
+    /**
      * @param string $tag
      * @return array|string
      */
