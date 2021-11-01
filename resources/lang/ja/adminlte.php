@@ -25,12 +25,17 @@ return [
     'verify_check_your_email' => '続行する前に、認証用リンクについてメールを確認してください。',
     'verify_if_not_received' => 'メールが届かない場合',
     'verify_request_another' => 'ここをクリックしてもう一度送信する',
+    'confirm_password_message' => '続行するにはパスワードを確認してください。',
     'sign_in_using' => ':provider でログイン',
     'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
+
     'account' => 'アカウント',
     'account_edit' => 'アカウント編集',
     'password_change' => 'パスワードの変更',
+
     'submit' => '送信する',
+    'enable' => '有効にする',
+    'disable' => '無効にする',
 
     'current_password' => '現在のパスワード',
     'new_password' => '新しいパスワード',
@@ -41,5 +46,5 @@ return [
 
     'oauth_login' => '外部サイト連携設定',
 
-    'oauth_caution' => 'メールアドレスとパスワードのご登録がお済でないと次回ログインを行えなくなるため外部サイト連携設定を解除出来ないようにしております。外部サイト連携設定の解除をご希望の場合、パスワードのご登録をお願いします。'
+    'oauth_caution' => 'メールアドレスとパスワードのご登録がお済でないと次回ログインを行えなくなるため外部サイト連携設定を解除できないようにしております。外部サイト連携設定の解除をご希望の場合、パスワードのご登録をお願いします。'
 ];

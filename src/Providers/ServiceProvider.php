@@ -18,6 +18,9 @@ class ServiceProvider extends ServiceProviderBase
         // routes
         $this->loadRoutesFrom(__DIR__ . '/../routes/routes.php');
 
+        // migrations
+        $this->registerMigrations();
+
         // view
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'jet-adminlte');
 
@@ -43,6 +46,14 @@ class ServiceProvider extends ServiceProviderBase
     protected function loadViewComponents(): void
     {
         //
+    }
+
+    /**
+     * @return void
+     */
+    public function registerMigrations(): void
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
     }
 
     /**

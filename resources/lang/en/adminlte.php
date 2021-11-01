@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'full_name' => 'Full name',
     'email' => 'Email',
     'password' => 'Password',
@@ -9,6 +8,8 @@ return [
     'remember_me' => 'Remember Me',
     'register' => 'Register',
     'register_a_new_membership' => 'Register a new membership',
+    'i_agree_to_the' => 'I agree tp <a href=":href">:terms</a>',
+    'terms' => 'terms',
     'i_forgot_my_password' => 'I forgot my password',
     'i_already_have_a_membership' => 'I already have a membership',
     'sign_in' => 'Sign In',
@@ -25,15 +26,16 @@ return [
     'verify_if_not_received' => 'If you did not receive the email',
     'verify_request_another' => 'click here to request another',
     'confirm_password_message' => 'Please, confirm your password to continue.',
-    'i_agree_to_the' => 'I agree to the <a href=":href">:terms</a>',
-    'terms' => 'terms',
     'sign_in_using' => 'Sign in using :provider',
     'copyright' => '<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.',
 
     'account' => 'Account',
     'account_edit' => 'Account edit',
     'password_change' => 'Change password',
+
     'submit' => 'Submit',
+    'enable' => 'Enabled',
+    'disable' => 'Disabled',
 
     'current_password' => 'Current password',
     'new_password' => 'New password',

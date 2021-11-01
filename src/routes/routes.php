@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\AccountController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\AuthenticatedSessionController;
-use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\ConfirmablePasswordController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationNotificationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationPromptController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\NewPasswordController;
@@ -62,6 +61,8 @@ Route::middleware(['web'])->group(function () {
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 
         Route::get('two-factor-auth', [TwoFactorAuthenticationController::class, 'index'])->name('two-factor-auth');
+        Route::post('two-factor-auth', [TwoFactorAuthenticationController::class, 'store'])->name('two-factor-auth.store');
+
         Route::get('security', [SecurityController::class, 'index'])->name('security');
 
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
