@@ -13,8 +13,15 @@
                             </h3>
                         </x-slot>
 
-                        <button class="btn btn-md btn-primary">{{ __('jet-adminlte::adminlte.enable') }}</button>
-                        <button class="btn btn-md btn-secondary">{{ __('jet-adminlte::adminlte.disable') }}</button>
+                        @if(true)
+                            <button class="btn btn-md btn-primary">
+                                {{ __('jet-adminlte::adminlte.enable') }}
+                            </button>
+                        @else
+                            <button class="btn btn-md btn-secondary">
+                                {{ __('jet-adminlte::adminlte.disable') }}
+                            </button>
+                        @endif
 
                     </x-jet-adminlte::widget.card>
                 </x-jet-adminlte::forms.form>
@@ -22,7 +29,7 @@
 
         @else
 
-            <div class="col-sm-12">
+            <div class="col-12">
                 <x-jet-adminlte::widget.alert class="alert-warning" title="Warning" icon="exclamation-triangle">
                     <p>Two factor feature is not enabled.</p>
                 </x-jet-adminlte::widget.alert>

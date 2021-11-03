@@ -2,9 +2,9 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Services;
 
-use App\Models\Account;
 use App\Models\User;
 use Laravel\Socialite\Contracts\User as ProviderUser;
+use ShibuyaKosuke\LaravelJetAdminlte\Models\LinkedSocialAccount;
 
 class SocialAccountsService
 {
@@ -15,9 +15,11 @@ class SocialAccountsService
      */
     public function findOrCreate(ProviderUser $providerUser, string $provider): User
     {
-        $account = Account::query()
-            ->where('provider_name', $provider)
-            ->where('provider_id', $providerUser->getId())
+        $account = LinkedSocialAccount::query()
+            ->where([
+                ['provider_name', '=', $provider],
+                ['provider_id', '=', $providerUser->getId()]
+            ])
             ->first();
 
         if ($account) {
@@ -32,7 +34,7 @@ class SocialAccountsService
                 'name' => $providerUser->getName(),
             ]);
 
-        $user->accounts()->create([
+        $user->linkedSocialAccounts()->create([
             'provider_id' => $providerUser->getId(),
             'provider_name' => $provider,
         ]);

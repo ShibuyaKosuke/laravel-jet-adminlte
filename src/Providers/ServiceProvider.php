@@ -96,6 +96,7 @@ class ServiceProvider extends ServiceProviderBase
         if (!$this->app->runningInConsole()) {
             return;
         }
+
         $this->commands([
             MakeAdminlte::class,
             InstallCommand::class,

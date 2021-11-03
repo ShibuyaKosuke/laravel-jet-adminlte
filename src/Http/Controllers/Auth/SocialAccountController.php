@@ -3,10 +3,12 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Throwable;
 
 class SocialAccountController extends Controller
 {
@@ -18,8 +20,8 @@ class SocialAccountController extends Controller
     {
         try {
             return Socialite::driver($provider)->redirect();
-        } catch (\Throwable $e) {
-            abort(500);
+        } catch (Throwable $e) {
+            abort(500, $e->getMessage());
         }
     }
 
@@ -32,7 +34,7 @@ class SocialAccountController extends Controller
     {
         try {
             $user = Socialite::with($provider)->user();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return redirect()->route('login');
         }
 

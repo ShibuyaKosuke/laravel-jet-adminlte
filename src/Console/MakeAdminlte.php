@@ -49,6 +49,5 @@ class MakeAdminlte extends Command
         $name = $this->argument('name');
         $this->controller_name = Str::studly($name);
         $this->view_name = Str::kebab($name);
-        dd($this->controller_name, $this->view_name);
     }
 }

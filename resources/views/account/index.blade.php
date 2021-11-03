@@ -45,7 +45,16 @@
                                 {{ ucfirst($social) }}
                             </div>
                             <div class="col-3">
-                                <a class="btn btn-primary btn-block">連携する</a>
+                                @if($user->hasSocialAccount($social))
+                                    <a class="{{ Arr::toCssClasses([
+                                        'btn',
+                                        'btn-default',
+                                        'btn-block',
+                                        'disabled' => $user->linkedSocialAccounts->count() === 1 && is_null($user->email)
+                                    ]) }}">解除する</a>
+                                @else
+                                    <a class="btn btn-primary btn-block">連携する</a>
+                                @endif
                             </div>
                         </div>
                     @endforeach
