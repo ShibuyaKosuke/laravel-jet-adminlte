@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\AccountController;
+use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\AccessTokenController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\AuthenticatedSessionController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationNotificationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -19,6 +20,15 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceCon
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\PasswordController;
 
 Route::middleware(['web'])->group(function () {
+    // OAuth
+    if (JetAdminLte::hasSocialLoginFeature()) {
+        Route::prefix('oauth')->group(function () {
+            Route::get('{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('oauth');
+            Route::get('{provider}/callback', [SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
+            Route::delete('{provider}', [SocialAccountController::class, 'detachSocialAccount'])->name('oauth.destroy');
+        });
+    }
+
     // Guest
     Route::middleware(['guest'])->group(function () {
         Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
@@ -32,14 +42,6 @@ Route::middleware(['web'])->group(function () {
 
         Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('reset-password.reset');
         Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('reset-password.update');
-
-        // OAuth
-        if (JetAdminLte::hasSocialLoginFeature()) {
-            Route::prefix('login')->group(function () {
-                Route::get('{provider}', [SocialAccountController::class, 'redirectToProvider'])->name('oauth');
-                Route::get('{provider}/callback', [SocialAccountController::class, 'handleProviderCallback'])->name('oauth.callback');
-            });
-        }
 
         // TermAndPrivacy
         if (JetAdminLte::hasTermsAndPrivacyPolicyFeature()) {
@@ -61,6 +63,8 @@ Route::middleware(['web'])->group(function () {
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 
         Route::get('/security', [SecurityController::class, 'index'])->name('security');
+
+        Route::get('/access-token', AccessTokenController::class)->name('access-token');
 
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verify-email.verify');

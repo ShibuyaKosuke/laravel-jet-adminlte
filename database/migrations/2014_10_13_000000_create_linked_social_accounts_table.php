@@ -16,11 +16,17 @@ class CreateLinkedSocialAccountsTable extends Migration
         Schema::create('linked_social_accounts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('email')->nullable();
             $table->string('provider_name')->nullable();
             $table->string('provider_id')->unique()->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('email')->nullable()->change();
+            $table->string('password')->nullable()->change();
         });
     }
 

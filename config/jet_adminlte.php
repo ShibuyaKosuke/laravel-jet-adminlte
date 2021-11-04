@@ -123,10 +123,10 @@ return [
     ],
 
     'social-service' => [
-        'apple' => true,
-        'facebook' => true,
+        'apple' => false,
+        'facebook' => false,
         'github' => false,
-        'google' => true,
+        'google' => false,
         'instagram' => false,
         'line' => false,
         'microsoft' => false,

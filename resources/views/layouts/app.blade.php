@@ -25,6 +25,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <x-jet-adminlte::widget.success-message/>
+                    <x-jet-adminlte::widget.failure-message/>
 
                     {{ $slot }}
                 </div>

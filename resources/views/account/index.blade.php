@@ -20,7 +20,7 @@
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.name') }}</dt>
                     <dd class="col-sm-9">{{ $user->name }}</dd>
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.email') }}</dt>
-                    <dd class="col-sm-9">{{ $user->email }}</dd>
+                    <dd class="col-sm-9">{{ $user->email ?: '----'}}</dd>
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.created_at') }}</dt>
                     <dd class="col-sm-9">{{ $user->created_at }}</dd>
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.updated_at') }}</dt>
@@ -46,14 +46,23 @@
                             </div>
                             <div class="col-3">
                                 @if($user->hasSocialAccount($social))
-                                    <a class="{{ Arr::toCssClasses([
-                                        'btn',
-                                        'btn-default',
-                                        'btn-block',
-                                        'disabled' => $user->linkedSocialAccounts->count() === 1 && is_null($user->email)
-                                    ]) }}">解除する</a>
+                                    <form action="{{ route('oauth.destroy', ['provider' => $social]) }}" method="post">
+                                        @method('delete')
+                                        @csrf
+                                        <button class="{{ Arr::toCssClasses([
+                                            'btn',
+                                            'btn-default',
+                                            'btn-block',
+                                            'disabled' => $user->linkedSocialAccounts->count() === 1 && is_null($user->email)
+                                        ]) }}">
+                                            {{ __('jet-adminlte::adminlte.sns.disconnect') }}
+                                        </button>
+                                    </form>
                                 @else
-                                    <a class="btn btn-primary btn-block">連携する</a>
+                                    <a href="{{ route('oauth', ['provider' => $social]) }}"
+                                       class="btn btn-primary btn-block">
+                                        {{ __('jet-adminlte::adminlte.sns.connect') }}
+                                    </a>
                                 @endif
                             </div>
                         </div>

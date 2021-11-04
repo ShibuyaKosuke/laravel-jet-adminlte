@@ -4,11 +4,11 @@ namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Throwable;
 
 class SocialAccountController extends Controller
 {
@@ -18,30 +18,49 @@ class SocialAccountController extends Controller
      */
     public function redirectToProvider(string $provider)
     {
-        try {
-            return Socialite::driver($provider)->redirect();
-        } catch (Throwable $e) {
-            abort(500, $e->getMessage());
-        }
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
+     * @param Request $request
      * @param SocialAccountsService $accountService
      * @param string $provider
      * @return RedirectResponse
      */
-    public function handleProviderCallback(SocialAccountsService $accountService, string $provider): RedirectResponse
+    public function handleProviderCallback(Request $request, SocialAccountsService $accountService, string $provider): RedirectResponse
     {
         try {
-            $user = Socialite::with($provider)->user();
+            $snsUser = Socialite::with($provider)->user();
+
+            if ($request->user()) {
+                $authUser = $accountService->attachSocialAccount($request->user(), $snsUser, $provider);
+            } else {
+                $authUser = $accountService->findOrCreate($snsUser, $provider);
+                Auth::login($authUser, true);
+            }
+
+            return redirect()
+                ->route('account.index')
+                ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
         } catch (Exception $e) {
-            return redirect()->route('login');
+            $route = ($request->user()) ? 'account.index' : 'login';
+            return redirect()
+                ->route($route)
+                ->with('failure_message', trans('jet-adminlte::adminlte.failure_connected_message'));
         }
+    }
 
-        $authUser = $accountService->findOrCreate($user, $provider);
-
-        Auth::login($authUser, true);
-
-        return redirect()->route('dashboard');
+    /**
+     * @param Request $request
+     * @param SocialAccountsService $accountService
+     * @param string $provider
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function detachSocialAccount(Request $request, SocialAccountsService $accountService, string $provider)
+    {
+        $accountService->detachSocialAccount($request->user(), $provider);
+        return redirect()
+            ->route('account.index')
+            ->with('success_message', trans('jet-adminlte::adminlte.success_disconnected_message'));
     }
 }

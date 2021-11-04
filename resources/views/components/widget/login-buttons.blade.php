@@ -7,12 +7,28 @@
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right text-white text-left">
                 <a href="{{ route('account.index') }}" class="dropdown-item">
-                    <i class="fa fa-fw fa-user"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     {{ JetAdminLte::title('account.index') }}
                 </a>
+                <a href="{{ route('mail-notification') }}" class="dropdown-item">
+                    <i class="fas fa-fw fa-bell"></i>
+                    {{ JetAdminLte::title('mail-notification') }}
+                </a>
                 <a href="{{ route('password.edit') }}" class="dropdown-item">
-                    <i class="fa fa-fw fa-lock"></i>
+                    <i class="fas fa-fw fa-lock"></i>
                     {{ JetAdminLte::title('password.edit') }}
+                </a>
+                <a href="{{ route('two-factor-auth') }}" class="dropdown-item">
+                    <i class="fas fa-fw fa-qrcode"></i>
+                    {{ JetAdminLte::title('two-factor-auth') }}
+                </a>
+                <a href="{{ route('security') }}" class="dropdown-item">
+                    <i class="fa-fw fas fa-user-shield"></i>
+                    {{ JetAdminLte::title('security') }}
+                </a>
+                <a href="{{ route('access-token') }}" class="dropdown-item">
+                    <i class="fa-fw fas fa-key"></i>
+                    {{ JetAdminLte::title('access-token') }}
                 </a>
                 <div class="dropdown-divider"></div>
                 <form class="dropdown-item p-0" action="{{ route('logout') }}" method="post">

@@ -44,7 +44,18 @@ return [
     'success_update_message' => '正常に更新しました。',
     'success_delete_message' => '正常に削除しました。',
 
+    'success_connected_message' => '正常に連携しました。',
+    'success_disconnected_message' => '正常に解除しました。',
+
+    'failure_connected_message' => '連携に失敗しました。',
+    'failure_disconnected_message' => '解除に失敗しました。',
+
     'oauth_login' => '外部サイト連携設定',
 
-    'oauth_caution' => 'メールアドレスとパスワードのご登録がお済でないと次回ログインを行えなくなるため外部サイト連携設定を解除できないようにしております。外部サイト連携設定の解除をご希望の場合、パスワードのご登録をお願いします。'
+    'oauth_caution' => 'メールアドレスとパスワードのご登録がお済でないと次回ログインを行えなくなるため外部サイト連携設定を解除できないようにしております。外部サイト連携設定の解除をご希望の場合、パスワードのご登録をお願いします。',
+
+    'sns' => [
+        'connect' => '連携する',
+        'disconnect' => '解除する',
+    ],
 ];

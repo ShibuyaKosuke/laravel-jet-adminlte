@@ -40,6 +40,11 @@ return [
             'route' => 'security',
             'icon' => 'fas fa-user-shield',
             'authorize' => true
+        ],
+        [
+            'route' => 'access-token',
+            'icon' => 'fas fa-key',
+            'authorize' => true
         ]
     ]
 ];
