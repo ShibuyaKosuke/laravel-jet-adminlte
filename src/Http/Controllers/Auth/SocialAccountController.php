@@ -34,18 +34,17 @@ class SocialAccountController extends Controller
 
             if ($request->user()) {
                 $authUser = $accountService->attachSocialAccount($request->user(), $snsUser, $provider);
-            } else {
-                $authUser = $accountService->findOrCreate($snsUser, $provider);
-                Auth::login($authUser, true);
+                return redirect()->route('account.index')
+                    ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
             }
 
-            return redirect()
-                ->route('account.index')
-                ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
+            $authUser = $accountService->findOrCreate($snsUser, $provider);
+            Auth::login($authUser, true);
+            return redirect()->route('dashboard');
+
         } catch (Exception $e) {
             $route = ($request->user()) ? 'account.index' : 'login';
-            return redirect()
-                ->route($route)
+            return redirect()->route($route)
                 ->with('failure_message', trans('jet-adminlte::adminlte.failure_connected_message'));
         }
     }
@@ -56,11 +55,10 @@ class SocialAccountController extends Controller
      * @param string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function detachSocialAccount(Request $request, SocialAccountsService $accountService, string $provider)
+    public function detachSocialAccount(Request $request, SocialAccountsService $accountService, string $provider): \Illuminate\Http\RedirectResponse
     {
         $accountService->detachSocialAccount($request->user(), $provider);
-        return redirect()
-            ->route('account.index')
+        return redirect()->route('account.index')
             ->with('success_message', trans('jet-adminlte::adminlte.success_disconnected_message'));
     }
 }
