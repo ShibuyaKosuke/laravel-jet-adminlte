@@ -20,7 +20,9 @@
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.name') }}</dt>
                     <dd class="col-sm-9">{{ $user->name }}</dd>
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.email') }}</dt>
-                    <dd class="col-sm-9">{{ $user->email ?: '----'}}</dd>
+                    <dd class="col-sm-9">{{ $user->email ?: '(undefined)'}}</dd>
+                    <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.password') }}</dt>
+                    <dd class="col-sm-9">{{ $user->password ? '********' : '(undefined)'}}</dd>
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.created_at') }}</dt>
                     <dd class="col-sm-9">{{ $user->created_at }}</dd>
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.updated_at') }}</dt>
@@ -34,9 +36,11 @@
                         <h3 class="card-title">{{ __('jet-adminlte::adminlte.oauth_login') }}</h3>
                     </x-slot>
 
-                    <x-jet-adminlte::widget.alert class="alert-warning">
-                        {{ __('jet-adminlte::adminlte.oauth_caution') }}
-                    </x-jet-adminlte::widget.alert>
+                    @if(is_null($user->email) || is_null($user->password))
+                        <x-jet-adminlte::widget.alert class="alert-warning">
+                            {{ __('jet-adminlte::adminlte.oauth_caution') }}
+                        </x-jet-adminlte::widget.alert>
+                    @endif
 
                     @foreach (JetAdminLte::socialServices() as $social => $value)
                         <div class="row align-items-center mb-3">
@@ -53,7 +57,7 @@
                                             'btn',
                                             'btn-default',
                                             'btn-block',
-                                            'disabled' => $user->linkedSocialAccounts->count() === 1 && is_null($user->email)
+                                            'disabled' => $user->linkedSocialAccounts->count() === 1 && (is_null($user->email) || is_null($user->password))
                                         ]) }}">
                                             {{ __('jet-adminlte::adminlte.sns.disconnect') }}
                                         </button>
