@@ -41,7 +41,6 @@ class SocialAccountController extends Controller
             $authUser = $service->findOrCreate($snsUser, $provider);
             Auth::login($authUser, true);
             return redirect()->route('dashboard');
-
         } catch (Exception $e) {
             $route = ($request->user()) ? 'account.index' : 'login';
             return redirect()->route($route)
