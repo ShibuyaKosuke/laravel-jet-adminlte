@@ -23,22 +23,22 @@ class SocialAccountController extends Controller
 
     /**
      * @param Request $request
-     * @param SocialAccountsService $accountService
+     * @param SocialAccountsService $service
      * @param string $provider
      * @return RedirectResponse
      */
-    public function handleProviderCallback(Request $request, SocialAccountsService $accountService, string $provider): RedirectResponse
+    public function handleProviderCallback(Request $request, SocialAccountsService $service, string $provider)
     {
         try {
             $snsUser = Socialite::with($provider)->user();
 
             if ($request->user()) {
-                $authUser = $accountService->attachSocialAccount($request->user(), $snsUser, $provider);
+                $authUser = $service->attachSocialAccount($request->user(), $snsUser, $provider);
                 return redirect()->route('account.index')
                     ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
             }
 
-            $authUser = $accountService->findOrCreate($snsUser, $provider);
+            $authUser = $service->findOrCreate($snsUser, $provider);
             Auth::login($authUser, true);
             return redirect()->route('dashboard');
 
@@ -51,13 +51,13 @@ class SocialAccountController extends Controller
 
     /**
      * @param Request $request
-     * @param SocialAccountsService $accountService
+     * @param SocialAccountsService $service
      * @param string $provider
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function detachSocialAccount(Request $request, SocialAccountsService $accountService, string $provider): \Illuminate\Http\RedirectResponse
+    public function detachSocialAccount(Request $request, SocialAccountsService $service, string $provider)
     {
-        $accountService->detachSocialAccount($request->user(), $provider);
+        $service->detachSocialAccount($request->user(), $provider);
         return redirect()->route('account.index')
             ->with('success_message', trans('jet-adminlte::adminlte.success_disconnected_message'));
     }
