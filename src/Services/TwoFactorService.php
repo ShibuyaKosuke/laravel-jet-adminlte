@@ -24,6 +24,10 @@ class TwoFactorService
      * @var Google2FA
      */
     private Google2FA $google2fa;
+
+    /**
+     * @var string
+     */
     private string $qrCode;
 
     /**
