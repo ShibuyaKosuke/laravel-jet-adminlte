@@ -13,15 +13,29 @@
                             </h3>
                         </x-slot>
 
-                        @if(true)
-                            <button class="btn btn-md btn-primary">
-                                {{ __('jet-adminlte::adminlte.enable') }}
-                            </button>
-                        @else
-                            <button class="btn btn-md btn-secondary">
-                                {{ __('jet-adminlte::adminlte.disable') }}
-                            </button>
-                        @endif
+                        <x-jet-adminlte::widget.alert class="alert-info" icon="check">
+                            {{ __('Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to sign in.') }}
+                        </x-jet-adminlte::widget.alert>
+
+                        <div class="row">
+                            <div class="col-3">
+                                @if($qrCodeUrl)
+                                    <img src="{{ $qrCodeUrl }}" alt="gr code" class="img-fluid">
+                                @endif
+                            </div>
+                        </div>
+
+                        <x-slot name="footer">
+                            @if($qrCodeUrl)
+                                <button class="btn btn-md btn-secondary">
+                                    {{ __('jet-adminlte::adminlte.disable') }}
+                                </button>
+                            @else
+                                <button class="btn btn-md btn-primary">
+                                    {{ __('jet-adminlte::adminlte.enable') }}
+                                </button>
+                            @endif
+                        </x-slot>
 
                     </x-jet-adminlte::widget.card>
                 </x-jet-adminlte::forms.form>

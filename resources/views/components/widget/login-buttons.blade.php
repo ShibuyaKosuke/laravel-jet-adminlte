@@ -18,10 +18,12 @@
                     <i class="fas fa-fw fa-lock"></i>
                     {{ JetAdminLte::title('password.edit') }}
                 </a>
-                <a href="{{ route('two-factor-auth') }}" class="dropdown-item">
-                    <i class="fas fa-fw fa-qrcode"></i>
-                    {{ JetAdminLte::title('two-factor-auth') }}
-                </a>
+                @if(JetAdminLte::hasTwoFactorFeature())
+                    <a href="{{ route('two-factor-auth') }}" class="dropdown-item">
+                        <i class="fas fa-fw fa-qrcode"></i>
+                        {{ JetAdminLte::title('two-factor-auth') }}
+                    </a>
+                @endif
                 <a href="{{ route('security') }}" class="dropdown-item">
                     <i class="fa-fw fas fa-user-shield"></i>
                     {{ JetAdminLte::title('security') }}

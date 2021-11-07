@@ -4,6 +4,7 @@ namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
@@ -38,6 +39,7 @@ class SocialAccountController extends Controller
                     ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
             }
 
+            /** @var Authenticatable $authUser */
             $authUser = $service->findOrCreate($snsUser, $provider);
             Auth::login($authUser, true);
             return redirect()->route('dashboard');

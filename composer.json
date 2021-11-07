@@ -19,6 +19,7 @@
     ],
     "require": {
         "php": ">=8.0",
+        "ext-imagick": "*",
         "laravel/framework": ">=8.0",
         "livewire/livewire": "^2.0",
         "diglactic/laravel-breadcrumbs": "^7.0",

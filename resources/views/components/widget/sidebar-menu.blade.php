@@ -17,7 +17,7 @@
         @foreach(JetAdminLte::sidebarMenu() as $menu)
             @if(array_key_exists('SEPARATOR', $menu))
                 <li class="nav-header">{{ $menu['SEPARATOR'] }}</li>
-            @else
+            @elseif(Route::has($menu['route']))
                 <li class="nav-item">
                     <a href="@isset($menu['route']){{ route($menu['route']) }}@endif"
                        class="nav-link @if(Route::currentRouteName() === $menu['route']) active @endif"

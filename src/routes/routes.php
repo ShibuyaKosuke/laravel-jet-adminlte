@@ -74,7 +74,9 @@ Route::middleware(['web'])->group(function () {
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
         //Two factor
-        Route::get('/two-factor-auth', [TwoFactorAuthenticationController::class, 'index'])->name('two-factor-auth');
-        Route::post('/two-factor-auth', [TwoFactorAuthenticationController::class, 'store'])->name('two-factor-auth.store');
+        if (JetAdminLte::hasTwoFactorFeature()) {
+            Route::get('/two-factor-auth', [TwoFactorAuthenticationController::class, 'index'])->name('two-factor-auth');
+            Route::post('/two-factor-auth', [TwoFactorAuthenticationController::class, 'store'])->name('two-factor-auth.store');
+        }
     });
 });

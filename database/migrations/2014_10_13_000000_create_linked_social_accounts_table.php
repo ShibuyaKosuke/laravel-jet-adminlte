@@ -27,6 +27,7 @@ class CreateLinkedSocialAccountsTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('email')->nullable()->change();
             $table->string('password')->nullable()->change();
+            $table->string('g2fa_key')->nullable()->after('password');
         });
     }
 
