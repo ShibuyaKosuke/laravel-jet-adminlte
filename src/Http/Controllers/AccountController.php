@@ -2,10 +2,10 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Requests\AccountRequest;
 
 class AccountController extends Controller

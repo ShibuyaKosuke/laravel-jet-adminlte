@@ -2,10 +2,10 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Password;
 
 class PasswordResetLinkController extends Controller

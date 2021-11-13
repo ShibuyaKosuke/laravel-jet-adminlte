@@ -2,10 +2,10 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService;

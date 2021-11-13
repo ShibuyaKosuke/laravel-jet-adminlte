@@ -2,8 +2,8 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
+use Illuminate\Routing\Controller;
 
 class SecurityController extends Controller
 {
