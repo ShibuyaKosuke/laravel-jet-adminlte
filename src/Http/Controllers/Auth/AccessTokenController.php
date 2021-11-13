@@ -2,9 +2,10 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 
-class AccessTokenController
+class AccessTokenController extends Controller
 {
     /**
      * @return View

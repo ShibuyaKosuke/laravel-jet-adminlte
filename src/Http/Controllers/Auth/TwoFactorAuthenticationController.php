@@ -2,6 +2,7 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\TwoFactorService;
 
-class TwoFactorAuthenticationController
+class TwoFactorAuthenticationController extends Controller
 {
     /**
      * @param Request $request
@@ -42,6 +43,20 @@ class TwoFactorAuthenticationController
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
 
         (new TwoFactorService($request->user()))->setSecretKey();
+        return redirect()->route('two-factor-auth');
+    }
+
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     * @throws IncompatibleWithGoogleAuthenticatorException
+     * @throws InvalidCharactersException
+     * @throws SecretKeyTooShortException
+     */
+    public function destroy(Request $request)
+    {
+        abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
+        (new TwoFactorService($request->user()))->deleteSecretKey();
         return redirect()->route('two-factor-auth');
     }
 }

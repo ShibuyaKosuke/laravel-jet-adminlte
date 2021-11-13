@@ -54,6 +54,16 @@ class TwoFactorService
     }
 
     /**
+     * @return $this
+     */
+    public function deleteSecretKey(): self
+    {
+        $this->user->g2fa_key = null;
+        $this->user->save();
+        return $this;
+    }
+
+    /**
      * @return string
      */
     public function getQrCode(): string
