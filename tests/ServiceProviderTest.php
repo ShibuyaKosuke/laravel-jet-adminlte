@@ -22,12 +22,9 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('jet-adminlte::account.index'));
         $this->assertTrue(View::exists('jet-adminlte::account.edit'));
 
-        $this->assertTrue(View::exists('jet-adminlte::auth.confirm-password'));
-        $this->assertTrue(View::exists('jet-adminlte::auth.forgot-password'));
         $this->assertTrue(View::exists('jet-adminlte::auth.login'));
         $this->assertTrue(View::exists('jet-adminlte::auth.register'));
         $this->assertTrue(View::exists('jet-adminlte::auth.reset-password'));
-        $this->assertTrue(View::exists('jet-adminlte::auth.two-factor-challenge'));
         $this->assertTrue(View::exists('jet-adminlte::auth.verify-email'));
 
         $this->assertTrue(View::exists('jet-adminlte::mail-notification.index'));
