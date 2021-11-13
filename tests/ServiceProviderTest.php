@@ -84,12 +84,14 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('verify-email.verify'));
 
         $this->assertTrue($routes->hasNamedRoute('access-token'));
+
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
+        $this->assertTrue($routes->hasNamedRoute('password.update'));
+
         $this->assertTrue($routes->hasNamedRoute('login'));
         $this->assertTrue($routes->hasNamedRoute('logout'));
         $this->assertTrue($routes->hasNamedRoute('register'));
-        $this->assertTrue($routes->hasNamedRoute('password.update'));
 
         $this->assertTrue($routes->hasNamedRoute('account.index'));
         $this->assertTrue($routes->hasNamedRoute('account.edit'));
@@ -104,6 +106,8 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('password.edit'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
 
+        $this->assertTrue($routes->hasNamedRoute('security'));
+
         $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('terms.show'));
         $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('policy.show'));
 
@@ -113,7 +117,5 @@ class ServiceProviderTest extends TestCase
 
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth'));
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth.store'));
-
-        $this->assertTrue($routes->hasNamedRoute('security'));
     }
 }
