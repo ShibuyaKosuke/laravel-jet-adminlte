@@ -39,5 +39,10 @@ class CreateLinkedSocialAccountsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('linked_social_accounts');
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('email')->change();
+            $table->string('password')->change();
+        });
     }
 }

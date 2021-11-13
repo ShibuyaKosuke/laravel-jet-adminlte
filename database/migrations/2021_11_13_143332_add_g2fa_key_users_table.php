@@ -25,6 +25,8 @@ class AddG2faKeyUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('g2fa_key');
+        });
     }
 }
