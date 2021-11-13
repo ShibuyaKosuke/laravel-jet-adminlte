@@ -14,7 +14,7 @@ class LinkedSocialAccount extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['provider_name', 'provider_id'];
+    protected $fillable = ['provider_name', 'provider_id', 'avatar'];
 
     /**
      * @return BelongsTo

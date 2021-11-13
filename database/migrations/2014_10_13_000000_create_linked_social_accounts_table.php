@@ -17,6 +17,7 @@ class CreateLinkedSocialAccountsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('email')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('provider_name')->nullable();
             $table->string('provider_id')->unique()->nullable();
             $table->timestamps();
@@ -27,7 +28,6 @@ class CreateLinkedSocialAccountsTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('email')->nullable()->change();
             $table->string('password')->nullable()->change();
-            $table->string('g2fa_key')->nullable()->after('password');
         });
     }
 

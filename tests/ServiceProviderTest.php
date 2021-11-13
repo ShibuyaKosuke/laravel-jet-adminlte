@@ -17,20 +17,26 @@ class ServiceProviderTest extends TestCase
      */
     public function testBootLoadViews(): void
     {
+        $this->assertTrue(View::exists('jet-adminlte::access-token.index'));
+
+        $this->assertTrue(View::exists('jet-adminlte::account.index'));
+        $this->assertTrue(View::exists('jet-adminlte::account.edit'));
+
         $this->assertTrue(View::exists('jet-adminlte::auth.confirm-password'));
         $this->assertTrue(View::exists('jet-adminlte::auth.forgot-password'));
         $this->assertTrue(View::exists('jet-adminlte::auth.login'));
         $this->assertTrue(View::exists('jet-adminlte::auth.register'));
         $this->assertTrue(View::exists('jet-adminlte::auth.reset-password'));
         $this->assertTrue(View::exists('jet-adminlte::auth.two-factor-challenge'));
+        $this->assertTrue(View::exists('jet-adminlte::auth.verify-email'));
 
-        $this->assertTrue(View::exists('jet-adminlte::account.index'));
-        $this->assertTrue(View::exists('jet-adminlte::account.edit'));
+        $this->assertTrue(View::exists('jet-adminlte::mail-notification.index'));
 
         $this->assertTrue(View::exists('jet-adminlte::password.edit'));
+
         $this->assertTrue(View::exists('jet-adminlte::security.index'));
+
         $this->assertTrue(View::exists('jet-adminlte::two-factor-auth.index'));
-        $this->assertTrue(View::exists('jet-adminlte::mail-notification.index'));
 
         $this->assertTrue(View::exists('jet-adminlte::layouts.app'));
         $this->assertTrue(View::exists('jet-adminlte::layouts.full'));
@@ -74,6 +80,10 @@ class ServiceProviderTest extends TestCase
         $routes = Route::getRoutes();
 
         $this->assertTrue($routes->hasNamedRoute('verification.send'));
+        $this->assertTrue($routes->hasNamedRoute('verify-email.notice'));
+        $this->assertTrue($routes->hasNamedRoute('verify-email.verify'));
+
+        $this->assertTrue($routes->hasNamedRoute('access-token'));
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
         $this->assertTrue($routes->hasNamedRoute('login'));
@@ -86,6 +96,11 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('account.update'));
         $this->assertTrue($routes->hasNamedRoute('account.destroy'));
 
+        $this->assertTrue($routes->hasNamedRoute('mail-notification'));
+
+        $this->assertTrue($routes->hasNamedRoute('reset-password.update'));
+        $this->assertTrue($routes->hasNamedRoute('reset-password.reset'));
+
         $this->assertTrue($routes->hasNamedRoute('password.edit'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
 
@@ -93,6 +108,7 @@ class ServiceProviderTest extends TestCase
         $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('policy.show'));
 
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth'));
+        $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
 
         $this->assertTrue($routes->hasNamedRoute('two-factor-auth'));

@@ -33,12 +33,9 @@ class JetAdminLte
     private Router $routes;
 
     /**
-     * @var Request
-     */
-    private Request $request;
-
-    /**
      * @param Application $app
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function __construct(Application $app)
     {
@@ -56,9 +53,6 @@ class JetAdminLte
 
         /** @var Router route */
         $this->routes = $app->get('router');
-
-        /** @var Request $request */
-        $this->request = $this->app->get('request');
     }
 
     /**
@@ -314,32 +308,6 @@ class JetAdminLte
     public function disableHoverOrFocusAutoExpand()
     {
         return $this->config('layout.sidebar.disable-hover-focus-expand');
-    }
-
-    /**
-     * Get data for current breadcrumbs
-     * @return Collection
-     */
-    public function breadcrumbs(): Collection
-    {
-        if ($this->request->getRealMethod() !== 'GET') {
-            return collect();
-        }
-
-        /** @var Route $currentRoute */
-        if (!$this->routes->current()) {
-            return collect();
-        }
-
-        $currentRouteName = $this->routes->currentRouteName();
-        if (is_null($currentRouteName)) {
-            return collect();
-        }
-
-        return collect([
-            'home',
-            'example'
-        ]);
     }
 
     /**

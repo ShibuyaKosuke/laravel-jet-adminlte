@@ -31,13 +31,14 @@ class SocialAccountsService
             ->where('email', $providerUser->getEmail())
             ->firstOrCreate([
                 'email' => $providerUser->getEmail(),
-                'name' => $providerUser->getName(),
+                'name' => $providerUser->getName()
             ]);
 
         $user->linkedSocialAccounts()->create([
             'provider_id' => $providerUser->getId(),
             'provider_name' => $provider,
-            'email' => $providerUser->getEmail()
+            'email' => $providerUser->getEmail(),
+            'avatar' => $providerUser->getAvatar()
         ]);
 
         return $user;
@@ -54,7 +55,8 @@ class SocialAccountsService
         $user->linkedSocialAccounts()->create([
             'provider_id' => $providerUser->getId(),
             'provider_name' => $provider,
-            'email' => $providerUser->getEmail()
+            'email' => $providerUser->getEmail(),
+            'avatar' => $providerUser->getAvatar()
         ]);
 
         return $user;
