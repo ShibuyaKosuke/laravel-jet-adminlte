@@ -51,6 +51,7 @@ class AccountController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         $request->user()->delete();
-        return redirect()->route('welcome');
+        return redirect()->route('welcome')
+            ->with('success_message', trans('jet-adminlte::adminlte.success_delete_message'));
     }
 }

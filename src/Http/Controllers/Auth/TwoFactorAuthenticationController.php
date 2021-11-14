@@ -17,9 +17,6 @@ class TwoFactorAuthenticationController extends Controller
     /**
      * @param Request $request
      * @return View
-     * @throws IncompatibleWithGoogleAuthenticatorException
-     * @throws InvalidCharactersException
-     * @throws SecretKeyTooShortException
      */
     public function index(Request $request): View
     {
@@ -49,13 +46,11 @@ class TwoFactorAuthenticationController extends Controller
     /**
      * @param Request $request
      * @return RedirectResponse
-     * @throws IncompatibleWithGoogleAuthenticatorException
-     * @throws InvalidCharactersException
-     * @throws SecretKeyTooShortException
      */
     public function destroy(Request $request)
     {
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
+
         (new TwoFactorService($request->user()))->deleteSecretKey();
         return redirect()->route('two-factor-auth');
     }
