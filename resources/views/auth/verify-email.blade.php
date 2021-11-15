@@ -25,9 +25,9 @@
                 </div>
                 <div class="col-4 text-right">
                     <x-jet-adminlte::forms.form action="{{ route('logout') }}" method="post">
-                    <button type="submit" class="btn btn-sm btn-danger">
-                        {{ __('Log Out') }}
-                    </button>
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            {{ __('Log Out') }}
+                        </button>
                     </x-jet-adminlte::forms.form>
                 </div>
             </div>
