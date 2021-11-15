@@ -53,7 +53,7 @@ Route::middleware(['web'])->group(function () {
     // Auth
     Route::middleware(['auth'])->group(function () {
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
-        Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verify-email.verify');
+        Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
 
         Route::get('/account', [AccountController::class, 'index'])->name('account.index');
         Route::get('/account/edit', [AccountController::class, 'edit'])->name('account.edit');
