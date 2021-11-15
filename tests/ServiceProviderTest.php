@@ -78,7 +78,7 @@ class ServiceProviderTest extends TestCase
 
         $this->assertTrue($routes->hasNamedRoute('verification.send'));
         $this->assertTrue($routes->hasNamedRoute('verify-email.notice'));
-        $this->assertTrue($routes->hasNamedRoute('verify-email.verify'));
+        $this->assertTrue($routes->hasNamedRoute('verification.verify'));
 
         $this->assertTrue($routes->hasNamedRoute('access-token'));
 
