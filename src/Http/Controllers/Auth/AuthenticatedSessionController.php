@@ -34,6 +34,10 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
+        if (Auth::user()->g2fa_key) {
+            return redirect()->intended('/2fa-login')->with(['user' => Auth::id()]);
+        }
+
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);

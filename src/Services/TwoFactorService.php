@@ -83,4 +83,16 @@ class TwoFactorService
         $qrcode_image = base64_encode($writer->writeString($this->qrCode));
         return sprintf('data:image/png;base64, %s', $qrcode_image);
     }
+
+    /**
+     * @param string $secretKey
+     * @return boolean|integer
+     * @throws IncompatibleWithGoogleAuthenticatorException
+     * @throws InvalidCharactersException
+     * @throws SecretKeyTooShortException
+     */
+    public function verifyKey(string $secretKey)
+    {
+        return $this->google2fa->verifyKey($this->user->g2fa_key, $secretKey);
+    }
 }
