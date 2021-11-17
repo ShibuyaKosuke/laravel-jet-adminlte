@@ -11,7 +11,7 @@
 
             <x-jet-adminlte::forms.form action="{{ route('two-factor.store') }}" method="post">
 
-                <input type="hidden" name="user" value="{{ old('user', $user) }}">
+                <input type="hidden" name="user" value="{{ old('user', Auth::id() ?: $user) }}">
 
                 <div class="input-group mb-3">
                     <input type="text"
@@ -20,6 +20,7 @@
                            class="form-control @error('secret_key') is-invalid @enderror"
                            placeholder="{{ __('jet-adminlte::adminlte.secret_key') }}"
                            value="{{ old('secret_key') }}"
+                           autofocus
                     >
                     <div class="input-group-append">
                         <div class="input-group-text">

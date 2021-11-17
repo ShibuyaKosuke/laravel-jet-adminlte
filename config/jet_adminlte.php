@@ -14,7 +14,7 @@ return [
         'terms_and_privacy' => true,
         'breadcrumbs' => true,
         'oauth-login' => true,
-        'two-factor' => true,
+        'two-factor' => false,
     ],
 
     /*
