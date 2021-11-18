@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 
 class LoginRequest extends FormRequest
 {
@@ -46,11 +45,7 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (JetAdminLte::hasTwoFactorFeature()) {
-            $this->attemptWithTwoFactor();
-        } else {
-            $this->attempt();
-        }
+        $this->attempt();
 
         RateLimiter::clear($this->throttleKey());
     }
@@ -67,23 +62,6 @@ class LoginRequest extends FormRequest
             throw ValidationException::withMessages([
                 'email' => __('auth.failed'),
             ]);
-        }
-    }
-
-    /**
-     * @return void
-     * @throws ValidationException
-     */
-    protected function attemptWithTwoFactor(): void
-    {
-        if (!Auth::once($this->only('email', 'password'))) {
-            RateLimiter::hit($this->throttleKey());
-
-            throw ValidationException::withMessages([
-                'email' => __('auth.failed'),
-            ]);
-        } elseif (empty(Auth::user()->g2fa_key)) {
-            $this->attempt();
         }
     }
 

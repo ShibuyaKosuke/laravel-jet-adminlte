@@ -4,11 +4,8 @@ namespace ShibuyaKosuke\LaravelJetAdminlte;
 
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Route;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Collection;
 
 class JetAdminLte
 {
@@ -171,6 +168,14 @@ class JetAdminLte
         return array_filter($services, function ($service) {
             return $service;
         });
+    }
+
+    /**
+     * @return boolean
+     */
+    public function hasBreadcrumbs(): bool
+    {
+        return $this->config('feature.breadcrumbs');
     }
 
     /**

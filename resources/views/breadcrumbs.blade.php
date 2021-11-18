@@ -1,4 +1,4 @@
-@unless ($breadcrumbs->isEmpty())
+@if (JetAdminLte::hasBreadcrumbs() && $breadcrumbs->isNotEmpty())
     <ol class="breadcrumb float-sm-right">
         @foreach ($breadcrumbs as $breadcrumb)
             @if (!is_null($breadcrumb->url) && !$loop->last)
@@ -14,4 +14,4 @@
             @endif
         @endforeach
     </ol>
-@endunless
+@endif
