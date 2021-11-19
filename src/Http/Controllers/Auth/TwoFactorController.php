@@ -34,17 +34,19 @@ class TwoFactorController extends Controller
      * @throws InvalidCharactersException
      * @throws SecretKeyTooShortException
      */
-    public function store(TwoFactorRequest $request): RedirectResponse
+    public function store(TwoFactorRequest $request)
     {
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
 
         $user = User::find($request->user);
 
         $service = new TwoFactorService($user);
-        if (!$service->verifyKey($request->secret_key)) {
+
+        if ($service->verifyKey($request->one_time_password)) {
+            Auth::login($user);
+            return redirect()->route('dashboard');
         }
 
-        Auth::login($user);
-        return redirect()->route('dashboard');
+        Auth::logout();
     }
 }

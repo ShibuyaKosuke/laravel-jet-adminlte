@@ -20,7 +20,14 @@ class CreateLinkedSocialAccountsTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('provider_name')->nullable();
             $table->string('provider_id')->unique()->nullable();
-            $table->timestamps();
+
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->unsignedBigInteger('updated_by')->nullable();
+            $table->unsignedBigInteger('deleted_by')->nullable();
+
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
+            $table->dateTime('deleted_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
         });

@@ -30,10 +30,12 @@ Route::middleware(['web'])->group(function () {
         });
     }
 
+    Route::post('/2fa-login', [TwoFactorController::class, 'store'])->name('two-factor.store');
+
     // Guest
     Route::middleware(['guest'])->group(function () {
+
         Route::get('/2fa-login', [TwoFactorController::class, 'index']);
-        Route::post('/2fa-login', [TwoFactorController::class, 'store'])->name('two-factor.store');
 
         Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
         Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');

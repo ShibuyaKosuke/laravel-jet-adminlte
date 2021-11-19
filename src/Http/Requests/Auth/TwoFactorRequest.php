@@ -24,7 +24,7 @@ class TwoFactorRequest extends FormRequest
     public function rules()
     {
         return [
-            'secret_key' => ['required', 'string'],
+            'one_time_password' => ['required', 'integer'],
         ];
     }
 }

@@ -23,7 +23,7 @@ class TwoFactorAuthenticationController extends Controller
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
 
         $user = $request->user();
-        $qrCodeUrl = ($user->g2fa_key) ? (new TwoFactorService($user))->getQrCode() : null;
+        $qrCodeUrl = ($user->google2fa_secret) ? (new TwoFactorService($user))->getQrCode() : null;
 
         return view('jet-adminlte::two-factor-auth.index', compact('qrCodeUrl'));
     }

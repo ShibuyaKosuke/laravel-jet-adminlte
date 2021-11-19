@@ -15,11 +15,11 @@
 
                 <div class="input-group mb-3">
                     <input type="text"
-                           id="secret_key"
-                           name="secret_key"
-                           class="form-control @error('secret_key') is-invalid @enderror"
-                           placeholder="{{ __('jet-adminlte::adminlte.secret_key') }}"
-                           value="{{ old('secret_key') }}"
+                           id="one_time_password"
+                           name="one_time_password"
+                           class="form-control @error('one_time_password') is-invalid @enderror"
+                           placeholder="{{ __('jet-adminlte::adminlte.one_time_password') }}"
+                           value="{{ old('one_time_password') }}"
                            autofocus
                     >
                     <div class="input-group-append">
@@ -27,7 +27,7 @@
                             <span class="fas fa-key"></span>
                         </div>
                     </div>
-                    @error('secret_key')
+                    @error('one_time_password')
                     <span id="secret_key-error" class="error invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>

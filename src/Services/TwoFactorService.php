@@ -8,6 +8,7 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Log;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
 use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
 use PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException;
@@ -48,7 +49,7 @@ class TwoFactorService
     public function setSecretKey(): self
     {
         $key = $this->google2fa->generateSecretKey();
-        $this->user->g2fa_key = $key;
+        $this->user->google2fa_secret = $key;
         $this->user->save();
         return $this;
     }
@@ -58,7 +59,7 @@ class TwoFactorService
      */
     public function deleteSecretKey(): self
     {
-        $this->user->g2fa_key = null;
+        $this->user->google2fa_secret = null;
         $this->user->save();
         return $this;
     }
@@ -71,7 +72,7 @@ class TwoFactorService
         $this->qrCode = $this->google2fa->getQRCodeUrl(
             config('app.name'),
             $this->user->email,
-            $this->user->g2fa_key
+            $this->user->google2fa_secret
         );
 
         $writer = new Writer(
@@ -91,8 +92,8 @@ class TwoFactorService
      * @throws InvalidCharactersException
      * @throws SecretKeyTooShortException
      */
-    public function verifyKey(string $secretKey)
+    public function verifyKey(string $secretKey): bool|int
     {
-        return $this->google2fa->verifyKey($this->user->g2fa_key, $secretKey);
+        return $this->google2fa->verifyKey($this->user->google2fa_secret, $secretKey);
     }
 }
