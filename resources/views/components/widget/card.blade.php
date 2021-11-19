@@ -25,7 +25,7 @@
         </div>
     @endisset
 
-    <div class="card-body">
+    <div class="card-body @if($nopadding ?? false) p-0 @endif">
         {{ $slot }}
     </div>
 
