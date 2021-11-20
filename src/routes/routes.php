@@ -34,9 +34,6 @@ Route::middleware(['web'])->group(function () {
 
     // Guest
     Route::middleware(['guest'])->group(function () {
-
-        Route::get('/2fa-login', [TwoFactorController::class, 'index']);
-
         Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
         Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 
@@ -57,7 +54,7 @@ Route::middleware(['web'])->group(function () {
     });
 
     // Auth
-    Route::middleware(['auth:web'])->group(function () {
+    Route::middleware(['auth:web', '2fa'])->group(function () {
 
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
