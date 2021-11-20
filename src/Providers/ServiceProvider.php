@@ -6,7 +6,9 @@ use Illuminate\Config\Repository;
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\InstallCommand;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\MakeAdminlte;
+use ShibuyaKosuke\LaravelJetAdminlte\Exceptions\JetAdminLteException;
 use ShibuyaKosuke\LaravelJetAdminlte\JetAdminLte;
+use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class ServiceProvider extends ServiceProviderBase
 {
@@ -105,6 +107,8 @@ class ServiceProvider extends ServiceProviderBase
 
     /**
      * @return void
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function register(): void
     {
@@ -121,6 +125,8 @@ class ServiceProvider extends ServiceProviderBase
         $this->app->singleton('shibuyakosuke-laravel-jet-adminlte', function ($app) {
             return new JetAdminLte($app);
         });
+
+        $this->socialLogin();
     }
 
     /**
@@ -137,6 +143,41 @@ class ServiceProvider extends ServiceProviderBase
 
         // Disabled exception
         $config->set('breadcrumbs.missing-route-bound-breadcrumb-exception', false);
+    }
+
+    /**
+     * @return void
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    private function socialLogin(): void
+    {
+        /** @var Repository $config */
+        $config = $this->app['config'];
+        $socialProviders = $config->get('jet_adminlte.social-service');
+
+        $classes = [
+            'apple' => \SocialiteProviders\Apple\AppleExtendSocialite::class,
+            'facebook' => \SocialiteProviders\Facebook\FacebookExtendSocialite::class,
+            'github' => \SocialiteProviders\GitHub\GitHubExtendSocialite::class,
+            'google' => \SocialiteProviders\Google\GoogleExtendSocialite::class,
+            'instagram' => \SocialiteProviders\Instagram\InstagramExtendSocialite::class,
+            'line' => \SocialiteProviders\Line\LineExtendSocialite::class,
+            'microsoft' => \SocialiteProviders\Microsoft\MicrosoftExtendSocialite::class,
+            'twitter' => \SocialiteProviders\Twitter\TwitterExtendSocialite::class,
+        ];
+
+        /** @var \Illuminate\Events\Dispatcher $dispatcher */
+        $dispatcher = $this->app->get('events');
+
+        foreach ($socialProviders as $provider => $value) {
+            if ($value === true) {
+                if (!class_exists($classes[$provider])) {
+                    throw new JetAdminLteException("Class not exists. Install socialiteproviders/{$provider}, please.");
+                }
+                $dispatcher->listen(SocialiteWasCalled::class, $classes[$provider] . '@handle');
+            }
+        }
     }
 
     /**
