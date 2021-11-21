@@ -24,10 +24,6 @@
                     <i class="fa-fw fas fa-user-shield"></i>
                     {{ JetAdminLte::title('security') }}
                 </a>
-                <a href="{{ route('access-token') }}" class="dropdown-item">
-                    <i class="fa-fw fas fa-key"></i>
-                    {{ JetAdminLte::title('access-token') }}
-                </a>
                 <div class="dropdown-divider"></div>
                 <form class="dropdown-item p-0" action="{{ route('logout') }}" method="post">
                     @csrf

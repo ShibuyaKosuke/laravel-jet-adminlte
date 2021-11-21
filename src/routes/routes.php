@@ -69,8 +69,6 @@ Route::middleware(['web'])->group(function () {
 
         Route::get('/security', [SecurityController::class, 'index'])->name('security');
 
-        Route::get('/access-token', AccessTokenController::class)->name('access-token');
-
         Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');
 
         Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
