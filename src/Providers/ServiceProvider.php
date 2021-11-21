@@ -39,6 +39,9 @@ class ServiceProvider extends ServiceProviderBase
 
         // Breadcrumbs
         $this->setBreadcrumbs();
+
+        // 2fa
+        $this->setTwoFactor();
     }
 
     /**
@@ -46,7 +49,6 @@ class ServiceProvider extends ServiceProviderBase
      */
     protected function loadViewComponents(): void
     {
-        //
     }
 
     /**
@@ -142,6 +144,18 @@ class ServiceProvider extends ServiceProviderBase
 
         // Disabled exception
         $config->set('breadcrumbs.missing-route-bound-breadcrumb-exception', false);
+    }
+
+    /**
+     * @return void
+     */
+    public function setTwoFactor(): void
+    {
+        $config = $this->app['config'];
+        $view = $config->get('google2fa.view');
+        if ($view === 'google2fa.index') {
+            $config->set('google2fa.view', 'jet-adminlte::google2fa.index');
+        }
     }
 
     /**
