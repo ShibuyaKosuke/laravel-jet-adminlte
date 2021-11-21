@@ -22,11 +22,6 @@ return [
             'authorize' => true
         ],
         [
-            'route' => 'mail-notification',
-            'icon' => 'fas fa-bell',
-            'authorize' => true
-        ],
-        [
             'route' => 'password.edit',
             'icon' => 'fas fa-lock',
             'authorize' => true

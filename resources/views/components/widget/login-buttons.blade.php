@@ -10,10 +10,6 @@
                     <i class="fas fa-fw fa-user"></i>
                     {{ JetAdminLte::title('account.index') }}
                 </a>
-                <a href="{{ route('mail-notification') }}" class="dropdown-item">
-                    <i class="fas fa-fw fa-bell"></i>
-                    {{ JetAdminLte::title('mail-notification') }}
-                </a>
                 <a href="{{ route('password.edit') }}" class="dropdown-item">
                     <i class="fas fa-fw fa-lock"></i>
                     {{ JetAdminLte::title('password.edit') }}

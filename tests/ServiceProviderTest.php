@@ -27,8 +27,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('jet-adminlte::auth.reset-password'));
         $this->assertTrue(View::exists('jet-adminlte::auth.verify-email'));
 
-        $this->assertTrue(View::exists('jet-adminlte::mail-notification.index'));
-
         $this->assertTrue(View::exists('jet-adminlte::password.edit'));
 
         $this->assertTrue(View::exists('jet-adminlte::security.index'));
@@ -94,8 +92,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('account.edit'));
         $this->assertTrue($routes->hasNamedRoute('account.update'));
         $this->assertTrue($routes->hasNamedRoute('account.destroy'));
-
-        $this->assertTrue($routes->hasNamedRoute('mail-notification'));
 
         $this->assertTrue($routes->hasNamedRoute('reset-password.update'));
         $this->assertTrue($routes->hasNamedRoute('reset-password.reset'));

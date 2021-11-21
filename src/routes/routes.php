@@ -64,8 +64,6 @@ Route::middleware(['web'])->group(function () {
         Route::put('/account', [AccountController::class, 'update'])->name('account.update');
         Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 
-        Route::get('/mail-notification', [NotificationController::class, 'index'])->name('mail-notification');
-
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 
