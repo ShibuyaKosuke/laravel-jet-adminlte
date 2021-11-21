@@ -14,7 +14,8 @@ class AddG2faKeyUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('google2fa_secret')->nullable()->after('password');
+            $columnName = config('google2fa.otp_secret_column');
+            $table->string($columnName)->nullable()->after('password');
         });
     }
 
@@ -26,7 +27,8 @@ class AddG2faKeyUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('google2fa_secret');
+            $columnName = config('google2fa.otp_secret_column');
+            $table->dropColumn($columnName);
         });
     }
 }

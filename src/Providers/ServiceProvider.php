@@ -6,7 +6,6 @@ use Illuminate\Config\Repository;
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\InstallCommand;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\MakeAdminlte;
-use ShibuyaKosuke\LaravelJetAdminlte\Exceptions\JetAdminLteException;
 use ShibuyaKosuke\LaravelJetAdminlte\JetAdminLte;
 use SocialiteProviders\Manager\SocialiteWasCalled;
 
@@ -172,9 +171,6 @@ class ServiceProvider extends ServiceProviderBase
 
         foreach ($socialProviders as $provider => $value) {
             if ($value === true) {
-                if (!class_exists($classes[$provider])) {
-                    throw new JetAdminLteException("Class not exists. Install socialiteproviders/{$provider}, please.");
-                }
                 $dispatcher->listen(SocialiteWasCalled::class, $classes[$provider] . '@handle');
             }
         }

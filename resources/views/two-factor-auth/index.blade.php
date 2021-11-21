@@ -13,7 +13,7 @@
                     </x-slot>
 
                     <x-jet-adminlte::widget.alert class="alert-info" icon="check">
-                        {{ __('Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to sign in.') }}
+                        {{ __('jet-adminlte::adminlte.two-factor-message') }}
                     </x-jet-adminlte::widget.alert>
 
                     <div class="row">

@@ -15,6 +15,19 @@ use ShibuyaKosuke\LaravelJetAdminlte\Services\TwoFactorService;
 class TwoFactorAuthenticationController extends Controller
 {
     /**
+     * @var \Illuminate\Config\Repository|\Illuminate\Contracts\Foundation\Application|mixed
+     */
+    private mixed $columnName;
+
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->columnName = config('google2fa.otp_secret_column');
+    }
+
+    /**
      * @param Request $request
      * @return View
      */
@@ -23,7 +36,7 @@ class TwoFactorAuthenticationController extends Controller
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
 
         $user = $request->user();
-        $qrCodeUrl = ($user->google2fa_secret) ? (new TwoFactorService($user))->getQrCode() : null;
+        $qrCodeUrl = ($user->getAttribute($this->columnName)) ? (new TwoFactorService($user))->getQrCode() : null;
 
         return view('jet-adminlte::two-factor-auth.index', compact('qrCodeUrl'));
     }

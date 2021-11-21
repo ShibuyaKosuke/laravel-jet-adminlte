@@ -8,7 +8,6 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Support\Facades\Log;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
 use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
 use PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException;
@@ -32,12 +31,18 @@ class TwoFactorService
     private string $qrCode;
 
     /**
+     * @var string
+     */
+    private string $columnName;
+
+    /**
      * @param Authenticatable $user
      */
     public function __construct(Authenticatable $user)
     {
         $this->user = $user;
         $this->google2fa = new Google2FA();
+        $this->columnName = config('google2fa.otp_secret_column');
     }
 
     /**
@@ -49,7 +54,7 @@ class TwoFactorService
     public function setSecretKey(): self
     {
         $key = $this->google2fa->generateSecretKey();
-        $this->user->google2fa_secret = $key;
+        $this->user->setAttribute($this->columnName, $key);
         $this->user->save();
         return $this;
     }
@@ -59,7 +64,7 @@ class TwoFactorService
      */
     public function deleteSecretKey(): self
     {
-        $this->user->google2fa_secret = null;
+        $this->user->setAttribute($this->columnName, null);
         $this->user->save();
         return $this;
     }
@@ -72,7 +77,7 @@ class TwoFactorService
         $this->qrCode = $this->google2fa->getQRCodeUrl(
             config('app.name'),
             $this->user->email,
-            $this->user->google2fa_secret
+            $this->user->getAttribute($this->columnName)
         );
 
         $writer = new Writer(
@@ -94,6 +99,6 @@ class TwoFactorService
      */
     public function verifyKey(string $secretKey): bool|int
     {
-        return $this->google2fa->verifyKey($this->user->google2fa_secret, $secretKey);
+        return $this->google2fa->verifyKey($this->user->getAttribute('google2fa_secret'), $secretKey);
     }
 }

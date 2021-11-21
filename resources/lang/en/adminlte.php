@@ -46,5 +46,12 @@ return [
 
     'oauth_login' => 'External site linkage setting',
 
-    'oauth_caution' => 'If you do not register your e-mail address and password, you will not be able to log in next time, and you will not be able to cancel the settings for linking external sites. If you want to cancel the setting of external site linkage, please register the password.'
+    'oauth_caution' => 'If you do not register your e-mail address and password, you will not be able to log in next time, and you will not be able to cancel the settings for linking external sites. If you want to cancel the setting of external site linkage, please register the password.',
+
+    'sns' => [
+        'connect' => 'connect',
+        'disconnect' => 'disconnect',
+    ],
+
+    'two-factor-message' => 'Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to sign in.',
 ];
