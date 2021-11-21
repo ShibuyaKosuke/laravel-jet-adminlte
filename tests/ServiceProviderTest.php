@@ -17,8 +17,6 @@ class ServiceProviderTest extends TestCase
      */
     public function testBootLoadViews(): void
     {
-        $this->assertTrue(View::exists('jet-adminlte::access-token.index'));
-
         $this->assertTrue(View::exists('jet-adminlte::account.index'));
         $this->assertTrue(View::exists('jet-adminlte::account.edit'));
 
@@ -77,8 +75,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('verification.send'));
         $this->assertTrue($routes->hasNamedRoute('verify-email.notice'));
         $this->assertTrue($routes->hasNamedRoute('verification.verify'));
-
-        $this->assertTrue($routes->hasNamedRoute('access-token'));
 
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
