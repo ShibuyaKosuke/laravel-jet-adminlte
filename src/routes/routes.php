@@ -3,12 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\AccountController;
-use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\AccessTokenController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\AuthenticatedSessionController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationNotificationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\EmailVerificationPromptController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\NewPasswordController;
-use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\NotificationController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\PasswordResetLinkController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\RegisteredUserController;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth\SecurityController;
@@ -55,7 +53,6 @@ Route::middleware(['web'])->group(function () {
 
     // Auth
     Route::middleware(['auth:web', '2fa'])->group(function () {
-
         Route::get('/verify-email', [EmailVerificationPromptController::class, '__invoke'])->name('verify-email.notice');
         Route::get('/verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])->name('verification.verify');
 
@@ -63,6 +60,10 @@ Route::middleware(['web'])->group(function () {
         Route::get('/account/edit', [AccountController::class, 'edit'])->name('account.edit');
         Route::put('/account', [AccountController::class, 'update'])->name('account.update');
         Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
+
+        if (JetAdminLte::hasSocialLoginFeature()) {
+            Route::get('/social-accounts', [SocialAccountController::class, 'social'])->name('social-accounts');
+        }
 
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');

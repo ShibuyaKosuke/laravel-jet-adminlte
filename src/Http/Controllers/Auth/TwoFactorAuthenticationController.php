@@ -2,6 +2,7 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
+use Google2FA;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -53,6 +54,8 @@ class TwoFactorAuthenticationController extends Controller
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
 
         (new TwoFactorService($request->user()))->setSecretKey();
+        Google2FA::login();
+
         return redirect()->route('two-factor-auth');
     }
 
@@ -65,6 +68,8 @@ class TwoFactorAuthenticationController extends Controller
         abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
 
         (new TwoFactorService($request->user()))->deleteSecretKey();
+        Google2FA::logout();
+
         return redirect()->route('two-factor-auth');
     }
 }

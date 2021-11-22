@@ -14,6 +14,12 @@
                     <i class="fas fa-fw fa-lock"></i>
                     {{ JetAdminLte::title('password.edit') }}
                 </a>
+                @if(JetAdminLte::hasSocialLoginFeature())
+                <a href="{{ route('social-accounts') }}" class="dropdown-item">
+                    <i class="fas fa-fw fa-link"></i>
+                    {{ JetAdminLte::title('social-accounts') }}
+                </a>
+                @endif
                 @if(JetAdminLte::hasTwoFactorFeature())
                     <a href="{{ route('two-factor-auth') }}" class="dropdown-item">
                         <i class="fas fa-fw fa-qrcode"></i>

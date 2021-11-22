@@ -20,6 +20,8 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('jet-adminlte::account.index'));
         $this->assertTrue(View::exists('jet-adminlte::account.edit'));
 
+        $this->assertTrue(View::exists('jet-adminlte::social-accounts.index'));
+
         $this->assertTrue(View::exists('jet-adminlte::auth.login'));
         $this->assertTrue(View::exists('jet-adminlte::auth.register'));
         $this->assertTrue(View::exists('jet-adminlte::auth.reset-password'));
@@ -103,6 +105,8 @@ class ServiceProviderTest extends TestCase
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth'));
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
+
+        $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('social-accounts'));
 
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth'));
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth.store'));

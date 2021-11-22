@@ -27,6 +27,11 @@ return [
             'authorize' => true
         ],
         [
+            'route' => 'social-accounts',
+            'icon' => 'fas fa-link',
+            'authorize' => true
+        ],
+        [
             'route' => 'two-factor-auth',
             'icon' => 'fas fa-qrcode',
             'authorize' => true
