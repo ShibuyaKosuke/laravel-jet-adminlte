@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService;
+use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService as SocialService;
 
 class SocialAccountController extends Controller
 {
@@ -25,11 +25,11 @@ class SocialAccountController extends Controller
 
     /**
      * @param Request $request
-     * @param SocialAccountsService $service
+     * @param SocialService $service
      * @param string $provider
      * @return RedirectResponse
      */
-    public function handleProviderCallback(Request $request, SocialAccountsService $service, string $provider): RedirectResponse
+    public function handleProviderCallback(Request $request, SocialService $service, string $provider): RedirectResponse
     {
         try {
             $snsUser = Socialite::with($provider)->user();
@@ -54,11 +54,11 @@ class SocialAccountController extends Controller
 
     /**
      * @param Request $request
-     * @param SocialAccountsService $service
+     * @param SocialService $service
      * @param string $provider
      * @return RedirectResponse
      */
-    public function detachSocialAccount(Request $request, SocialAccountsService $service, string $provider): RedirectResponse
+    public function detachSocialAccount(Request $request, SocialService $service, string $provider): RedirectResponse
     {
         $service->detachSocialAccount($request->user(), $provider);
         return redirect()
