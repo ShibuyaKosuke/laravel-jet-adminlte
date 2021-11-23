@@ -37,7 +37,7 @@ class SocialAccountController extends Controller
             if ($request->user()) {
                 $authUser = $service->attachSocialAccount($request->user(), $snsUser, $provider);
                 return redirect()
-                    ->back()
+                    ->route('social-accounts')
                     ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
             }
 
@@ -62,7 +62,7 @@ class SocialAccountController extends Controller
     {
         $service->detachSocialAccount($request->user(), $provider);
         return redirect()
-            ->route('account.index')
+            ->back()
             ->with('success_message', trans('jet-adminlte::adminlte.success_disconnected_message'));
     }
 
