@@ -4,18 +4,19 @@ namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
 use Exception;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class SocialAccountController extends Controller
 {
     /**
      * @param string $provider
-     * @return RedirectResponse|null
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function redirectToProvider(string $provider)
     {
@@ -28,7 +29,7 @@ class SocialAccountController extends Controller
      * @param string $provider
      * @return RedirectResponse
      */
-    public function handleProviderCallback(Request $request, SocialAccountsService $service, string $provider)
+    public function handleProviderCallback(Request $request, SocialAccountsService $service, string $provider): RedirectResponse
     {
         try {
             $snsUser = Socialite::with($provider)->user();
@@ -55,9 +56,9 @@ class SocialAccountController extends Controller
      * @param Request $request
      * @param SocialAccountsService $service
      * @param string $provider
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function detachSocialAccount(Request $request, SocialAccountsService $service, string $provider)
+    public function detachSocialAccount(Request $request, SocialAccountsService $service, string $provider): RedirectResponse
     {
         $service->detachSocialAccount($request->user(), $provider);
         return redirect()
@@ -65,7 +66,11 @@ class SocialAccountController extends Controller
             ->with('success_message', trans('jet-adminlte::adminlte.success_disconnected_message'));
     }
 
-    public function social(Request $request)
+    /**
+     * @param Request $request
+     * @return View
+     */
+    public function social(Request $request): View
     {
         $user = $request->user();
         return view('jet-adminlte::social-accounts.index', compact('user'));
