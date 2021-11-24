@@ -4,6 +4,7 @@ return [
     'full_name' => '氏名',
     'email' => 'メールアドレス',
     'password' => 'パスワード',
+    'password_confirmation' => 'もう一度',
     'one_time_password' => '認証キー',
     'retype_password' => 'もう一度入力',
     'remember_me' => 'パスワードを記憶する',

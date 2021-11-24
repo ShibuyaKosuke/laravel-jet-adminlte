@@ -81,6 +81,7 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
+        $this->assertTrue($routes->hasNamedRoute('password.request'));
 
         $this->assertTrue($routes->hasNamedRoute('login'));
         $this->assertTrue($routes->hasNamedRoute('logout'));
@@ -90,12 +91,6 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('account.edit'));
         $this->assertTrue($routes->hasNamedRoute('account.update'));
         $this->assertTrue($routes->hasNamedRoute('account.destroy'));
-
-        $this->assertTrue($routes->hasNamedRoute('reset-password.update'));
-        $this->assertTrue($routes->hasNamedRoute('reset-password.reset'));
-
-        $this->assertTrue($routes->hasNamedRoute('password.edit'));
-        $this->assertTrue($routes->hasNamedRoute('password.update'));
 
         $this->assertTrue($routes->hasNamedRoute('security'));
 
