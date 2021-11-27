@@ -1,12 +1,14 @@
-<body class="hold-transition
-@if(JetAdminLte::layoutStyle()) {{ JetAdminLte::layoutStyle() }} @endif
-@if(JetAdminLte::smallText('body')) text-sm @endif
-@if(JetAdminLte::sidebarCollapsed()) sidebar-collapse @endif
-@if(JetAdminLte::sidebarFixed()) layout-fixed @endif
-@if(JetAdminLte::sidebarMini()) sidebar-mini @endif
-@if(JetAdminLte::sidebarMiniMd()) sidebar-mini-md @endif
-@if(JetAdminLte::sidebarMiniXs()) sidebar-mini-xs @endif
-@if(JetAdminLte::headerFixed()) layout-navbar-fixed @endif">
+<body class="{{ Arr::toCssClasses([
+    'hold-transition',
+    JetAdminLte::layoutStyle(),
+    'text-sm' => JetAdminLte::smallText('body'),
+    'sidebar-collapse' => JetAdminLte::sidebarCollapsed(),
+    'layout-fixed' => JetAdminLte::sidebarFixed(),
+    'sidebar-mini' => JetAdminLte::sidebarMini(),
+    'sidebar-mini-md' => JetAdminLte::sidebarMiniMd(),
+    'sidebar-mini-xs' => JetAdminLte::sidebarMiniXs(),
+    'layout-navbar-fixed' => JetAdminLte::headerFixed(),
+]) }}">
 
 {{ $slot }}
 

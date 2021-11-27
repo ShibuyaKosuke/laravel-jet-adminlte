@@ -32,5 +32,4 @@
             </x-jet-adminlte::forms.form>
         </div>
     </div>
-
 </x-app-layout>

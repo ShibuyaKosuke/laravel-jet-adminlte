@@ -1,7 +1,9 @@
 <div class="form-group">
-    <label for=""></label>
-    <select id="" name="" class="form-control">
+    <label for="{{ $id ?? $name }}"></label>
+    <select id="{{ $id ?? $name }}" name="{{ $name }}" class="{{ $class ?? 'form-control' }} @error($name) is-invalid @enderror">
         <option value=""></option>
     </select>
-    <span id="exampleInputEmail1-error" class="error invalid-feedback">Please enter a email address</span>
+    @error($name)
+    <span id="{{ $id ?? $name }}-error" class="error invalid-feedback">{{ $message }}</span>
+    @enderror
 </div>

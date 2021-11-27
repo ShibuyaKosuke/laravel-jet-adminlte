@@ -30,7 +30,11 @@
                                             'btn-default',
                                             'btn-block',
                                             'disabled' => $user->linkedSocialAccounts->count() === 1 && (is_null($user->email) || is_null($user->password))
-                                        ]) }}">
+                                        ]) }}"
+                                        @if( $user->linkedSocialAccounts->count() === 1 && (is_null($user->email) || is_null($user->password)))
+                                        disabled
+                                        @endif
+                                        >
                                             {{ __('jet-adminlte::adminlte.sns.disconnect') }}
                                         </button>
                                     </form>

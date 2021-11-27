@@ -37,5 +37,4 @@
             </x-jet-adminlte::widget.card>
         </div>
     </div>
-
 </x-app-layout>

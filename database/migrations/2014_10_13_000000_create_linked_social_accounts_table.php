@@ -30,6 +30,9 @@ class CreateLinkedSocialAccountsTable extends Migration
             $table->dateTime('deleted_at')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('created_by')->references('id')->on('users');
+            $table->foreign('updated_by')->references('id')->on('users');
+            $table->foreign('deleted_by')->references('id')->on('users');
         });
 
         Schema::table('users', function (Blueprint $table) {
