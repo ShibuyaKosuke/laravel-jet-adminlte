@@ -9,6 +9,25 @@
                     </h3>
                 </x-slot>
 
+                <ul class="products-list product-list-in-card pl-2 pr-2">
+                    @foreach($userAgents as $userAgent)
+                        <li class="item">
+                            <div class="product-img">
+                                <img src="{{ asset('images/default-150x150.png') }}"
+                                     alt="Product Image"
+                                     class="img-size-50">
+                            </div>
+                            <div class="product-info">
+                                {{ $userAgent->browser }} on {{ $userAgent->platform }} ({{ $userAgent->device }})
+                                <span class="product-description text-sm">
+                                    Remote IP: {{ $userAgent->remote_ip }}<br>
+                                    Login date: {{ $userAgent->updated_at->toDateString() }}
+                                </span>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+
             </x-jet-adminlte::widget.card>
         </div>
     </div>

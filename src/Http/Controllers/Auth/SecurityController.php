@@ -3,15 +3,19 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use ShibuyaKosuke\LaravelJetAdminlte\Models\UserAgent;
 
 class SecurityController extends Controller
 {
     /**
+     * @param Request $request
      * @return View
      */
-    public function index(): View
+    public function index(Request $request): View
     {
-        return view('jet-adminlte::security.index');
+        $userAgents = UserAgent::query()->where('user_id', $request->user()->id)->get();
+        return view('jet-adminlte::security.index', compact('userAgents'));
     }
 }
