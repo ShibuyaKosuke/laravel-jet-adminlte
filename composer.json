@@ -50,7 +50,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\ServiceProvider"
+                "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\ServiceProvider",
+                "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\EventServiceProvider"
             ],
             "aliases": {
                 "JetAdminLte": "ShibuyaKosuke\\LaravelJetAdminlte\\Facades\\JetAdminLte",

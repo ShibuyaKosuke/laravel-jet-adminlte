@@ -35,15 +35,17 @@ class SocialAccountController extends Controller
             $snsUser = Socialite::with($provider)->user();
 
             if ($request->user()) {
-                $authUser = $service->attachSocialAccount($request->user(), $snsUser, $provider);
+                $authUser = $service->attachSocialAccount($request, $snsUser, $provider);
+
                 return redirect()
                     ->route('social-accounts')
                     ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
             }
 
             /** @var Authenticatable $authUser */
-            $authUser = $service->findOrCreate($snsUser, $provider);
+            $authUser = $service->findOrCreate($request, $snsUser, $provider);
             Auth::login($authUser, true);
+
             return redirect()->route('dashboard');
         } catch (Exception $e) {
             $route = ($request->user()) ? 'social-accounts' : 'login';
@@ -61,6 +63,7 @@ class SocialAccountController extends Controller
     public function detachSocialAccount(Request $request, SocialService $service, string $provider): RedirectResponse
     {
         $service->detachSocialAccount($request->user(), $provider);
+
         return redirect()
             ->back()
             ->with('success_message', trans('jet-adminlte::adminlte.success_disconnected_message'));

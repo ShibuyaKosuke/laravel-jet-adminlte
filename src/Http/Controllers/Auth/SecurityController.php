@@ -15,7 +15,10 @@ class SecurityController extends Controller
      */
     public function index(Request $request): View
     {
-        $userAgents = UserAgent::query()->where('user_id', $request->user()->id)->get();
+        $userAgents = UserAgent::query()
+            ->where('user_id', $request->user()->id)
+            ->orderByDesc('updated_at')
+            ->paginate();
         return view('jet-adminlte::security.index', compact('userAgents'));
     }
 }

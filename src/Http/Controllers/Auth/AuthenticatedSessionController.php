@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
@@ -33,6 +34,8 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
+
+        event(new LoginEvent($request));
 
         $request->session()->regenerate();
 
