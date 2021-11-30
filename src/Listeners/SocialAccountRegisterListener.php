@@ -2,7 +2,7 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Listeners;
 
-use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
 
 class SocialAccountRegisterListener
 {
@@ -15,9 +15,10 @@ class SocialAccountRegisterListener
     }
 
     /**
+     * @param SocialAccountRegisterEvent $event
      * @return void
      */
-    public function handle(LoginEvent $event)
+    public function handle(SocialAccountRegisterEvent $event)
     {
         //
     }

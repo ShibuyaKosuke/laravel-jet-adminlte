@@ -15,6 +15,7 @@ class TwoFactorAuthListener
     }
 
     /**
+     * @param TwoFactorAuthEvent $event
      * @return void
      */
     public function handle(TwoFactorAuthEvent $event)

@@ -15,6 +15,7 @@ class LoginListener
     }
 
     /**
+     * @param LoginEvent $event
      * @return void
      */
     public function handle(LoginEvent $event)
