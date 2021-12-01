@@ -3,6 +3,7 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Listeners;
 
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountDetachedEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Services\UserAgentSecurityService;
 
 class SocialAccountDetachedListener
 {
@@ -20,6 +21,6 @@ class SocialAccountDetachedListener
      */
     public function handle(SocialAccountDetachedEvent $event)
     {
-        //
+        (new UserAgentSecurityService($event->request))->writeLog();
     }
 }

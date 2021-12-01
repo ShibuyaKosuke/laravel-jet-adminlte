@@ -3,6 +3,7 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Listeners;
 
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Services\UserAgentSecurityService;
 
 class LoginListener
 {
@@ -20,6 +21,6 @@ class LoginListener
      */
     public function handle(LoginEvent $event)
     {
-        //
+        (new UserAgentSecurityService($event->request))->writeLog();
     }
 }

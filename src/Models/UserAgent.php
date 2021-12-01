@@ -20,6 +20,7 @@ class UserAgent extends Model
         'user_id',
         'user_agent',
         'hash',
+        'route_name',
         'remote_ip',
         'device_type',
         'device',

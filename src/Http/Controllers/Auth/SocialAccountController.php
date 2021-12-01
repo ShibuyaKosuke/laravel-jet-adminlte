@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService as SocialService;
 
 class SocialAccountController extends Controller
@@ -45,6 +46,8 @@ class SocialAccountController extends Controller
             /** @var Authenticatable $authUser */
             $authUser = $service->findOrCreate($request, $snsUser, $provider);
             Auth::login($authUser, true);
+
+            event(new LoginEvent($request));
 
             return redirect()->route('dashboard');
         } catch (Exception $e) {

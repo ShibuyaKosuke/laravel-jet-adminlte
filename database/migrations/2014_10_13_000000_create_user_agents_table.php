@@ -18,9 +18,8 @@ class CreateUserAgentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('user_agent');
             $table->string('hash')->nullable();
-
             $table->ipAddress('remote_ip')->nullable();
-
+            $table->string('route_name')->nullable();
             $table->string('device_type')->nullable();
             $table->string('device')->nullable();
             $table->string('platform')->nullable();
@@ -32,7 +31,7 @@ class CreateUserAgentsTable extends Migration
             $table->dateTime('updated_at')->nullable();
             $table->dateTime('deleted_at')->nullable();
 
-            $table->unique(['user_id', 'hash', 'deleted_at']);
+            $table->unique(['user_id', 'hash', 'route_name', 'deleted_at']);
 
             $table->foreign('user_id')->references('id')->on('users');
         });

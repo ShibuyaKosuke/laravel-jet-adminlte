@@ -3,6 +3,7 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Listeners;
 
 use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorAuthEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Services\UserAgentSecurityService;
 
 class TwoFactorAuthListener
 {
@@ -20,6 +21,6 @@ class TwoFactorAuthListener
      */
     public function handle(TwoFactorAuthEvent $event)
     {
-        //
+        (new UserAgentSecurityService($event->request))->writeLog();
     }
 }
