@@ -43,7 +43,7 @@ class UserAgentSecurityService
 
         if ($this->agent::isMobile()) {
             $device_type = 'mobile';
-        } else if ($this->agent::isTablet()) {
+        } elseif ($this->agent::isTablet()) {
             $device_type = 'tablet';
         } else {
             $device_type = 'laptop';
