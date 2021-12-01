@@ -33,6 +33,14 @@ class UserAgent
     {
         $user_agent = Agent::getUserAgent();
 
+        if (Agent::isMobile()) {
+            $device_type = 'mobile';
+        } else if (Agent::isTablet()) {
+            $device_type = 'tablet';
+        } else {
+            $device_type = 'laptop';
+        }
+
         $device = Agent::device();
 
         $platform = Agent::platform();
@@ -54,6 +62,7 @@ class UserAgent
             'user_agent' => $user_agent,
             'hash' => hash('sha256', $user_agent),
             'remote_ip' => $this->request->ip(),
+            'device_type' => $device_type,
             'device' => $device,
             'platform' => $platform,
             'platform_version' => $platform_version,

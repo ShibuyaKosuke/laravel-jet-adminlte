@@ -21,6 +21,7 @@ class CreateUserAgentsTable extends Migration
 
             $table->ipAddress('remote_ip')->nullable();
 
+            $table->string('device_type')->nullable();
             $table->string('device')->nullable();
             $table->string('platform')->nullable();
             $table->string('platform_version', 32)->nullable();

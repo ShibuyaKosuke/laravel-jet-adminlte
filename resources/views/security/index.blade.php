@@ -13,10 +13,8 @@
                     <ul class="products-list product-list-in-card pl-2 pr-2">
                         @foreach($userAgents as $userAgent)
                             <li class="item">
-                                <div class="product-img">
-                                    <img src="{{ asset('images/default-150x150.png') }}"
-                                         alt="Product Image"
-                                         class="img-size-50">
+                                <div class="product-img py-2">
+                                    <i class="{{ $userAgent->icon }}"></i>
                                 </div>
                                 <div class="product-info">
                                     {{ $userAgent->browser }} on {{ $userAgent->platform }} ({{ $userAgent->device }})

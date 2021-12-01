@@ -21,6 +21,7 @@ class UserAgent extends Model
         'user_agent',
         'hash',
         'remote_ip',
+        'device_type',
         'device',
         'platform',
         'platform_version',
@@ -28,6 +29,21 @@ class UserAgent extends Model
         'browser_version',
         'updated_at',
     ];
+
+    /**
+     * @return string
+     */
+    public function getIconAttribute(): string
+    {
+        switch ($this->device_type) {
+            case 'mobile':
+                return 'fas fa-fw fa-mobile-alt fa-2x';
+            case 'tablet':
+                return 'fas fa-fw fa-tablet-alt fa-2x';
+            default:
+                return 'fas fa-fw fa-laptop fa-2x';
+        }
+    }
 
     /**
      * @return BelongsTo
