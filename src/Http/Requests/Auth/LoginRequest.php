@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
 
 class LoginRequest extends FormRequest
 {
