@@ -33,19 +33,13 @@ class SocialAccountsService
 
         /** @var User $user */
         $user = User::query()
-            ->where('email', $providerUser->getEmail())
+            ->whereEmail($providerUser->getEmail())
             ->firstOrCreate([
                 'email' => $providerUser->getEmail(),
                 'name' => $providerUser->getName()
             ]);
 
-        $user->linkedSocialAccounts()
-            ->create([
-                'provider_id' => $providerUser->getId(),
-                'provider_name' => $provider,
-                'email' => $providerUser->getEmail(),
-                'avatar' => $providerUser->getAvatar()
-            ]);
+        $user = $this->attachAccount($user, $providerUser, $provider);
 
         event(new SocialAccountRegisterEvent($request));
 
@@ -60,7 +54,21 @@ class SocialAccountsService
      */
     public function attachSocialAccount(Request $request, ProviderUser $providerUser, string $provider): User
     {
-        $user = $request->user();
+        $user = $this->attachAccount($request->user(), $providerUser, $provider);
+
+        event(new SocialAccountRegisterEvent($request));
+
+        return $user;
+    }
+
+    /**
+     * @param User $user
+     * @param ProviderUser $providerUser
+     * @param string $provider
+     * @return User
+     */
+    public function attachAccount(User $user, ProviderUser $providerUser, string $provider)
+    {
         $user->linkedSocialAccounts()
             ->create([
                 'provider_id' => $providerUser->getId(),
@@ -68,9 +76,6 @@ class SocialAccountsService
                 'email' => $providerUser->getEmail(),
                 'avatar' => $providerUser->getAvatar()
             ]);
-
-        event(new SocialAccountRegisterEvent($request));
-
         return $user;
     }
 
