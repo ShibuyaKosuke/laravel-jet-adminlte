@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use PragmaRX\Google2FALaravel\Facade as Google2fa;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorAuthEvent;
-use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Requests\Auth\TwoFactorRequest;
 
 class TwoFactorController extends Controller
@@ -29,8 +28,6 @@ class TwoFactorController extends Controller
      */
     public function store(TwoFactorRequest $request): RedirectResponse
     {
-        abort_unless(JetAdminLte::hasTwoFactorFeature(), 500);
-
         Google2fa::login();
 
         event(new TwoFactorAuthEvent($request));
