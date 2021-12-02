@@ -19,15 +19,16 @@ class SocialAccountsService
      */
     public function findOrCreate(Request $request, ProviderUser $providerUser, string $provider): User
     {
-        $account = LinkedSocialAccount::query()
+        $linkedSocialAccount = LinkedSocialAccount::query()
+            ->with(['user'])
             ->where([
                 ['provider_name', '=', $provider],
                 ['provider_id', '=', $providerUser->getId()]
             ])
             ->first();
 
-        if ($account) {
-            return $account->user;
+        if ($linkedSocialAccount) {
+            return $linkedSocialAccount->user;
         }
 
         /** @var User $user */
@@ -38,12 +39,13 @@ class SocialAccountsService
                 'name' => $providerUser->getName()
             ]);
 
-        $user->linkedSocialAccounts()->create([
-            'provider_id' => $providerUser->getId(),
-            'provider_name' => $provider,
-            'email' => $providerUser->getEmail(),
-            'avatar' => $providerUser->getAvatar()
-        ]);
+        $user->linkedSocialAccounts()
+            ->create([
+                'provider_id' => $providerUser->getId(),
+                'provider_name' => $provider,
+                'email' => $providerUser->getEmail(),
+                'avatar' => $providerUser->getAvatar()
+            ]);
 
         event(new SocialAccountRegisterEvent($request));
 
@@ -59,12 +61,13 @@ class SocialAccountsService
     public function attachSocialAccount(Request $request, ProviderUser $providerUser, string $provider): User
     {
         $user = $request->user();
-        $user->linkedSocialAccounts()->create([
-            'provider_id' => $providerUser->getId(),
-            'provider_name' => $provider,
-            'email' => $providerUser->getEmail(),
-            'avatar' => $providerUser->getAvatar()
-        ]);
+        $user->linkedSocialAccounts()
+            ->create([
+                'provider_id' => $providerUser->getId(),
+                'provider_name' => $provider,
+                'email' => $providerUser->getEmail(),
+                'avatar' => $providerUser->getAvatar()
+            ]);
 
         event(new SocialAccountRegisterEvent($request));
 

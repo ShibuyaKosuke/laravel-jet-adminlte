@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * LinkedSocialAccount
+ * @property User $user
+ */
 class LinkedSocialAccount extends Model
 {
     use HasFactory;
