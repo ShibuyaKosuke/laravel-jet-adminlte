@@ -19,6 +19,10 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceCon
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\PasswordController;
 
 Route::middleware(['web'])->group(function () {
+    Route::post('/2fa-login', [TwoFactorController::class, 'store'])->name('two-factor.store');
+
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
     // OAuth
     if (JetAdminLte::hasSocialLoginFeature()) {
         Route::prefix('oauth')->group(function () {
@@ -28,15 +32,11 @@ Route::middleware(['web'])->group(function () {
         });
     }
 
-    Route::post('/2fa-login', [TwoFactorController::class, 'store'])->name('two-factor.store');
-
     // TermAndPrivacy
     if (JetAdminLte::hasTermsAndPrivacyPolicyFeature()) {
         Route::get('/terms-of-service', [TermsOfServiceController::class, 'show'])->name('terms.show');
         Route::get('/privacy-policy', [PrivacyPolicyController::class, 'show'])->name('policy.show');
     }
-
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
     // Guest
     Route::middleware(['guest'])->group(function () {
