@@ -12,7 +12,7 @@ class TwoFactorRequest extends FormRequest
      *
      * @return boolean
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
