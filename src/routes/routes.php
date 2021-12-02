@@ -19,9 +19,12 @@ use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Livewire\TermsOfServiceCon
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\PasswordController;
 
 Route::middleware(['web'])->group(function () {
-    Route::post('/2fa-login', [TwoFactorController::class, 'store'])->name('two-factor.store');
-
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+    //Two factor
+    if (JetAdminLte::hasTwoFactorFeature()) {
+        Route::post('/2fa-login', [TwoFactorController::class, 'store'])->name('two-factor.store');
+    }
 
     // OAuth
     if (JetAdminLte::hasSocialLoginFeature()) {

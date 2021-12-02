@@ -32,6 +32,7 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue(View::exists('jet-adminlte::security.index'));
 
         $this->assertTrue(View::exists('jet-adminlte::two-factor-auth.index'));
+        $this->assertTrue(View::exists('jet-adminlte::google2fa.index'));
 
         $this->assertTrue(View::exists('jet-adminlte::layouts.app'));
         $this->assertTrue(View::exists('jet-adminlte::layouts.full'));
@@ -81,9 +82,9 @@ class ServiceProviderTest extends TestCase
         $this->assertTrue($routes->hasNamedRoute('password.request'));
         $this->assertTrue($routes->hasNamedRoute('password.email'));
         $this->assertTrue($routes->hasNamedRoute('password.update'));
-        $this->assertTrue($routes->hasNamedRoute('password.request'));
 
         $this->assertTrue($routes->hasNamedRoute('login'));
+        $this->assertTrue($routes->hasNamedRoute('login.store'));
         $this->assertTrue($routes->hasNamedRoute('logout'));
         $this->assertTrue($routes->hasNamedRoute('register'));
 
@@ -98,12 +99,13 @@ class ServiceProviderTest extends TestCase
         $this->assertEquals(JetAdminLte::hasTermsAndPrivacyPolicyFeature(), $routes->hasNamedRoute('policy.show'));
 
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth'));
-        $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
+        $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.destroy'));
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('oauth.callback'));
 
         $this->assertEquals(JetAdminLte::hasSocialLoginFeature(), $routes->hasNamedRoute('social-accounts'));
 
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth'));
+        $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor.store'));
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth.store'));
         $this->assertEquals(JetAdminLte::hasTwoFactorFeature(), $routes->hasNamedRoute('two-factor-auth.destroy'));
     }
