@@ -12,6 +12,9 @@ use ShibuyaKosuke\LaravelJetAdminlte\Services\TwoFactorService;
 
 class TwoFactorVerify implements Rule
 {
+    /**
+     * @var Authenticatable
+     */
     private Authenticatable $user;
 
     /**
