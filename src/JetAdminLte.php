@@ -58,7 +58,7 @@ class JetAdminLte
      * @param string $name
      * @return string|null
      */
-    public static function localizedMarkdownPath($name)
+    public static function localizedMarkdownPath(string $name)
     {
         $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
 
