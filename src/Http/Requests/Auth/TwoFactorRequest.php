@@ -22,7 +22,7 @@ class TwoFactorRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'one_time_password' => ['required', 'integer', new TwoFactorVerify($this->user())],
