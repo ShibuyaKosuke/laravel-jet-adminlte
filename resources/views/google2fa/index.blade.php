@@ -19,7 +19,6 @@
                            name="one_time_password"
                            class="form-control @error('one_time_password') is-invalid @enderror"
                            placeholder="{{ __('jet-adminlte::adminlte.one_time_password') }}"
-                           value="{{ old('one_time_password') }}"
                            autofocus
                     >
                     <div class="input-group-append">

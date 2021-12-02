@@ -3,6 +3,7 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use ShibuyaKosuke\LaravelJetAdminlte\Rules\TwoFactorVerify;
 
 class TwoFactorRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class TwoFactorRequest extends FormRequest
     public function rules()
     {
         return [
-            'one_time_password' => ['required', 'integer'],
+            'one_time_password' => ['required', 'integer', new TwoFactorVerify($this->user())],
         ];
     }
 }
