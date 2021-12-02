@@ -10,6 +10,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\LogoutEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Requests\Auth\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
@@ -50,6 +51,8 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        event(new LogoutEvent($request));
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

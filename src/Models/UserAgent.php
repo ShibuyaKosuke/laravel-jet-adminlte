@@ -47,6 +47,24 @@ class UserAgent extends Model
     }
 
     /**
+     * @param string $value
+     * @return string|void
+     */
+    public function getRouteNameAttribute($value)
+    {
+        switch ($value) {
+            case 'login.store':
+                return 'Login by ID and Password';
+            case 'two-factor.store':
+                return 'Two Factor login';
+            case 'oauth.callback':
+                return 'Oauth2 login';
+            case 'logout':
+                return 'Logout';
+        }
+    }
+
+    /**
      * @return BelongsTo
      */
     public function user(): BelongsTo
