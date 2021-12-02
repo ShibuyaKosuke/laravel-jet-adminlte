@@ -4,6 +4,8 @@ return [
     'full_name' => 'Full name',
     'email' => 'Email',
     'password' => 'Password',
+    'password_confirmation' => 'Retype password',
+    'one_time_password' => 'One time password',
     'retype_password' => 'Retype password',
     'remember_me' => 'Remember Me',
     'register' => 'Register',
@@ -16,6 +18,7 @@ return [
     'log_out' => 'Log Out',
     'toggle_navigation' => 'Toggle navigation',
     'login_message' => 'Sign in to start your session',
+    '2fa_login_message' => 'Type key for two factor auth.',
     'register_message' => 'Register a new membership',
     'password_reset_message' => 'Reset Password',
     'reset_password' => 'Reset Password',
@@ -43,6 +46,12 @@ return [
     'success_create_message' => 'Created successfully.',
     'success_update_message' => 'Updated successfully.',
     'success_delete_message' => 'Deleted successfully.',
+
+    'success_connected_message' => '正常に連携しました。',
+    'success_disconnected_message' => '正常に解除しました。',
+
+    'failure_connected_message' => '連携に失敗しました。',
+    'failure_disconnected_message' => '解除に失敗しました。',
 
     'oauth_login' => 'External site linkage setting',
 
