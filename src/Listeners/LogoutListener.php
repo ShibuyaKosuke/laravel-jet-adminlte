@@ -17,7 +17,7 @@ class LogoutListener
     }
 
     /**
-     * @param LoginEvent $event
+     * @param LogoutEvent $event
      * @return void
      */
     public function handle(LogoutEvent $event)
