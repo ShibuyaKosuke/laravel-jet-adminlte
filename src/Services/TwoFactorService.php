@@ -80,12 +80,7 @@ class TwoFactorService
             $this->user->getAttribute($this->columnName)
         );
 
-        $writer = new Writer(
-            new ImageRenderer(
-                new RendererStyle(250),
-                new ImagickImageBackEnd()
-            )
-        );
+        $writer = new Writer(new ImageRenderer(new RendererStyle(250), new ImagickImageBackEnd()));
         $qrcode_image = base64_encode($writer->writeString($this->qrCode));
         return sprintf('data:image/png;base64, %s', $qrcode_image);
     }
@@ -99,6 +94,6 @@ class TwoFactorService
      */
     public function verifyKey(string $secretKey): bool|int
     {
-        return $this->google2fa->verifyKey($this->user->getAttribute('google2fa_secret'), $secretKey);
+        return $this->google2fa->verifyKey($this->user->getAttribute($this->columnName), $secretKey);
     }
 }
