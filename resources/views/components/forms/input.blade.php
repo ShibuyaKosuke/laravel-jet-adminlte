@@ -1,5 +1,7 @@
 <div class="form-group">
-    <label for="{{ $id ?? $name }}">{{ $label }}</label>
+    @isset($label)
+        <label for="{{ $id ?? $name }}">{{ $label }}</label>
+    @endisset
     <input type="{{ $type ?? 'text' }}"
            id="{{ $id ?? $name }}"
            name="{{ $name }}"
