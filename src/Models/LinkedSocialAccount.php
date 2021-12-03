@@ -30,7 +30,7 @@ class LinkedSocialAccount extends Model
      */
     public function __construct(array $attributes = [])
     {
-        $this->table = config('jet_adminlte.social-account-table');
+        $this->table = config('jet_adminlte.social-account-table', 'linked_social_accounts');
 
         parent::__construct($attributes);
     }
