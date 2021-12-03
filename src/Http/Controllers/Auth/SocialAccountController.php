@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountLoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\SocialAccountsService as SocialService;
 
 class SocialAccountController extends Controller
@@ -35,6 +36,9 @@ class SocialAccountController extends Controller
             $snsUser = Socialite::with($provider)->user();
 
             if ($request->user() && $service->attachSocialAccount($request, $snsUser, $provider)) {
+
+                event(new SocialAccountRegisterEvent($request));
+
                 return redirect()
                     ->route('social-accounts')
                     ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
@@ -42,7 +46,7 @@ class SocialAccountController extends Controller
 
             Auth::login($service->findOrCreate($request, $snsUser, $provider), true);
 
-            event(new LoginEvent($request));
+            event(new SocialAccountLoginEvent($request));
 
             return redirect()->route('dashboard');
         } catch (Exception $e) {
@@ -60,7 +64,7 @@ class SocialAccountController extends Controller
      */
     public function detachSocialAccount(Request $request, SocialService $service, string $provider): RedirectResponse
     {
-        $service->detachSocialAccount($request->user(), $provider);
+        $service->detachSocialAccount($request, $provider);
 
         return redirect()
             ->back()

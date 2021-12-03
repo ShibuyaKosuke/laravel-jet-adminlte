@@ -17,7 +17,7 @@
                                     <i class="{{ $userAgent->icon }}"></i>
                                 </div>
                                 <div class="product-info">
-                                    {{ $userAgent->route_name }} {{ $userAgent->browser }} on {{ $userAgent->platform }} ({{ $userAgent->device }})
+                                    {{ $userAgent->event }} {{ $userAgent->browser }} on {{ $userAgent->platform }} ({{ $userAgent->device }})
                                     <span class="product-description text-sm">
                                         Login date: {{ $userAgent->updated_at->toDateString() }} / Remote IP: {{ $userAgent->remote_ip }}
                                     </span>

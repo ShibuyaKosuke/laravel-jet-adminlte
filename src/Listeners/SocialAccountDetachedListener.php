@@ -21,6 +21,6 @@ class SocialAccountDetachedListener
      */
     public function handle(SocialAccountDetachedEvent $event)
     {
-        (new UserAgentSecurityService($event->request))->writeLog();
+        (new UserAgentSecurityService($event))->writeLog();
     }
 }

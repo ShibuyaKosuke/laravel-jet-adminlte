@@ -21,6 +21,6 @@ class LoginListener
      */
     public function handle(LoginEvent $event)
     {
-        (new UserAgentSecurityService($event->request))->writeLog();
+        (new UserAgentSecurityService($event))->writeLog();
     }
 }

@@ -39,11 +39,7 @@ class SocialAccountsService
                 'name' => $providerUser->getName()
             ]);
 
-        $user = $this->attachAccount($user, $providerUser, $provider);
-
-        event(new SocialAccountRegisterEvent($request));
-
-        return $user;
+        return $this->attachAccount($user, $providerUser, $provider);
     }
 
     /**
@@ -54,11 +50,8 @@ class SocialAccountsService
      */
     public function attachSocialAccount(Request $request, ProviderUser $providerUser, string $provider): User
     {
-        $user = $this->attachAccount($request->user(), $providerUser, $provider);
-
         event(new SocialAccountRegisterEvent($request));
-
-        return $user;
+        return $this->attachAccount($request->user(), $providerUser, $provider);
     }
 
     /**

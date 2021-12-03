@@ -21,6 +21,6 @@ class TwoFactorRegisterListener
      */
     public function handle(TwoFactorRegisterEvent $event)
     {
-        (new UserAgentSecurityService($event->request))->writeLog();
+        (new UserAgentSecurityService($event))->writeLog();
     }
 }

@@ -9,6 +9,11 @@ use ShibuyaKosuke\LaravelJetAdminlte\Models\UserAgent as Model;
 class UserAgentSecurityService
 {
     /**
+     * @var mixed
+     */
+    private mixed $event;
+
+    /**
      * @var Request
      */
     private Request $request;
@@ -24,12 +29,13 @@ class UserAgentSecurityService
     private ?string $route;
 
     /**
-     * @param Request $request
+     * @param mixed $event
      */
-    public function __construct(Request $request)
+    public function __construct($event)
     {
-        $this->request = $request;
-        $route = $request->route();
+        $this->event = $event;
+        $this->request = $event->request;
+        $route = $this->request->route();
         $this->route = $route->getName();
         $this->agent = new Agent();
     }
@@ -66,13 +72,13 @@ class UserAgentSecurityService
         Model::updateOrCreate([
             'user_id' => $this->request->user()->id,
             'hash' => $hash,
-            'route_name' => $this->route,
+            'event' => get_class($this->event),
             'deleted_at' => null
         ], [
             'user_id' => $this->request->user() ? $this->request->user()->id : null,
             'user_agent' => $user_agent,
             'hash' => $hash,
-            'route_name' => $this->route,
+            'event' => get_class($this->event),
             'remote_ip' => $this->request->ip(),
             'device_type' => $device_type,
             'device' => $device,

@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\LogoutEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountLoginEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorAuthEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorRegisterEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorUnRegisterEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Listeners\SocialAccountDetachedListener;
 
 class UserAgent extends Model
 {
@@ -20,7 +28,7 @@ class UserAgent extends Model
         'user_id',
         'user_agent',
         'hash',
-        'route_name',
+        'event',
         'remote_ip',
         'device_type',
         'device',
@@ -50,16 +58,24 @@ class UserAgent extends Model
      * @param string $value
      * @return string|void
      */
-    public function getRouteNameAttribute($value)
+    public function getEventAttribute($value)
     {
         switch ($value) {
-            case 'login.store':
+            case LoginEvent::class:
                 return 'Login by ID and Password';
-            case 'two-factor.store':
+            case TwoFactorAuthEvent::class:
                 return 'Two Factor login';
-            case 'oauth.callback':
-                return 'Oauth2 login';
-            case 'logout':
+            case TwoFactorRegisterEvent::class:
+                return 'Two Factor attached';
+            case TwoFactorUnRegisterEvent::class:
+                return 'Two Factor detached';
+            case SocialAccountLoginEvent::class:
+                return 'Social login';
+            case SocialAccountRegisterEvent::class:
+                return 'Oauth2 registered';
+            case SocialAccountDetachedListener::class:
+                return 'Oauth2 detached';
+            case LogoutEvent::class:
                 return 'Logout';
         }
     }

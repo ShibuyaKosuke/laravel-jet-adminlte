@@ -22,6 +22,6 @@ class LogoutListener
      */
     public function handle(LogoutEvent $event)
     {
-        (new UserAgentSecurityService($event->request))->writeLog();
+        (new UserAgentSecurityService($event))->writeLog();
     }
 }

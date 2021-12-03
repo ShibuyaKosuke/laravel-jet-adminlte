@@ -10,6 +10,8 @@ use Illuminate\Routing\Controller;
 use PragmaRX\Google2FA\Exceptions\IncompatibleWithGoogleAuthenticatorException;
 use PragmaRX\Google2FA\Exceptions\InvalidCharactersException;
 use PragmaRX\Google2FA\Exceptions\SecretKeyTooShortException;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorRegisterEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorUnRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Facades\JetAdminLte;
 use ShibuyaKosuke\LaravelJetAdminlte\Services\TwoFactorService;
 
@@ -56,6 +58,8 @@ class TwoFactorAuthenticationController extends Controller
         (new TwoFactorService($request->user()))->setSecretKey();
         Google2FA::login();
 
+        event(new TwoFactorRegisterEvent($request));
+
         return redirect()->route('two-factor-auth');
     }
 
@@ -69,6 +73,8 @@ class TwoFactorAuthenticationController extends Controller
 
         (new TwoFactorService($request->user()))->deleteSecretKey();
         Google2FA::logout();
+
+        event(new TwoFactorUnRegisterEvent($request));
 
         return redirect()->route('two-factor-auth');
     }
