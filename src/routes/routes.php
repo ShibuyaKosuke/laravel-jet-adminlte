@@ -66,16 +66,16 @@ Route::middleware(['web'])->group(function () {
         Route::put('/account', [AccountController::class, 'update'])->name('account.update');
         Route::delete('/account', [AccountController::class, 'destroy'])->name('account.destroy');
 
-        if (JetAdminLte::hasSocialLoginFeature()) {
-            Route::get('/social-accounts', [SocialAccountController::class, 'social'])->name('social-accounts');
-        }
-
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::put('/password', [PasswordController::class, 'update'])->name('password.update');
 
         Route::get('/security', [SecurityController::class, 'index'])->name('security');
 
         Route::post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])->name('verification.send');
+
+        if (JetAdminLte::hasSocialLoginFeature()) {
+            Route::get('/social-accounts', [SocialAccountController::class, 'social'])->name('social-accounts');
+        }
 
         //Two factor
         if (JetAdminLte::hasTwoFactorFeature()) {
