@@ -5,6 +5,7 @@ namespace ShibuyaKosuke\LaravelJetAdminlte\Test;
 use Illuminate\Events\Dispatcher;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LogoutEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\PasswordChangeEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountDetachedEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountLoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
@@ -25,6 +26,7 @@ class EventProviderTest extends TestCase
 
         $this->assertTrue($dispatcher->hasListeners(LoginEvent::class));
         $this->assertTrue($dispatcher->hasListeners(LogoutEvent::class));
+        $this->assertTrue($dispatcher->hasListeners(PasswordChangeEvent::class));
         $this->assertTrue($dispatcher->hasListeners(TwoFactorAuthEvent::class));
         $this->assertTrue($dispatcher->hasListeners(TwoFactorRegisterEvent::class));
         $this->assertTrue($dispatcher->hasListeners(TwoFactorUnRegisterEvent::class));

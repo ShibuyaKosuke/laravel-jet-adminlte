@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\PasswordChangeEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Http\Requests\PasswordRequest;
 
 class PasswordController extends Controller
@@ -30,7 +31,13 @@ class PasswordController extends Controller
         $user = $request->user();
         $user->fill([
             'password' => Hash::make($request->new_password)
-        ])->save();
+        ]);
+
+        if ($user->isDirty()) {
+            event(new PasswordChangeEvent($request));
+        }
+
+        $user->save();
         return redirect()->route('dashboard')
             ->with('success_message', trans('jet-adminlte::adminlte.success_update_message'));
     }

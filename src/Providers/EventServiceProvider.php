@@ -5,6 +5,7 @@ namespace ShibuyaKosuke\LaravelJetAdminlte\Providers;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LogoutEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\PasswordChangeEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountDetachedEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountLoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
@@ -13,6 +14,7 @@ use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorUnRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Listeners\LoginListener;
 use ShibuyaKosuke\LaravelJetAdminlte\Listeners\LogoutListener;
+use ShibuyaKosuke\LaravelJetAdminlte\Listeners\PasswordChangeListener;
 use ShibuyaKosuke\LaravelJetAdminlte\Listeners\SocialAccountDetachedListener;
 use ShibuyaKosuke\LaravelJetAdminlte\Listeners\SocialAccountLoginListener;
 use ShibuyaKosuke\LaravelJetAdminlte\Listeners\SocialAccountRegisterListener;
@@ -52,6 +54,9 @@ class EventServiceProvider extends ServiceProvider
         SocialAccountLoginEvent::class => [
             SocialAccountLoginListener::class
         ],
+        PasswordChangeEvent::class => [
+            PasswordChangeListener::class
+        ]
     ];
 
     /**

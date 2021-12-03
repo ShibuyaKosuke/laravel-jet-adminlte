@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\LogoutEvent;
+use ShibuyaKosuke\LaravelJetAdminlte\Events\PasswordChangeEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountLoginEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorAuthEvent;
@@ -63,6 +64,10 @@ class UserAgent extends Model
         switch ($value) {
             case LoginEvent::class:
                 return 'Login by ID and Password';
+            case LogoutEvent::class:
+                return 'Logout';
+            case PasswordChangeEvent::class:
+                return 'Change password';
             case TwoFactorAuthEvent::class:
                 return 'Two Factor login';
             case TwoFactorRegisterEvent::class:
@@ -75,8 +80,6 @@ class UserAgent extends Model
                 return 'Oauth2 registered';
             case SocialAccountDetachedListener::class:
                 return 'Oauth2 detached';
-            case LogoutEvent::class:
-                return 'Logout';
         }
     }
 
