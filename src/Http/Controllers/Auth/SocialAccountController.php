@@ -3,7 +3,6 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers\Auth;
 
 use Exception;
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,17 +34,13 @@ class SocialAccountController extends Controller
         try {
             $snsUser = Socialite::with($provider)->user();
 
-            if ($request->user()) {
-                $authUser = $service->attachSocialAccount($request, $snsUser, $provider);
-
+            if ($request->user() && $service->attachSocialAccount($request, $snsUser, $provider)) {
                 return redirect()
                     ->route('social-accounts')
                     ->with('success_message', trans('jet-adminlte::adminlte.success_connected_message'));
             }
 
-            /** @var Authenticatable $authUser */
-            $authUser = $service->findOrCreate($request, $snsUser, $provider);
-            Auth::login($authUser, true);
+            Auth::login($service->findOrCreate($request, $snsUser, $provider), true);
 
             event(new LoginEvent($request));
 
