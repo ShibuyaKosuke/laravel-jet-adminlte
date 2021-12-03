@@ -11,7 +11,7 @@ class SocialAccountDetachedEvent
      *
      * @var Request
      */
-    public $request;
+    public Request $request;
 
     /**
      * Create a new event instance.
