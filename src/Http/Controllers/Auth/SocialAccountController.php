@@ -36,7 +36,6 @@ class SocialAccountController extends Controller
             $snsUser = Socialite::with($provider)->user();
 
             if ($request->user() && $service->attachSocialAccount($request, $snsUser, $provider)) {
-
                 event(new SocialAccountRegisterEvent($request));
 
                 return redirect()
