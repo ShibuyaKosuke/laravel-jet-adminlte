@@ -13,7 +13,7 @@ class CreateLinkedSocialAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('linked_social_accounts', function (Blueprint $table) {
+        Schema::create(config('jet_adminlte.social-account-table'), function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('email')->nullable();
@@ -48,7 +48,7 @@ class CreateLinkedSocialAccountsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('linked_social_accounts');
+        Schema::dropIfExists(config('jet_adminlte.social-account-table'));
 
         Schema::table('users', function (Blueprint $table) {
             $table->string('email')->change();

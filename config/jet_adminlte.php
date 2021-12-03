@@ -17,6 +17,8 @@ return [
         'two-factor' => false, // Unimplemented
     ],
 
+    'social-account-table' => 'linked_social_accounts',
+
     /*
      * Layout settings
      */
