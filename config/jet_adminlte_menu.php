@@ -5,7 +5,7 @@ return [
         [
             'route' => 'dashboard',
             'icon' => 'fas fa-tachometer-alt',
-            'authorize' => true
+            'role' => true
         ]
     ],
     'sidebar' => [
@@ -13,33 +13,33 @@ return [
         [
             'route' => 'dashboard',
             'icon' => 'fas fa-tachometer-alt',
-            'authorize' => true
+            'role' => true
         ],
         ['SEPARATOR' => 'ACCOUNT MENU'],
         [
             'route' => 'account.index',
             'icon' => 'fas fa-user',
-            'authorize' => true
+            'role' => true
         ],
         [
             'route' => 'password.edit',
             'icon' => 'fas fa-lock',
-            'authorize' => true
+            'role' => true
         ],
         [
             'route' => 'social-accounts',
             'icon' => 'fas fa-link',
-            'authorize' => true
+            'role' => true
         ],
         [
             'route' => 'two-factor-auth',
             'icon' => 'fas fa-qrcode',
-            'authorize' => true
+            'role' => true
         ],
         [
             'route' => 'security',
             'icon' => 'fas fa-user-shield',
-            'authorize' => true
+            'role' => true
         ],
     ]
 ];

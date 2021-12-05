@@ -19,7 +19,7 @@
                                 <div class="product-info">
                                     {{ $userAgent->event }} {{ $userAgent->browser }} on {{ $userAgent->platform }} ({{ $userAgent->device }})
                                     <span class="product-description text-sm">
-                                        Login date: {{ $userAgent->updated_at->toDateString() }} / Remote IP: {{ $userAgent->remote_ip }}
+                                        Login date: {{ $userAgent->updated_at }} / Remote IP: {{ $userAgent->remote_ip }}
                                     </span>
                                 </div>
                             </li>
