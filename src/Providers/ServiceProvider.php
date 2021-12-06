@@ -123,7 +123,7 @@ class ServiceProvider extends ServiceProviderBase
             'jet_adminlte_menu'
         );
 
-        $this->app->singleton('shibuyakosuke-laravel-jet-adminlte', function ($app) {
+        $this->app->singleton(JetAdminLte::class, function ($app) {
             return new JetAdminLte($app);
         });
 
@@ -196,7 +196,7 @@ class ServiceProvider extends ServiceProviderBase
     public function provides(): array
     {
         return [
-            'shibuyakosuke.laravel-jet-adminlte'
+            JetAdminLte::class,
         ];
     }
 }

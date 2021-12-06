@@ -11,6 +11,6 @@ class JetAdminLte extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'shibuyakosuke-laravel-jet-adminlte';
+        return \ShibuyaKosuke\LaravelJetAdminlte\JetAdminLte::class;
     }
 }

@@ -21,6 +21,6 @@ class TwoFactorUnRegisterListener
      */
     public function handle(TwoFactorUnRegisterEvent $event)
     {
-        (new UserAgentSecurityService($event->request))->writeLog();
+        (new UserAgentSecurityService($event))->writeLog();
     }
 }
