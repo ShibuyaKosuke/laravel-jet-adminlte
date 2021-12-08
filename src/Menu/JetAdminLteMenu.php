@@ -2,9 +2,19 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Menu;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\View;
+use Lavary\Menu\Builder;
 use Lavary\Menu\Menu;
 
+/**
+ * @method bool exists($name)
+ * @method Builder makeOnce($name, $callback)
+ * @method array loadConf($name)
+ * @method Builder get($key)
+ * @method Collection getCollection()
+ * @method Collection all()
+ */
 class JetAdminLteMenu extends Menu
 {
     /**
