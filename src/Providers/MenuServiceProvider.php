@@ -12,14 +12,6 @@ class MenuServiceProvider extends ServiceProviderBase
     /**
      * @return void
      */
-    public function boot(): void
-    {
-
-    }
-
-    /**
-     * @return void
-     */
     public function register(): void
     {
         $this->app->singleton(Menu::class, function ($app) {
