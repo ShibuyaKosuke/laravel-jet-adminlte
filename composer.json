@@ -52,10 +52,12 @@
         "laravel": {
             "providers": [
                 "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\ServiceProvider",
-                "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\EventServiceProvider"
+                "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\EventServiceProvider",
+                "ShibuyaKosuke\\LaravelJetAdminlte\\Providers\\MenuServiceProvider"
             ],
             "aliases": {
                 "JetAdminLte": "ShibuyaKosuke\\LaravelJetAdminlte\\Facades\\JetAdminLte",
+                "JetAdminLteMenu": "ShibuyaKosuke\\LaravelJetAdminlte\\Facades\\JetAdminLteMenu",
                 "Breadcrumbs": "Diglactic\\Breadcrumbs\\Breadcrumbs"
             }
         }
