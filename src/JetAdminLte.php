@@ -6,6 +6,8 @@ use Illuminate\Config\Repository;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 class JetAdminLte
 {
@@ -31,8 +33,8 @@ class JetAdminLte
 
     /**
      * @param Application $app
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function __construct(Application $app)
     {
@@ -58,7 +60,7 @@ class JetAdminLte
      * @param string $name
      * @return string|null
      */
-    public static function localizedMarkdownPath(string $name)
+    public static function localizedMarkdownPath(string $name): ?string
     {
         $localName = preg_replace('#(\.md)$#i', '.' . app()->getLocale() . '$1', $name);
 
