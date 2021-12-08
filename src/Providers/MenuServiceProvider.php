@@ -3,7 +3,7 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Providers;
 
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
-use ShibuyaKosuke\LaravelJetAdminlte\JetAdminLteMenu;
+use ShibuyaKosuke\LaravelJetAdminlte\Menu\JetAdminLteMenu;
 
 class MenuServiceProvider extends ServiceProviderBase
 {

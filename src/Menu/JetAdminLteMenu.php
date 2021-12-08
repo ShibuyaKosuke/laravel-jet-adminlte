@@ -1,6 +1,6 @@
 <?php
 
-namespace ShibuyaKosuke\LaravelJetAdminlte;
+namespace ShibuyaKosuke\LaravelJetAdminlte\Menu;
 
 use Illuminate\Support\Facades\View;
 use Lavary\Menu\Menu;
@@ -27,7 +27,7 @@ class JetAdminLteMenu extends Menu
         }
 
         // Registering the items
-        call_user_func($callback, $this->menu[$name]);
+        $callback($this->menu[$name]);
 
         // Storing each menu instance in the collection
         $this->collection->put($name, $this->menu[$name]);

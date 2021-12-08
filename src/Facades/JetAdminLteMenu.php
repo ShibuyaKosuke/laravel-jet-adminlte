@@ -8,6 +8,6 @@ class JetAdminLteMenu extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return \ShibuyaKosuke\LaravelJetAdminlte\JetAdminLteMenu::class;
+        return \ShibuyaKosuke\LaravelJetAdminlte\Menu\JetAdminLteMenu::class;
     }
 }
