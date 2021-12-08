@@ -222,7 +222,7 @@ class JetAdminLte
     /**
      * @return array|string
      */
-    public function headerNoBorder()
+    public function headerNoBorderheaderNoBorder()
     {
         return $this->config('layout.header.no-border');
     }
