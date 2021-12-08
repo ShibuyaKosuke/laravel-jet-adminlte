@@ -25,7 +25,7 @@ class TwoFactorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'one_time_password' => ['required', new TwoFactorVerify($this->user())],
+            config('google2fa.otp_input') => ['required', new TwoFactorVerify($this->user())],
         ];
     }
 }
