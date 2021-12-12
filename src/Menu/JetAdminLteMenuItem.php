@@ -9,13 +9,13 @@ use Lavary\Menu\Item;
 class JetAdminLteMenuItem extends Item
 {
     /**
-     * @param $builder
-     * @param $id
-     * @param $title
-     * @param $options
+     * @param JetAdminLteMenuBuilder $builder
+     * @param string $id
+     * @param string $title
+     * @param array $options
      * @return void
      */
-    public function __construct($builder, $id, $title, $options)
+    public function __construct(JetAdminLteMenuBuilder $builder, string $id, string $title, array $options)
     {
         $this->builder = $builder;
         $this->id = $id;
