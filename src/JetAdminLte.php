@@ -324,12 +324,4 @@ class JetAdminLte
     {
         return Arr::get($this->menu, 'main-menu');
     }
-
-    /**
-     * @return array
-     */
-    public function sidebarMenu(): array
-    {
-        return Arr::get($this->menu, 'sidebar');
-    }
 }
