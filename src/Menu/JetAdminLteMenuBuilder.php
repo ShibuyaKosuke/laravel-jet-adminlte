@@ -9,7 +9,7 @@ use Psr\Container\NotFoundExceptionInterface;
 class JetAdminLteMenuBuilder extends Builder
 {
     /**
-     * @param $title
+     * @param string $title
      * @param array $options
      * @return JetAdminLteMenuItem
      * @throws ContainerExceptionInterface
