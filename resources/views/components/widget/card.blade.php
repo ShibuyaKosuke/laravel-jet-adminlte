@@ -25,7 +25,11 @@
         </div>
     @endisset
 
-    <div class="card-body @if($nopadding ?? false) p-0 @endif @if($responsive ?? false) table-responsive @endif">
+    <div class="{{ Arr::toCssClasses([
+        'card-body',
+        'p-0' => ($nopadding ?? false),
+        'table-responsive' => ($responsive ?? false),
+    ]) }}">
         {{ $slot }}
     </div>
 
