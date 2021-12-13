@@ -36,6 +36,21 @@ class JetAdminLteMenuBuilder extends Builder
 
         $title = app('translator')->get($title);
 
+        $title = $wrap ? "<p>{$title}</p>" : $title;
+
+        $item = new JetAdminLteMenuItem($this, $id, $title, $this->getClass($options));
+
+        $this->items->push($item);
+
+        return $item;
+    }
+
+    /**
+     * @param array $options
+     * @return array
+     */
+    private function getClass(array $options)
+    {
         if (array_key_exists('class', $options)) {
             $classes = [];
             if (is_string($options['class'])) {
@@ -50,13 +65,6 @@ class JetAdminLteMenuBuilder extends Builder
         } else {
             $options['class'] = 'nav-item';
         }
-
-        $title = $wrap ? "<p>{$title}</p>" : $title;
-
-        $item = new JetAdminLteMenuItem($this, $id, $title, $options);
-
-        $this->items->push($item);
-
-        return $item;
+        return $options;
     }
 }
