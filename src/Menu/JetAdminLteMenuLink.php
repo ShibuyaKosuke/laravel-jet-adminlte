@@ -6,5 +6,5 @@ use Lavary\Menu\Link;
 
 class JetAdminLteMenuLink extends Link
 {
-
+    //
 }
