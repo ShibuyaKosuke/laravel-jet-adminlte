@@ -1,6 +1,6 @@
 <nav class="mt-2">
-    @isset($default)
-        {!! $default->asUl(['class' => Arr::toCssClasses([
+    @isset($web)
+        {!! $web->asUl(['class' => Arr::toCssClasses([
             'nav',
             'nav-pills',
             'nav-sidebar',

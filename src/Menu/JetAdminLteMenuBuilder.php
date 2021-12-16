@@ -3,6 +3,7 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Menu;
 
 use Lavary\Menu\Builder;
+use Lavary\Menu\Collection;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
