@@ -2,16 +2,16 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Http\Controllers;
 
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 
 class WelcomeController extends Controller
 {
     /**
-     * @return View
+     * @return RedirectResponse
      */
-    public function __invoke(): View
+    public function __invoke(): RedirectResponse
     {
-        return view('jet-adminlte::welcome');
+        return redirect()->route('login');
     }
 }

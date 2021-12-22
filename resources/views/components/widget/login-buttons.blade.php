@@ -6,6 +6,11 @@
                 {{ Auth::user()->name }}
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right text-white text-left">
+                <a href="{{ route('dashboard') }}" class="dropdown-item">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    {{ JetAdminLte::title('dashboard') }}
+                </a>
+                <div class="dropdown-divider"></div>
                 <a href="{{ route('account.index') }}" class="dropdown-item">
                     <i class="fas fa-fw fa-user"></i>
                     {{ JetAdminLte::title('account.index') }}
