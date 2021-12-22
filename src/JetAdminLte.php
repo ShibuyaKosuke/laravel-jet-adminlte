@@ -10,6 +10,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
+use ShibuyaKosuke\LaravelJetAdminlte\Models\Contracts\BreadcrumbsModelInterface;
 
 class JetAdminLte
 {
@@ -343,13 +344,13 @@ class JetAdminLte
             });
             Breadcrumbs::for("{$name}.create", static function (BreadcrumbTrail $trail) use ($name) {
                 $trail->parent("{$name}.index");
-                $trail->push("作成", route("{$name}.create"));
+                $trail->push("登録", route("{$name}.create"));
             });
-            Breadcrumbs::for("{$name}.show", static function (BreadcrumbTrail $trail, $model) use ($name) {
+            Breadcrumbs::for("{$name}.show", static function (BreadcrumbTrail $trail, BreadcrumbsModelInterface $model) use ($name) {
                 $trail->parent("{$name}.index");
-                $trail->push($model->name, route("{$name}.show", $model));
+                $trail->push($model->getTitle(), route("{$name}.show", $model));
             });
-            Breadcrumbs::for("{$name}.edit", static function (BreadcrumbTrail $trail, $model) use ($name) {
+            Breadcrumbs::for("{$name}.edit", static function (BreadcrumbTrail $trail, BreadcrumbsModelInterface $model) use ($name) {
                 $trail->parent("{$name}.show", $model);
                 $trail->push("編集", route("{$name}.edit", $model));
             });
