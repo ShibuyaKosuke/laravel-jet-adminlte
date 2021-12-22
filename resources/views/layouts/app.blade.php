@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }} @if($title ?? JetAdminLte::title())| {{ $title ?? JetAdminLte::title() }}@endif</title>
+    <title>{{ config('app.name') }} @if($title ?? JetAdminLte::title())
+            | {{ $title ?? JetAdminLte::title() }}@endif</title>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -20,15 +21,16 @@
         <x-jet-adminlte::sidebar/>
 
         <div class="content-wrapper">
-            <x-jet-adminlte::content-header title="{{ $title ?? JetAdminLte::title() }}"/>
+            <x-jet-adminlte::content-header title="{{ $title ?? JetAdminLte::title() }}" breadcrumbs="{{ $breadcrumbs ?? null }}"/>
 
-            <section class="content">
-                <div class="container-fluid">
-                    <x-jet-adminlte::widget.success-message/>
-                    <x-jet-adminlte::widget.failure-message/>
+            <section class=" content
+            ">
+            <div class="container-fluid">
+                <x-jet-adminlte::widget.success-message/>
+                <x-jet-adminlte::widget.failure-message/>
 
-                    {{ $slot }}
-                </div>
+                {{ $slot }}
+            </div>
             </section>
         </div>
 

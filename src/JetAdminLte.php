@@ -2,6 +2,8 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte;
 
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\Router;
@@ -101,7 +103,11 @@ class JetAdminLte
     public function title(string $routeName = null): string
     {
         $routeName = $routeName ?: $this->routes->currentRouteName();
-        return trans("pages.{$routeName}");
+
+        if (Arr::get(trans('pages'), $routeName)) {
+            return trans("pages.{$routeName}");
+        }
+        return $routeName;
     }
 
     /**
@@ -323,5 +329,30 @@ class JetAdminLte
     public function mainMenu(): array
     {
         return Arr::get($this->menu, 'main-menu');
+    }
+
+    /**
+     * @return \Closure
+     */
+    public function breadcrumbsCallback()
+    {
+        return function (string $name, string $parent = 'dashboard') {
+            Breadcrumbs::for("{$name}.index", static function (BreadcrumbTrail $trail) use ($name, $parent) {
+                $trail->parent($parent);
+                $trail->push("{$name}.index", route("{$name}.index"));
+            });
+            Breadcrumbs::for("{$name}.create", static function (BreadcrumbTrail $trail) use ($name) {
+                $trail->parent("{$name}.index");
+                $trail->push("作成", route("{$name}.create"));
+            });
+            Breadcrumbs::for("{$name}.show", static function (BreadcrumbTrail $trail, $model) use ($name) {
+                $trail->parent("{$name}.index");
+                $trail->push($model->name, route("{$name}.show", $model));
+            });
+            Breadcrumbs::for("{$name}.edit", static function (BreadcrumbTrail $trail, $model) use ($name) {
+                $trail->parent("{$name}.show", $model);
+                $trail->push("編集", route("{$name}.edit", $model));
+            });
+        };
     }
 }

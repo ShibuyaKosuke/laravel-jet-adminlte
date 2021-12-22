@@ -7,7 +7,11 @@
                 </div>
             @endisset
             <div class="@isset($title) col-sm-6 @else col-sm-6 offset-md-6 @endisset">
-                <x-jet-adminlte::widget.breadcrumbs/>
+                @if($breadcrumbs)
+                    {!! $breadcrumbs !!}
+                @else
+                    {{ Breadcrumbs::render() }}
+                @endif
             </div>
         </div>
     </div>
