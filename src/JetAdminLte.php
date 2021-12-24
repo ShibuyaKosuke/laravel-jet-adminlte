@@ -3,14 +3,14 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
-use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
+use Diglactic\Breadcrumbs\Generator as Trail;
 use Illuminate\Config\Repository;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Arr;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
-use ShibuyaKosuke\LaravelJetAdminlte\Models\Contracts\BreadcrumbsModelInterface;
+use ShibuyaKosuke\LaravelJetAdminlte\Models\Contracts\BreadcrumbsModelInterface as Contract;
 
 class JetAdminLte
 {
@@ -338,19 +338,19 @@ class JetAdminLte
     public function breadcrumbsCallback()
     {
         return function (string $name, string $parent = 'dashboard') {
-            Breadcrumbs::for("{$name}.index", static function (BreadcrumbTrail $trail) use ($name, $parent) {
+            Breadcrumbs::for("{$name}.index", static function (Trail $trail) use ($name, $parent) {
                 $trail->parent($parent);
                 $trail->push("{$name}.index", route("{$name}.index"));
             });
-            Breadcrumbs::for("{$name}.create", static function (BreadcrumbTrail $trail) use ($name) {
+            Breadcrumbs::for("{$name}.create", static function (Trail $trail) use ($name) {
                 $trail->parent("{$name}.index");
                 $trail->push("登録", route("{$name}.create"));
             });
-            Breadcrumbs::for("{$name}.show", static function (BreadcrumbTrail $trail, BreadcrumbsModelInterface $model) use ($name) {
+            Breadcrumbs::for("{$name}.show", static function (Trail $trail, Contract $model) use ($name) {
                 $trail->parent("{$name}.index");
                 $trail->push($model->getTitle(), route("{$name}.show", $model));
             });
-            Breadcrumbs::for("{$name}.edit", static function (BreadcrumbTrail $trail, $model) use ($name) {
+            Breadcrumbs::for("{$name}.edit", static function (Trail $trail, $model) use ($name) {
                 $trail->parent("{$name}.show", $model);
                 $trail->push("編集", route("{$name}.edit", $model));
             });
