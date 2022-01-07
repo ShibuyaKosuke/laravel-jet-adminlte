@@ -2,6 +2,7 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte;
 
+use Closure;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as Trail;
 use Illuminate\Config\Repository;
@@ -333,9 +334,9 @@ class JetAdminLte
     }
 
     /**
-     * @return \Closure
+     * @return Closure
      */
-    public function breadcrumbsCallback()
+    public function breadcrumbsCallback(): Closure
     {
         return function (string $name, string $parent = 'dashboard') {
             Breadcrumbs::for("{$name}.index", static function (Trail $trail) use ($name, $parent) {
