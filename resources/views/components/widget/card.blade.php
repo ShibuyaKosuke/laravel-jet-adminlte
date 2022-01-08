@@ -34,7 +34,7 @@
     </div>
 
     @isset($footer)
-        <div class="card-footer px-2">
+        <div class="card-footer">
             {{ $footer }}
         </div>
     @endisset
