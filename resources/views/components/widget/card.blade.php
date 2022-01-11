@@ -1,26 +1,26 @@
-<div class="card {{ $class ?? 'card-default' }}">
+<div class="card {{ $class ?? 'card-default' }} @isset($collapsed) collapsed-card @endisset ">
     @isset($header)
         <div class="card-header">
             {{ $header }}
             <div class="card-tools">
                 @isset($tools)
                     {{ $tools }}
-                @endif
+                @endisset
                 @isset($collapsible)
                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
                     </button>
-                @endif
+                @endisset
                 @isset($removable)
                     <button type="button" class="btn btn-tool" data-card-widget="remove">
                         <i class="fas fa-times"></i>
                     </button>
-                @endif
+                @endisset
                 @isset($expandable)
                     <button type="button" class="btn btn-tool" data-card-widget="maximize">
                         <i class="fas fa-expand"></i>
                     </button>
-                @endif
+                @endisset
             </div>
         </div>
     @endisset
