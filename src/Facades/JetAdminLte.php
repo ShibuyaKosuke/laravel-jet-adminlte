@@ -35,7 +35,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static array|string smallText(string $tag)
  * @method static array socialServices(bool $bool = true)
  * @method static string title(string $routeName = null)
- * @method static string version
+ * @method static string version()
  */
 class JetAdminLte extends Facade
 {
