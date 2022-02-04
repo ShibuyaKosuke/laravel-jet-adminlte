@@ -357,4 +357,24 @@ class JetAdminLte
             });
         };
     }
+
+    /**
+     * @return Closure
+     */
+    public function parentFor(): Closure
+    {
+        return function (string $name, string $parent = 'dashboard', $parameter = null) {
+            if ($parameter) {
+                Breadcrumbs::for($name, static function (Trail $trail, $parameter) use ($name, $parent) {
+                    $trail->parent($parent, $parameter);
+                    $trail->push($name, route($name, $parameter));
+                });
+            } else {
+                Breadcrumbs::for($name, static function (Trail $trail) use ($name, $parent) {
+                    $trail->parent($parent);
+                    $trail->push($name, route($name));
+                });
+            }
+        };
+    }
 }
