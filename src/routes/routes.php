@@ -53,7 +53,7 @@ Route::middleware(['web'])->group(function () {
         Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
 
         Route::get('/password/reset', [NewPasswordController::class, 'create'])->name('password.reset');
-        Route::post('/password/reset', [PasswordResetLinkController::class, 'store'])->name('password.update');
+        Route::post('/password/reset', [PasswordResetLinkController::class, 'store'])->name('password.reset.update');
     });
 
     // Auth
