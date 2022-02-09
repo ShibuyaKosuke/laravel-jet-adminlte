@@ -3,7 +3,10 @@
 namespace ShibuyaKosuke\LaravelJetAdminlte\Providers;
 
 use Illuminate\Config\Repository;
+use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider as ServiceProviderBase;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\InstallCommand;
 use ShibuyaKosuke\LaravelJetAdminlte\Console\MakeAdminlte;
 use ShibuyaKosuke\LaravelJetAdminlte\JetAdminLte;
@@ -108,8 +111,8 @@ class ServiceProvider extends ServiceProviderBase
 
     /**
      * @return void
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     public function register(): void
     {
@@ -160,8 +163,8 @@ class ServiceProvider extends ServiceProviderBase
 
     /**
      * @return void
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws ContainerExceptionInterface
+     * @throws NotFoundExceptionInterface
      */
     private function socialLogin(): void
     {
@@ -180,7 +183,7 @@ class ServiceProvider extends ServiceProviderBase
             'twitter' => \SocialiteProviders\Twitter\TwitterExtendSocialite::class,
         ];
 
-        /** @var \Illuminate\Events\Dispatcher $dispatcher */
+        /** @var Dispatcher $dispatcher */
         $dispatcher = $this->app->get('events');
 
         foreach ($socialProviders as $provider => $value) {
