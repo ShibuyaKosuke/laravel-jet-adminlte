@@ -23,7 +23,7 @@
         "jenssegers/agent": "^2.6",
         "laravel/framework": ">=8.0",
         "livewire/livewire": "^2.0",
-        "diglactic/laravel-breadcrumbs": "^7.0",
+        "diglactic/laravel-breadcrumbs": "^7.0 | ^7.1",
         "bacon/bacon-qr-code": "^2.0",
         "laravel/sanctum": "^2.12",
         "pragmarx/google2fa-laravel": "^2.0",
