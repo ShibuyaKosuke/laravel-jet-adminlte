@@ -28,6 +28,15 @@
                     <dt class="col-sm-3">{{ __('jet-adminlte::columns.users.updated_at') }}</dt>
                     <dd class="col-sm-9">{{ $user->updated_at }}</dd>
                 </dl>
+
+                @if($user->tokens->isNotEmpty())
+                    <dl class="row">
+                        @foreach($user->tokens as $token)
+                            <dt class="col-sm-3">{{ __('Token name') }}</dt>
+                            <dd class="col-sm-9">{{ $token->name }}</dd>
+                        @endforeach
+                    </dl>
+                @endif
             </x-jet-adminlte::widget.card>
         </div>
     </div>
