@@ -46,6 +46,7 @@ return [
     'success_create_message' => '正常に作成しました。',
     'success_update_message' => '正常に更新しました。',
     'success_delete_message' => '正常に削除しました。',
+    'success_restore_message' => '正常にレストアしました。',
 
     'success_connected_message' => '正常に連携しました。',
     'success_disconnected_message' => '正常に解除しました。',
