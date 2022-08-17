@@ -377,4 +377,16 @@ class JetAdminLte
             }
         };
     }
+
+    /**
+     * @return Closure
+     */
+    public function dashboard(): Closure
+    {
+        return function (string $name = 'dashboard') {
+            Breadcrumbs::for($name, static function (Trail $trail) use ($name) {
+                $trail->push($name, route($name));
+            });
+        };
+    }
 }
