@@ -345,7 +345,7 @@ class JetAdminLte
             });
             Breadcrumbs::for("{$name}.create", static function (Trail $trail) use ($name) {
                 $trail->parent("{$name}.index");
-                $trail->push("登録", route("{$name}.create"));
+                $trail->push(trans('jet-adminlte::adminlte.create'), route("{$name}.create"));
             });
             Breadcrumbs::for("{$name}.show", static function (Trail $trail, Contract $model) use ($name) {
                 $trail->parent("{$name}.index");
@@ -353,7 +353,7 @@ class JetAdminLte
             });
             Breadcrumbs::for("{$name}.edit", static function (Trail $trail, $model) use ($name) {
                 $trail->parent("{$name}.show", $model);
-                $trail->push("編集", route("{$name}.edit", $model));
+                $trail->push(trans('jet-adminlte::adminlte.edit'), route("{$name}.edit", $model));
             });
         };
     }
