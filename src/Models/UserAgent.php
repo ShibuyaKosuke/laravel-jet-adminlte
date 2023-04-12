@@ -17,6 +17,44 @@ use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\TwoFactorUnRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Listeners\SocialAccountDetachedListener;
 
+/**
+ * Class UserAgent
+ * @package ShibuyaKosuke\LaravelJetAdminlte\Models
+ * @property int $id
+ * @property int $user_id
+ * @property string $user_agent
+ * @property string $hash
+ * @property string $event
+ * @property string $remote_ip
+ * @property string $device_type
+ * @property string $device
+ * @property string $platform
+ * @property string $platform_version
+ * @property string $browser
+ * @property string $browser_version
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string $icon
+ * @property User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent query()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereBrowser($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereBrowserVersion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereDevice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereDeviceType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereEvent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereHash($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent wherePlatform($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent wherePlatformVersion($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereRemoteIp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|UserAgent whereUserAgent($value)
+ * @mixin \Eloquent
+ */
 class UserAgent extends Model
 {
     use HasFactory;

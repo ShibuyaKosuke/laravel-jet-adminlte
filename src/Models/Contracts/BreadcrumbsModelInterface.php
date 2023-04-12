@@ -2,6 +2,9 @@
 
 namespace ShibuyaKosuke\LaravelJetAdminlte\Models\Contracts;
 
+/**
+ * Interface BreadcrumbsModelInterface
+ */
 interface BreadcrumbsModelInterface
 {
     /**

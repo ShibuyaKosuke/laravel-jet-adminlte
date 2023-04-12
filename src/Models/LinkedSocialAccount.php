@@ -8,8 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * LinkedSocialAccount
+ * Class LinkedSocialAccount
+ * @package ShibuyaKosuke\LaravelJetAdminlte\Models
+ * @property int $id
+ * @property int $user_id
+ * @property string $provider_name
+ * @property string $provider_id
+ * @property string $avatar
  * @property User $user
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount query()
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereProviderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereProviderName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|LinkedSocialAccount whereUserId($value)
+ * @mixin \Eloquent
  */
 class LinkedSocialAccount extends Model
 {

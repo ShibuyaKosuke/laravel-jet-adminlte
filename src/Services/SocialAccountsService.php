@@ -9,6 +9,10 @@ use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountDetachedEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Events\SocialAccountRegisterEvent;
 use ShibuyaKosuke\LaravelJetAdminlte\Models\LinkedSocialAccount;
 
+/**
+ * Class SocialAccountsService
+ * @package ShibuyaKosuke\LaravelJetAdminlte\Services
+ */
 class SocialAccountsService
 {
     /**
